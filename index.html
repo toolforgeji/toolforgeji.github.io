@@ -1,0 +1,540 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ToolForge - Free In-Browser Privacy-First Utility Suite</title>
+    <meta name="description" content="Comprehensive suite of 28 free, client-side utility tools for developers, designers, writers, and businesses. 100% in-browser with zero uploads." />
+    <link rel="canonical" href="https://toolforgeji.github.io/" />
+    <link rel="icon" type="image/svg+xml" href="/assets/img/logo.svg" />
+    
+    <!-- Open Graph & Twitter -->
+    <meta property="og:title" content="ToolForge - Free In-Browser Privacy-First Utility Suite" />
+    <meta property="og:description" content="Comprehensive suite of 28 free, client-side utility tools for developers, designers, writers, and businesses. 100% in-browser with zero uploads." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://toolforgeji.github.io/" />
+    <meta property="og:image" content="/assets/img/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="ToolForge - Free In-Browser Privacy-First Utility Suite" />
+    <meta name="twitter:description" content="Comprehensive suite of 28 free, client-side utility tools. 100% in-browser with zero uploads." />
+    <meta name="twitter:image" content="/assets/img/og-image.png" />
+
+    <!-- Manifest & Theme Color -->
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <meta name="theme-color" content="#4f46e5" />
+
+    <!-- Fonts & Preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="/assets/css/design-system.css" />
+
+    <!-- Schema.org WebSite & FAQPage JSON-LD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebSite",
+          "name": "ToolForge",
+          "url": "https://toolforgeji.github.io/",
+          "description": "28 free client-side utility tools with 100% in-browser processing.",
+          "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://toolforgeji.github.io/?q={search_term_string}",
+            "query-input": "required name=search_term_string"
+          }
+        },
+        {
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "Are my files or text uploaded to a server?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Never. ToolForge executes entirely inside your browser using WebAssembly and client-side JavaScript. Your files, documents, and data never leave your local device."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Is ToolForge completely free to use?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes, 100% free with no registration, no subscription paywalls, no API keys, and no rate limits."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Can I use ToolForge offline?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes, once loaded, core tools run completely offline without an active internet connection."
+              }
+            }
+          ]
+        }
+      ]
+    }
+    </script>
+  </head>
+  <body>
+    <!-- Background mesh -->
+    <div class="tf-hero-mesh" aria-hidden="true"></div>
+
+    <!-- Navigation -->
+    <header class="tf-navbar">
+      <div class="tf-container">
+        <div class="tf-nav-inner">
+          <a href="/index.html" class="tf-brand">
+            <span class="tf-brand-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg>
+            </span>
+            <span>ToolForge</span>
+          </a>
+
+          <nav class="tf-nav-links">
+            <div class="tf-dropdown">
+              <button class="tf-dropdown-trigger" aria-haspopup="true">
+                <span>Tools</span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </button>
+              <div class="tf-dropdown-menu">
+                <div>
+                  <div class="tf-dropdown-col-title">PDF & Documents</div>
+                  <a href="/tools/pdf-compressor.html" class="tf-dropdown-item">PDF Compressor</a>
+                  <a href="/tools/pdf-merge-split.html" class="tf-dropdown-item">PDF Merge & Split</a>
+                  <a href="/tools/image-to-pdf.html" class="tf-dropdown-item">Image to PDF</a>
+                  <div class="tf-dropdown-col-title" style="margin-top: 14px;">Image & Media</div>
+                  <a href="/tools/ocr.html" class="tf-dropdown-item">Image OCR Text Extractor</a>
+                  <a href="/tools/background-remover.html" class="tf-dropdown-item">Background Remover</a>
+                  <a href="/tools/image-compressor.html" class="tf-dropdown-item">Image Compressor</a>
+                  <a href="/tools/heic-to-jpg.html" class="tf-dropdown-item">HEIC to JPG Converter</a>
+                </div>
+                <div>
+                  <div class="tf-dropdown-col-title">Developer & Code</div>
+                  <a href="/tools/json-formatter.html" class="tf-dropdown-item">JSON Formatter</a>
+                  <a href="/tools/diff-checker.html" class="tf-dropdown-item">Diff Checker</a>
+                  <a href="/tools/markdown-previewer.html" class="tf-dropdown-item">Markdown Live Editor</a>
+                  <a href="/tools/color-converter.html" class="tf-dropdown-item">Color Studio</a>
+                  <a href="/tools/svg-optimizer.html" class="tf-dropdown-item">SVG Optimizer</a>
+                  <a href="/tools/regex-tester.html" class="tf-dropdown-item">Regex Tester</a>
+                  <a href="/tools/qr-generator.html" class="tf-dropdown-item">QR Code Generator</a>
+                  <div class="tf-dropdown-col-title" style="margin-top: 14px;">Finance & Productivity</div>
+                  <a href="/tools/invoice-generator.html" class="tf-dropdown-item">Invoice Generator</a>
+                  <a href="/tools/emi-calculator.html" class="tf-dropdown-item">Loan EMI Calculator</a>
+                  <a href="/tools/word-counter.html" class="tf-dropdown-item">Word Counter</a>
+                </div>
+              </div>
+            </div>
+            <a href="/about.html" class="tf-nav-link">About</a>
+            <a href="/contact.html" class="tf-nav-link">Contact</a>
+          </nav>
+
+          <div style="display: flex; align-items: center; gap: 10px;">
+            <button class="search-trigger-btn tf-btn tf-btn-secondary tf-btn-sm" aria-label="Search tools">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+              <span>Search</span>
+              <kbd class="tf-key-badge">⌘K</kbd>
+            </button>
+
+            <button class="theme-toggle-btn tf-btn-icon" aria-label="Toggle dark/light theme">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+            </button>
+
+            <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="tf-btn-icon" aria-label="ToolForge on GitHub">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+            </a>
+
+            <button id="tf-mobile-toggle" class="tf-btn-icon tf-mobile-toggle" aria-label="Open navigation menu">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Mobile Drawer -->
+    <div id="tf-mobile-drawer" class="tf-mobile-drawer">
+      <div style="display: flex; align-items: center; justify-content: space-between;">
+        <span class="tf-brand">
+          <span class="tf-brand-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg>
+          </span>
+          <span>ToolForge</span>
+        </span>
+        <button id="tf-mobile-close" class="tf-btn-icon" aria-label="Close menu">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        </button>
+      </div>
+      <div style="margin-top: 16px;">
+        <div style="font-weight: 700; font-size: 0.8125rem; text-transform: uppercase; color: var(--accent); margin-bottom: 12px;">Quick Navigation</div>
+        <div style="display: flex; flex-direction: column; gap: 8px;">
+          <a href="/index.html" class="tf-dropdown-item">All Tools</a>
+          <a href="/about.html" class="tf-dropdown-item">About ToolForge</a>
+          <a href="/contact.html" class="tf-dropdown-item">Contact & Feedback</a>
+        </div>
+      </div>
+      <div style="margin-top: 16px;">
+        <div style="font-weight: 700; font-size: 0.8125rem; text-transform: uppercase; color: var(--text-muted); margin-bottom: 12px;">Popular Tools</div>
+        <div style="display: flex; flex-direction: column; gap: 6px;">
+          <a href="/tools/pdf-compressor.html" class="tf-dropdown-item">PDF Compressor</a>
+          <a href="/tools/json-formatter.html" class="tf-dropdown-item">JSON Formatter</a>
+          <a href="/tools/qr-generator.html" class="tf-dropdown-item">QR Code Generator</a>
+          <a href="/tools/invoice-generator.html" class="tf-dropdown-item">Invoice Generator</a>
+          <a href="/tools/regex-tester.html" class="tf-dropdown-item">Regex Tester</a>
+          <a href="/tools/emi-calculator.html" class="tf-dropdown-item">Loan EMI Calculator</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Content -->
+    <main>
+      <!-- Hero Section -->
+      <section class="tf-ambient-grid" style="padding: 76px 0 54px 0; text-align: center; position: relative;">
+        <div class="tf-container" style="max-width: 860px;">
+          <div style="display: inline-flex; align-items: center; gap: 8px; font-size: 0.8125rem; font-weight: 600; color: var(--accent); margin-bottom: 16px;">
+            <span>Client-Side Architecture</span>
+            <span aria-hidden="true">·</span>
+            <span>Zero Cloud Uploads</span>
+            <span aria-hidden="true">·</span>
+            <span>Always Free</span>
+          </div>
+          <h1 style="font-size: clamp(2.25rem, 5vw, 3.75rem); letter-spacing: -0.03em; margin-bottom: 20px; font-weight: 800;">
+            The privacy-first utility suite for developers & creators
+          </h1>
+          <p style="font-size: 1.1875rem; color: var(--text-muted); max-width: 680px; margin: 0 auto 32px auto; line-height: 1.6;">
+            A collection of 28 high-performance utility tools running 100% inside your browser. No accounts, no subscriptions, and your sensitive files never leave your device.
+          </p>
+
+          <!-- Quick Search Bar -->
+          <div style="max-width: 580px; margin: 0 auto 28px auto;">
+            <div class="search-trigger-btn" style="display: flex; align-items: center; gap: 14px; background: var(--bg-surface); border: 1px solid var(--border-strong); border-radius: var(--radius-xl); padding: 12px 20px; cursor: pointer; box-shadow: var(--shadow-md); transition: border-color 150ms ease;">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: var(--text-muted);"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+              <span style="color: var(--text-muted); font-size: 1rem; flex: 1; text-align: left;">Search 28 tools (e.g., Markdown, Color, Diff, PDF, JSON)...</span>
+              <kbd class="tf-key-badge" style="padding: 4px 8px; font-size: 0.75rem;">Press /</kbd>
+            </div>
+          </div>
+
+          <!-- CTA Buttons -->
+          <div style="display: flex; align-items: center; justify-content: center; gap: 14px; flex-wrap: wrap;">
+            <a href="#tools-section" class="tf-btn tf-btn-primary tf-btn-lg">Explore All Tools</a>
+            <a href="/assets/toolforge.zip" download="toolforge.zip" class="tf-btn tf-btn-secondary tf-btn-lg" style="display: inline-flex; align-items: center; gap: 8px;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+              <span>Download ZIP</span>
+            </a>
+            <a href="/about.html" class="tf-btn tf-btn-secondary tf-btn-lg">Why In-Browser?</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Trust Strip -->
+      <section style="border-y: 1px solid var(--border-subtle); background: var(--bg-surface); padding: 20px 0; border-top: 1px solid var(--border-subtle); border-bottom: 1px solid var(--border-subtle);">
+        <div class="tf-container">
+          <div style="display: flex; align-items: center; justify-content: space-around; flex-wrap: wrap; gap: 20px; text-align: center; font-size: 0.875rem; font-weight: 600; color: var(--text-main);">
+            <div style="display: flex; align-items: center; gap: 8px;">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--success)" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+              <span>100% In-Browser</span>
+            </div>
+            <div style="display: flex; align-items: center; gap: 8px;">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="8.5" cy="7" r="4"></circle><line x1="20" y1="8" x2="20" y2="14"></line><line x1="23" y1="11" x2="17" y2="11"></line></svg>
+              <span>No Sign-Up Required</span>
+            </div>
+            <div style="display: flex; align-items: center; gap: 8px;">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--warning)" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+              <span>Zero Cloud Uploads</span>
+            </div>
+            <div style="display: flex; align-items: center; gap: 8px;">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>Completely Free</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Featured / Most Used Tools Row -->
+      <section style="padding: 56px 0 24px 0;">
+        <div class="tf-container">
+          <div style="display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 24px;">
+            <div>
+              <h2 style="font-size: 1.5rem; font-weight: 700;">Featured Utilities</h2>
+              <p style="font-size: 0.9375rem; color: var(--text-muted);">The most popular tools used daily by engineers and professionals.</p>
+            </div>
+            <a href="#tools-section" style="font-size: 0.875rem; font-weight: 600; color: var(--accent);">View all 28 tools →</a>
+          </div>
+
+          <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 20px;">
+            <!-- Featured Card 1 -->
+            <a href="/tools/pdf-compressor.html" class="tf-card tf-card-interactive" style="display: flex; flex-direction: column; justify-content: space-between;">
+              <div>
+                <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px;">
+                  <div style="width: 40px; height: 40px; border-radius: var(--radius-sm); background: var(--accent-light); color: var(--accent); display: flex; align-items: center; justify-content: center;">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="12" y1="18" x2="12" y2="12"></line><line x1="9" y1="15" x2="15" y2="15"></line></svg>
+                  </div>
+                  <span style="font-size: 0.75rem; font-weight: 600; color: var(--text-faint); text-transform: uppercase;">PDF & Docs</span>
+                </div>
+                <h3 style="font-size: 1.125rem; font-weight: 700; margin-bottom: 8px;">PDF Compressor</h3>
+                <p style="font-size: 0.875rem; color: var(--text-muted); line-height: 1.5;">Shrink heavy PDFs locally in your browser with zero data leaks.</p>
+              </div>
+              <div style="margin-top: 16px; font-size: 0.8125rem; font-weight: 600; color: var(--accent); display: flex; align-items: center; gap: 4px;">
+                Open Tool <span>→</span>
+              </div>
+            </a>
+
+            <!-- Featured Card 2 -->
+            <a href="/tools/json-formatter.html" class="tf-card tf-card-interactive" style="display: flex; flex-direction: column; justify-content: space-between;">
+              <div>
+                <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px;">
+                  <div style="width: 40px; height: 40px; border-radius: var(--radius-sm); background: var(--accent-light); color: var(--accent); display: flex; align-items: center; justify-content: center;">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+                  </div>
+                  <span style="font-size: 0.75rem; font-weight: 600; color: var(--text-faint); text-transform: uppercase;">Developer</span>
+                </div>
+                <h3 style="font-size: 1.125rem; font-weight: 700; margin-bottom: 8px;">JSON Formatter & Validator</h3>
+                <p style="font-size: 0.875rem; color: var(--text-muted); line-height: 1.5;">Beautify, minify, inspect tree-nodes, and fix syntax errors instantly.</p>
+              </div>
+              <div style="margin-top: 16px; font-size: 0.8125rem; font-weight: 600; color: var(--accent); display: flex; align-items: center; gap: 4px;">
+                Open Tool <span>→</span>
+              </div>
+            </a>
+
+            <!-- Featured Card 3 -->
+            <a href="/tools/ocr.html" class="tf-card tf-card-interactive" style="display: flex; flex-direction: column; justify-content: space-between;">
+              <div>
+                <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px;">
+                  <div style="width: 40px; height: 40px; border-radius: var(--radius-sm); background: var(--accent-light); color: var(--accent); display: flex; align-items: center; justify-content: center;">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7V4h3"></path><path d="M20 7V4h-3"></path><path d="M4 17v3h3"></path><path d="M20 17v3h-3"></path><line x1="9" y1="12" x2="15" y2="12"></line></svg>
+                  </div>
+                  <span style="font-size: 0.75rem; font-weight: 600; color: var(--text-faint); text-transform: uppercase;">Image & Media</span>
+                </div>
+                <h3 style="font-size: 1.125rem; font-weight: 700; margin-bottom: 8px;">Image OCR Extractor</h3>
+                <p style="font-size: 0.875rem; color: var(--text-muted); line-height: 1.5;">Extract copyable text from photos, screenshots, and scans via Tesseract.</p>
+              </div>
+              <div style="margin-top: 16px; font-size: 0.8125rem; font-weight: 600; color: var(--accent); display: flex; align-items: center; gap: 4px;">
+                Open Tool <span>→</span>
+              </div>
+            </a>
+
+            <!-- Featured Card 4 -->
+            <a href="/tools/invoice-generator.html" class="tf-card tf-card-interactive" style="display: flex; flex-direction: column; justify-content: space-between;">
+              <div>
+                <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px;">
+                  <div style="width: 40px; height: 40px; border-radius: var(--radius-sm); background: var(--accent-light); color: var(--accent); display: flex; align-items: center; justify-content: center;">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                  </div>
+                  <span style="font-size: 0.75rem; font-weight: 600; color: var(--text-faint); text-transform: uppercase;">Finance</span>
+                </div>
+                <h3 style="font-size: 1.125rem; font-weight: 700; margin-bottom: 8px;">Invoice Generator</h3>
+                <p style="font-size: 0.875rem; color: var(--text-muted); line-height: 1.5;">Create sleek, custom-branded invoices with live preview & print export.</p>
+              </div>
+              <div style="margin-top: 16px; font-size: 0.8125rem; font-weight: 600; color: var(--accent); display: flex; align-items: center; gap: 4px;">
+                Open Tool <span>→</span>
+              </div>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- All Tools Grid Section -->
+      <section id="tools-section" style="padding: 56px 0;">
+        <div class="tf-container">
+          <div style="text-align: center; max-width: 680px; margin: 0 auto 32px auto;">
+            <h2 style="font-size: 2.25rem; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 12px;">All Utility Tools</h2>
+            <p style="font-size: 1.0625rem; color: var(--text-muted);">Filter by category, search instantly, or switch to compact list mode across all 28 in-browser tools.</p>
+          </div>
+
+          <!-- Recently Used Shelf -->
+          <div id="recents-shelf" class="tf-recents-shelf" style="display: none;">
+            <div style="display: flex; align-items: center; gap: 8px; font-size: 0.8125rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; flex-shrink: 0;">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+              <span>Recently Used:</span>
+            </div>
+            <div id="recents-chips" class="tf-recents-chips"></div>
+          </div>
+
+          <!-- Toolbar: Category Tabs + Quick Filter & View Toggle -->
+          <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; margin-bottom: 24px;">
+            <div class="tf-filter-bar" style="margin-bottom: 0;">
+              <button class="tf-filter-btn active" data-category="all">All Tools (28)</button>
+              <button class="tf-filter-btn" data-category="Developer Tools">Developer</button>
+              <button class="tf-filter-btn" data-category="PDF & Documents">PDF & Docs</button>
+              <button class="tf-filter-btn" data-category="Image & Media">Image & Media</button>
+              <button class="tf-filter-btn" data-category="Finance & Business">Finance</button>
+              <button class="tf-filter-btn" data-category="Writing & Text">Writing & Text</button>
+              <button class="tf-filter-btn" data-category="SEO & Web">SEO & Web</button>
+              <button class="tf-filter-btn" data-category="Productivity">Productivity</button>
+            </div>
+
+            <div style="display: flex; align-items: center; gap: 10px;">
+              <div style="position: relative; width: 220px;">
+                <input type="text" id="inline-search-input" class="tf-input" placeholder="Quick filter..." style="padding-left: 32px; font-size: 0.8125rem; padding-top: 6px; padding-bottom: 6px;" />
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="position: absolute; left: 10px; top: 50%; transform: translateY(-50%); color: var(--text-faint); pointer-events: none;"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+              </div>
+
+              <div class="tf-view-switcher">
+                <button id="view-grid-btn" class="tf-view-btn active" title="Grid View" aria-label="Grid View">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+                </button>
+                <button id="view-list-btn" class="tf-view-btn" title="Compact List View" aria-label="Compact List View">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="8" y1="6" x2="21" y2="6"></line><line x1="8" y1="12" x2="21" y2="12"></line><line x1="8" y1="18" x2="21" y2="18"></line><line x1="3" y1="6" x2="3.01" y2="6"></line><line x1="3" y1="12" x2="3.01" y2="12"></line><line x1="3" y1="18" x2="3.01" y2="18"></line></svg>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tools Grid Container -->
+          <div id="all-tools-grid" class="tf-tools-grid">
+            <!-- Rendered dynamically by home.js for full reactivity -->
+          </div>
+        </div>
+      </section>
+
+      <!-- Why ToolForge Section -->
+      <section style="padding: 64px 0; background: var(--bg-surface); border-top: 1px solid var(--border-subtle); border-bottom: 1px solid var(--border-subtle);">
+        <div class="tf-container">
+          <div style="text-align: center; max-width: 640px; margin: 0 auto 48px auto;">
+            <h2 style="font-size: 2rem; font-weight: 800; margin-bottom: 12px;">Engineered for Total Data Sovereignty</h2>
+            <p style="color: var(--text-muted); font-size: 1.0625rem;">Why thousands of users trust ToolForge over traditional cloud convert sites.</p>
+          </div>
+
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 28px;">
+            <div class="tf-card">
+              <div style="width: 44px; height: 44px; border-radius: var(--radius-md); background: var(--accent-light); color: var(--accent); display: flex; align-items: center; justify-content: center; margin-bottom: 16px;">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+              </div>
+              <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 8px;">Zero Cloud Transmission</h3>
+              <p style="color: var(--text-muted); font-size: 0.9375rem; line-height: 1.6;">Unlike legacy utility sites that upload your confidential PDFs and data to remote servers, ToolForge runs every algorithm inside your browser via WebAssembly.</p>
+            </div>
+
+            <div class="tf-card">
+              <div style="width: 44px; height: 44px; border-radius: var(--radius-md); background: var(--accent-light); color: var(--accent); display: flex; align-items: center; justify-content: center; margin-bottom: 16px;">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+              </div>
+              <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 8px;">Lightning Fast Performance</h3>
+              <p style="color: var(--text-muted); font-size: 0.9375rem; line-height: 1.6;">No network latency, no upload queues, and no server timeouts. Processing executes as fast as your computer's local CPU and GPU can render.</p>
+            </div>
+
+            <div class="tf-card">
+              <div style="width: 44px; height: 44px; border-radius: var(--radius-md); background: var(--accent-light); color: var(--accent); display: flex; align-items: center; justify-content: center; margin-bottom: 16px;">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"></line></svg>
+              </div>
+              <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 8px;">No Paywalls or Ad Clutter</h3>
+              <p style="color: var(--text-muted); font-size: 0.9375rem; line-height: 1.6;">Enjoy an uncluttered, distraction-free SaaS workspace. No rate limits, no daily file quotas, no account requirements, and no deceptive download buttons.</p>
+            </div>
+
+            <div class="tf-card">
+              <div style="width: 44px; height: 44px; border-radius: var(--radius-md); background: var(--accent-light); color: var(--accent); display: flex; align-items: center; justify-content: center; margin-bottom: 16px;">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+              </div>
+              <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 8px;">Deployable Anywhere</h3>
+              <p style="color: var(--text-muted); font-size: 0.9375rem; line-height: 1.6;">100% static HTML, CSS, and vanilla JS. Fork and host on GitHub Pages, Cloudflare Pages, Netlify, or self-host offline on an air-gapped intranet.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- FAQ Section -->
+      <section style="padding: 64px 0;">
+        <div class="tf-container" style="max-width: 800px;">
+          <div style="text-align: center; margin-bottom: 40px;">
+            <h2 style="font-size: 2rem; font-weight: 800; margin-bottom: 10px;">Frequently Asked Questions</h2>
+            <p style="color: var(--text-muted);">Clear answers to common questions regarding privacy, security, and usage.</p>
+          </div>
+
+          <div>
+            <details class="tf-faq-item" open>
+              <summary>Are my files or text ever sent to a remote server?</summary>
+              <div class="tf-faq-content">
+                No. ToolForge uses client-side Web APIs, HTML5 Canvas, Web Workers, and WebAssembly to run all operations entirely in your browser memory. You can inspect the network tab in your browser's developer tools to verify that zero file bytes leave your computer.
+              </div>
+            </details>
+
+            <details class="tf-faq-item">
+              <summary>Is ToolForge free for commercial use?</summary>
+              <div class="tf-faq-content">
+                Yes. You are free to use ToolForge for personal, educational, or commercial projects. Invoices, generated QR codes, optimized graphics, and code formatting can all be utilized for business operations without attribution.
+              </div>
+            </details>
+
+            <details class="tf-faq-item">
+              <summary>How does ToolForge make money if it's free with no ads?</summary>
+              <div class="tf-faq-content">
+                Because all processing happens on the client side, our server hosting costs are negligible (it is just static file delivery). ToolForge is maintained as an open-source public service for developers and creators.
+              </div>
+            </details>
+
+            <details class="tf-faq-item">
+              <summary>Can I run ToolForge completely offline?</summary>
+              <div class="tf-faq-content">
+                Yes. Once you load a tool page, the client script is cached in your browser. You can disconnect from Wi-Fi or go into airplane mode and continue formatting JSON, testing regex, calculating loans, and generating QR codes.
+              </div>
+            </details>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Global Footer -->
+    <footer class="tf-footer">
+      <div class="tf-container">
+        <div class="tf-footer-grid">
+          <div>
+            <a href="/index.html" class="tf-brand" style="margin-bottom: 14px;">
+              <span class="tf-brand-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg>
+              </span>
+              <span>ToolForge</span>
+            </a>
+            <p style="font-size: 0.875rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 20px; max-width: 320px;">
+              A privacy-first suite of free, browser-based utility tools. Built for engineers, designers, writers, and businesses.
+            </p>
+          </div>
+
+          <div>
+            <div class="tf-footer-col-title">Popular Tools</div>
+            <ul class="tf-footer-links">
+              <li><a href="/tools/pdf-compressor.html">PDF Compressor</a></li>
+              <li><a href="/tools/pdf-merge-split.html">PDF Merge & Split</a></li>
+              <li><a href="/tools/json-formatter.html">JSON Formatter</a></li>
+              <li><a href="/tools/regex-tester.html">Regex Tester</a></li>
+              <li><a href="/tools/qr-generator.html">QR Generator</a></li>
+              <li><a href="/tools/ocr.html">Image OCR</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <div class="tf-footer-col-title">Resources</div>
+            <ul class="tf-footer-links">
+              <li><a href="/about.html">About & Privacy</a></li>
+              <li><a href="/contact.html">Contact Us</a></li>
+              <li><a href="/assets/toolforge.zip" download="toolforge.zip" style="font-weight: 600; color: var(--accent);">Download Static Site (.zip)</a></li>
+              <li><a href="/sitemap.xml">XML Sitemap</a></li>
+              <li><a href="/robots.txt">Robots.txt</a></li>
+              <li><a href="https://github.com" target="_blank" rel="noopener">GitHub Repository</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <div class="tf-footer-col-title">Security & Legal</div>
+            <ul class="tf-footer-links">
+              <li><a href="/about.html#privacy">Zero-Upload Policy</a></li>
+              <li><a href="/about.html#architecture">Client Architecture</a></li>
+              <li><a href="/about.html#license">MIT License</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="tf-footer-bottom">
+          <div>© 2026 ToolForge. Released under the MIT License.</div>
+          <div style="display: flex; align-items: center; gap: 6px;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+            <span>Made with privacy in mind: all processing happens in your browser.</span>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="/assets/js/common.js"></script>
+    <script src="/assets/js/home.js"></script>
+  </body>
+</html>

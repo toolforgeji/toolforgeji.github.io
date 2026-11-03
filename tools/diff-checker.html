@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Text & Code Diff Checker - ToolForge</title>
+    <meta name="description" content="Compare text and code files side-by-side with line addition, deletion, and inline highlighting. 100% private in-browser diff tool." />
+    <link rel="canonical" href="https://toolforgeji.github.io/tools/diff-checker.html" />
+    <link rel="icon" type="image/svg+xml" href="/assets/img/logo.svg" />
+    <link rel="stylesheet" href="/assets/css/design-system.css" />
+
+    <meta property="og:title" content="Text & Code Diff Checker - ToolForge" />
+    <meta property="og:description" content="Compare two text or code files side-by-side with line addition, deletion, and inline highlighting." />
+    <meta property="og:url" content="https://toolforgeji.github.io/tools/diff-checker.html" />
+    <meta property="og:image" content="/assets/img/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Text Diff Checker",
+      "operatingSystem": "All",
+      "applicationCategory": "DeveloperApplication",
+      "offers": { "@type": "Offer", "price": "0" },
+      "description": "High-performance client-side text and code difference viewer."
+    }
+    </script>
+  </head>
+  <body>
+    <!-- Navigation -->
+    <header class="tf-navbar">
+      <div class="tf-container">
+        <div class="tf-nav-inner">
+          <a href="/index.html" class="tf-brand">
+            <span class="tf-brand-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg>
+            </span>
+            <span>ToolForge</span>
+          </a>
+
+          <div style="display: flex; align-items: center; gap: 12px;">
+            <button class="search-trigger-btn tf-btn tf-btn-secondary tf-btn-sm" aria-label="Search tools">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+              <span>Search</span>
+              <kbd class="tf-key-badge">⌘K</kbd>
+            </button>
+            <a href="/index.html" class="tf-btn tf-btn-secondary tf-btn-sm">All Tools</a>
+            <button class="theme-toggle-btn tf-btn-icon" aria-label="Toggle theme">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="tf-container" style="max-width: 1100px; padding-top: 40px; padding-bottom: 80px;">
+      <!-- Breadcrumbs -->
+      <div class="tf-breadcrumbs">
+        <a href="/index.html">Home</a>
+        <span class="tf-breadcrumbs-sep">/</span>
+        <a href="/index.html#tools-section">Developer Tools</a>
+        <span class="tf-breadcrumbs-sep">/</span>
+        <span class="tf-breadcrumbs-current">Diff Checker</span>
+      </div>
+
+        <div style="margin-bottom: 28px;">
+          <h1 style="font-size: 2rem; margin-bottom: 8px;">Text & Code Diff Checker</h1>
+          <p style="color: var(--text-muted); max-width: 720px;">
+            Find differences between two versions of text, JSON, code, or configuration files. Line-by-line additions and deletions computed client-side with zero data uploads.
+          </p>
+        </div>
+
+        <!-- Tool Workspace -->
+        <div class="tf-tool-card" style="margin-bottom: 40px;">
+          <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; margin-bottom: 16px;">
+            <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
+              <button id="load-sample-btn" class="tf-btn tf-btn-secondary tf-btn-sm">Load Sample</button>
+              <button id="swap-btn" class="tf-btn tf-btn-secondary tf-btn-sm">Swap Panes</button>
+              <button id="clear-btn" class="tf-btn tf-btn-secondary tf-btn-sm">Clear</button>
+            </div>
+
+            <!-- Stats Badge -->
+            <div style="display: flex; align-items: center; gap: 12px; font-size: 0.8125rem; font-family: var(--font-mono);">
+              <span id="added-count" style="color: var(--success); font-weight: 700;">+0 added</span>
+              <span aria-hidden="true">·</span>
+              <span id="removed-count" style="color: var(--danger); font-weight: 700;">-0 removed</span>
+            </div>
+          </div>
+
+          <!-- Dual Inputs -->
+          <div class="tf-split-pane" style="min-height: 260px; margin-bottom: 24px;">
+            <div class="tf-editor-pane">
+              <div class="tf-pane-header">
+                <span>Original Text</span>
+                <span style="font-size: 0.75rem; color: var(--text-muted); font-family: var(--font-mono);">Before</span>
+              </div>
+              <textarea id="orig-input" class="tf-editor-textarea" placeholder="Paste original text or code here..."></textarea>
+            </div>
+
+            <div class="tf-editor-pane">
+              <div class="tf-pane-header">
+                <span>Modified Text</span>
+                <span style="font-size: 0.75rem; color: var(--text-muted); font-family: var(--font-mono);">After</span>
+              </div>
+              <textarea id="mod-input" class="tf-editor-textarea" placeholder="Paste modified text or code here..."></textarea>
+            </div>
+          </div>
+
+          <!-- Diff Results -->
+          <div>
+            <div class="tf-pane-header" style="border-radius: var(--radius-md) var(--radius-md) 0 0; border: 1px solid var(--border-subtle); border-bottom: none;">
+              <span>Difference Output</span>
+              <button id="copy-diff-btn" class="tf-btn tf-btn-secondary tf-btn-sm" style="padding: 4px 10px;">Copy Diff</button>
+            </div>
+            <div id="diff-output" class="tf-diff-container" style="background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: 0 0 var(--radius-md) var(--radius-md); min-height: 200px; padding: 12px 0;"></div>
+          </div>
+        </div>
+
+        <!-- How It Works -->
+        <div style="margin-bottom: 48px;">
+          <h2 style="font-size: 1.5rem; margin-bottom: 24px;">How It Works</h2>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px;">
+            <div class="tf-card" style="padding: 24px;">
+              <div style="font-weight: 700; color: var(--accent); margin-bottom: 8px;">01. Paste Both Versions</div>
+              <p style="font-size: 0.9375rem;">Place the baseline content in the left pane and the updated revision in the right pane.</p>
+            </div>
+            <div class="tf-card" style="padding: 24px;">
+              <div style="font-weight: 700; color: var(--accent); margin-bottom: 8px;">02. Line Matching</div>
+              <p style="font-size: 0.9375rem;">The Myers-inspired difference engine identifies unmodified lines, insertions, and deletions.</p>
+            </div>
+            <div class="tf-card" style="padding: 24px;">
+              <div style="font-weight: 700; color: var(--accent); margin-bottom: 8px;">03. Color-Coded Review</div>
+              <p style="font-size: 0.9375rem;">Green lines denote additions; red lines show deletions with synchronized line numbering.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Related Tools -->
+        <div>
+          <h2 style="font-size: 1.25rem; margin-bottom: 16px;">Related Developer Tools</h2>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px;">
+            <a href="/tools/json-formatter.html" class="tf-card" style="padding: 20px; display: block; text-decoration: none;">
+              <h3 style="font-size: 1rem; margin-bottom: 4px;">JSON Formatter</h3>
+              <p style="font-size: 0.8125rem; color: var(--text-muted);">Format, minify, and inspect JSON payloads.</p>
+            </a>
+            <a href="/tools/regex-tester.html" class="tf-card" style="padding: 20px; display: block; text-decoration: none;">
+              <h3 style="font-size: 1rem; margin-bottom: 4px;">Regex Tester</h3>
+              <p style="font-size: 0.8125rem; color: var(--text-muted);">Test regular expressions with real-time match highlights.</p>
+            </a>
+            <a href="/tools/markdown-previewer.html" class="tf-card" style="padding: 20px; display: block; text-decoration: none;">
+              <h3 style="font-size: 1rem; margin-bottom: 4px;">Markdown Live Editor</h3>
+              <p style="font-size: 0.8125rem; color: var(--text-muted);">Live split-view Markdown editing with synchronized preview.</p>
+            </a>
+          </div>
+        </div>
+      </div>
+    
+      <section class="tf-seo-content" style="margin-top: 48px; padding-top: 32px; border-top: 1px solid var(--border, #e2e8f0);">
+        <h2 style="font-size: 1.5rem; margin-bottom: 12px;">About the Text & Code Diff Checker</h2>
+        <p style="line-height: 1.7; color: var(--text-muted); max-width: 760px;">Compare two blocks of text or code side by side. Additions and deletions are highlighted line by line, with synchronized line numbers and counters. Use it to review changes between drafts, configuration files, or code versions without sending them to a server.</p>
+        <h3 style="font-size: 1.125rem; margin: 20px 0 8px;">How to use it</h3>
+        <ol style="line-height: 1.8; padding-left: 22px; color: var(--text-muted);"><li>Paste the original text in the left pane.</li><li>Paste the revised text in the right pane.</li><li>Review additions (+) and deletions (-).</li></ol>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="tf-footer">
+      <div class="tf-container">
+        <div class="tf-footer-bottom">
+          <div>© 2026 ToolForge. Released under the MIT License.</div>
+          <div>100% In-Browser Privacy</div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="/assets/js/common.js"></script>
+    <script src="/assets/js/tools/diff-checker.js"></script>
+  </body>
+</html>

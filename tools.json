@@ -1,0 +1,283 @@
+[
+  {
+    "id": "pdf-compressor",
+    "name": "PDF Compressor",
+    "description": "Reduce PDF file size locally in your browser without sacrificing legible clarity.",
+    "category": "PDF & Documents",
+    "url": "/tools/pdf-compressor.html",
+    "icon": "file-down",
+    "tags": ["pdf", "compress", "shrink", "size", "document", "optimize"],
+    "popular": true
+  },
+  {
+    "id": "pdf-merge-split",
+    "name": "PDF Merge & Split",
+    "description": "Combine multiple PDF documents into one or extract specific page ranges instantly.",
+    "category": "PDF & Documents",
+    "url": "/tools/pdf-merge-split.html",
+    "icon": "combine",
+    "tags": ["pdf", "merge", "split", "combine", "separate", "pages"],
+    "popular": true
+  },
+  {
+    "id": "image-to-pdf",
+    "name": "Image to PDF",
+    "description": "Convert PNG, JPG, and WebP images into formatted, high-res PDF documents.",
+    "category": "PDF & Documents",
+    "url": "/tools/image-to-pdf.html",
+    "icon": "file-image",
+    "tags": ["image", "pdf", "jpg", "png", "convert", "document"],
+    "popular": false
+  },
+  {
+    "id": "ocr",
+    "name": "Image OCR Text Extractor",
+    "description": "Extract editable text from scanned documents, receipts, and photos using client-side OCR.",
+    "category": "Image & Media",
+    "url": "/tools/ocr.html",
+    "icon": "scan-text",
+    "tags": ["ocr", "text", "extract", "scanner", "tesseract", "recognize"],
+    "popular": true
+  },
+  {
+    "id": "background-remover",
+    "name": "Background Remover",
+    "description": "Remove backgrounds from portraits, products, and graphics with instant alpha cutouts.",
+    "category": "Image & Media",
+    "url": "/tools/background-remover.html",
+    "icon": "image-minus",
+    "tags": ["background", "remover", "cutout", "transparent", "png", "photo"],
+    "popular": true
+  },
+  {
+    "id": "image-compressor",
+    "name": "Image Compressor",
+    "description": "Compress JPG, PNG, and WebP images with custom quality and side-by-side preview.",
+    "category": "Image & Media",
+    "url": "/tools/image-compressor.html",
+    "icon": "image",
+    "tags": ["image", "compress", "jpg", "png", "webp", "shrink", "optimize"],
+    "popular": true
+  },
+  {
+    "id": "heic-to-jpg",
+    "name": "HEIC to JPG Converter",
+    "description": "Convert Apple HEIC/HEIF photos into universal JPEG or PNG files directly in-browser.",
+    "category": "Image & Media",
+    "url": "/tools/heic-to-jpg.html",
+    "icon": "refresh-cw",
+    "tags": ["heic", "heif", "jpg", "jpeg", "apple", "iphone", "convert"],
+    "popular": false
+  },
+  {
+    "id": "json-formatter",
+    "name": "JSON Formatter & Validator",
+    "description": "Beautify, validate, minify, inspect tree-nodes, and fix malformed JSON with zero data leaks.",
+    "category": "Developer Tools",
+    "url": "/tools/json-formatter.html",
+    "icon": "braces",
+    "tags": ["json", "format", "beautify", "minify", "validate", "lint", "tree"],
+    "popular": true
+  },
+  {
+    "id": "regex-tester",
+    "name": "Regex Tester & Playground",
+    "description": "Test regular expressions with real-time match highlighting, group capture, and common pattern presets.",
+    "category": "Developer Tools",
+    "url": "/tools/regex-tester.html",
+    "icon": "code-2",
+    "tags": ["regex", "regexp", "test", "match", "replace", "pattern"],
+    "popular": true
+  },
+  {
+    "id": "base64-encoder",
+    "name": "Base64 Encoder & Decoder",
+    "description": "Encode and decode raw strings, files, and images into Base64 or Data URIs seamlessly.",
+    "category": "Developer Tools",
+    "url": "/tools/base64-encoder.html",
+    "icon": "binary",
+    "tags": ["base64", "encode", "decode", "data uri", "binary", "string"],
+    "popular": false
+  },
+  {
+    "id": "cron-builder",
+    "name": "Cron Expression Builder",
+    "description": "Build, decode, and schedule standard 5-part cron expressions with human-readable explanations.",
+    "category": "Developer Tools",
+    "url": "/tools/cron-builder.html",
+    "icon": "clock",
+    "tags": ["cron", "schedule", "crontab", "time", "parser", "builder"],
+    "popular": false
+  },
+  {
+    "id": "invoice-generator",
+    "name": "Invoice Generator",
+    "description": "Create sleek, professional PDF invoices with live paper preview, auto-tax calculations, and custom branding.",
+    "category": "Finance & Business",
+    "url": "/tools/invoice-generator.html",
+    "icon": "receipt",
+    "tags": ["invoice", "bill", "pdf", "receipt", "business", "tax", "billing"],
+    "popular": true
+  },
+  {
+    "id": "gst-calculator",
+    "name": "GST / VAT Calculator",
+    "description": "Calculate inclusive and exclusive Goods and Services Tax with itemized CGST, SGST, and IGST breakdowns.",
+    "category": "Finance & Business",
+    "url": "/tools/gst-calculator.html",
+    "icon": "percent",
+    "tags": ["gst", "vat", "tax", "inclusive", "exclusive", "calculator", "finance"],
+    "popular": false
+  },
+  {
+    "id": "emi-calculator",
+    "name": "Loan EMI Calculator",
+    "description": "Calculate monthly loan EMIs, interest totals, and full amortization charts with interactive sliders.",
+    "category": "Finance & Business",
+    "url": "/tools/emi-calculator.html",
+    "icon": "calculator",
+    "tags": ["emi", "loan", "mortgage", "interest", "calculator", "monthly payment"],
+    "popular": true
+  },
+  {
+    "id": "word-counter",
+    "name": "Word Counter & Text Stats",
+    "description": "Count words, characters, sentences, reading time, speaking time, and calculate readability grade levels in real time.",
+    "category": "Writing & Text",
+    "url": "/tools/word-counter.html",
+    "icon": "type",
+    "tags": ["word", "counter", "character", "reading time", "readability", "stats"],
+    "popular": true
+  },
+  {
+    "id": "case-converter",
+    "name": "Text Case Converter",
+    "description": "Convert text into UPPERCASE, lowercase, Title Case, camelCase, snake_case, kebab-case, and slug format.",
+    "category": "Writing & Text",
+    "url": "/tools/case-converter.html",
+    "icon": "case-sensitive",
+    "tags": ["case", "convert", "uppercase", "lowercase", "camelcase", "snake_case", "slug"],
+    "popular": false
+  },
+  {
+    "id": "qr-generator",
+    "name": "QR Code Generator",
+    "description": "Generate custom QR codes for URLs, WiFi credentials, vCards, text, and email with color controls and PNG/SVG download.",
+    "category": "Developer Tools",
+    "url": "/tools/qr-generator.html",
+    "icon": "qr-code",
+    "tags": ["qr", "code", "generator", "wifi", "vcard", "url", "barcode"],
+    "popular": true
+  },
+  {
+    "id": "unit-converter",
+    "name": "Smart Unit Converter",
+    "description": "Convert across length, mass, temperature, area, volume, digital storage, speed, and time with instant two-way sync.",
+    "category": "Productivity",
+    "url": "/tools/unit-converter.html",
+    "icon": "scale",
+    "tags": ["unit", "convert", "length", "weight", "temperature", "metric", "imperial"],
+    "popular": false
+  },
+  {
+    "id": "date-calculator",
+    "name": "Date & Time Calculator",
+    "description": "Calculate elapsed days between dates, add/subtract durations, find business days, and track countdowns.",
+    "category": "Productivity",
+    "url": "/tools/date-calculator.html",
+    "icon": "calendar",
+    "tags": ["date", "time", "difference", "days", "business days", "countdown"],
+    "popular": false
+  },
+  {
+    "id": "meta-generator",
+    "name": "Meta Tag & OpenGraph Generator",
+    "description": "Generate optimized SEO title, description, OpenGraph, and Twitter Card tags with live Google and social card previews.",
+    "category": "SEO & Web",
+    "url": "/tools/meta-generator.html",
+    "icon": "tags",
+    "tags": ["meta", "tags", "seo", "opengraph", "twitter card", "preview"],
+    "popular": true
+  },
+  {
+    "id": "robots-sitemap-generator",
+    "name": "Robots.txt & Sitemap Builder",
+    "description": "Generate crawl-safe robots.txt rules and XML sitemaps with custom change frequencies and priority levels.",
+    "category": "SEO & Web",
+    "url": "/tools/robots-sitemap-generator.html",
+    "icon": "bot",
+    "tags": ["robots", "sitemap", "xml", "crawler", "seo", "disallow"],
+    "popular": false
+  },
+  {
+    "id": "schema-generator",
+    "name": "Schema.org JSON-LD Generator",
+    "description": "Generate valid JSON-LD rich snippet schema for Organizations, Articles, Local Businesses, FAQs, and Products.",
+    "category": "SEO & Web",
+    "url": "/tools/schema-generator.html",
+    "icon": "network",
+    "tags": ["schema", "json-ld", "structured data", "rich snippets", "seo"],
+    "popular": false
+  },
+  {
+    "id": "utm-builder",
+    "name": "Campaign UTM Builder",
+    "description": "Create trackable campaign URLs with source, medium, campaign name, term, and content parameters for Google Analytics.",
+    "category": "SEO & Web",
+    "url": "/tools/utm-builder.html",
+    "icon": "link-2",
+    "tags": ["utm", "builder", "campaign", "analytics", "tracking", "url"],
+    "popular": false
+  },
+  {
+    "id": "keyword-density",
+    "name": "SEO Keyword Density Analyzer",
+    "description": "Analyze word frequencies, 2-word & 3-word n-gram density percentages, and detect search engine over-optimization.",
+    "category": "SEO & Web",
+    "url": "/tools/keyword-density.html",
+    "icon": "bar-chart-2",
+    "tags": ["keyword", "density", "seo", "analyzer", "frequency", "content"],
+    "popular": false
+  },
+  {
+    "id": "markdown-previewer",
+    "name": "Markdown Live Editor",
+    "description": "Live split-view Markdown editing with synchronized preview, GFM tables, word counters, and HTML export.",
+    "category": "Developer Tools",
+    "url": "/tools/markdown-previewer.html",
+    "icon": "file-text",
+    "tags": ["markdown", "editor", "preview", "gfm", "write", "docs"],
+    "popular": true
+  },
+  {
+    "id": "color-converter",
+    "name": "Color Converter Studio",
+    "description": "Convert across HEX, RGB, HSL, CMYK, inspect WCAG 2.1 AA/AAA contrast ratios, and generate palette shades.",
+    "category": "Developer Tools",
+    "url": "/tools/color-converter.html",
+    "icon": "palette",
+    "tags": ["color", "converter", "hex", "rgb", "hsl", "wcag", "contrast", "palette"],
+    "popular": true
+  },
+  {
+    "id": "diff-checker",
+    "name": "Text & Code Diff Checker",
+    "description": "Compare code and text files side-by-side with synchronized line numbering and addition/deletion highlighting.",
+    "category": "Developer Tools",
+    "url": "/tools/diff-checker.html",
+    "icon": "git-compare",
+    "tags": ["diff", "compare", "code", "text", "git", "changes"],
+    "popular": true
+  },
+  {
+    "id": "svg-optimizer",
+    "name": "SVG Cleaner & Optimizer",
+    "description": "Clean and minify SVG vector assets, strip editor metadata and namespaces, and preview byte reduction live.",
+    "category": "Developer Tools",
+    "url": "/tools/svg-optimizer.html",
+    "icon": "maximize-2",
+    "tags": ["svg", "optimize", "cleaner", "minify", "vector", "graphic"],
+    "popular": false
+  }
+]
+

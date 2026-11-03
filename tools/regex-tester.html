@@ -1,0 +1,276 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta property="og:image" content="https://toolforgeji.github.io/assets/img/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Regex Tester & Debugger - Test Regular Expressions | ToolForge</title>
+    <meta name="description" content="Interactive regular expression tester with live highlight matching, capture groups, presets, and replacement debugger. 100% in-browser." />
+    <link rel="canonical" href="https://toolforgeji.github.io/tools/regex-tester.html" />
+    <link rel="icon" type="image/svg+xml" href="/assets/img/logo.svg" />
+    
+    <meta property="og:title" content="Regex Tester & Debugger - ToolForge" />
+    <meta property="og:description" content="Test regular expressions in real time with capture groups and presets." />
+    <meta property="og:url" content="https://toolforgeji.github.io/tools/regex-tester.html" />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="/assets/css/design-system.css" />
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "SoftwareApplication",
+          "name": "ToolForge Regex Tester",
+          "applicationCategory": "DeveloperApplication",
+          "operatingSystem": "All",
+          "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+        },
+        {
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "Which regular expression engine is used?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "The tester uses your browser's native ECMAScript RegExp engine, fully supporting lookaheads, lookbehinds, unicode properties, and named capture groups."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Is my test data uploaded anywhere?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Never. All regex compilation and string evaluation happen client-side in browser RAM."
+              }
+            }
+          ]
+        }
+      ]
+    }
+    </script>
+    <style>
+      .regex-highlight {
+        background-color: rgba(99, 102, 241, 0.3);
+        border-bottom: 2px solid var(--accent);
+        border-radius: 2px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navigation -->
+    <header class="tf-navbar">
+      <div class="tf-container">
+        <div class="tf-nav-inner">
+          <a href="/index.html" class="tf-brand">
+            <span class="tf-brand-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg>
+            </span>
+            <span>ToolForge</span>
+          </a>
+
+          <div style="display: flex; align-items: center; gap: 12px;">
+            <a href="/index.html" class="tf-btn tf-btn-secondary tf-btn-sm">All Tools</a>
+            <button class="theme-toggle-btn tf-btn-icon" aria-label="Toggle theme">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="tf-container" style="max-width: 1100px; padding-top: 40px; padding-bottom: 80px;">
+      <!-- Breadcrumbs -->
+      <div class="tf-breadcrumbs">
+        <a href="/index.html">Home</a>
+        <span class="tf-breadcrumbs-sep">/</span>
+        <a href="/index.html#tools-section">Developer Tools</a>
+        <span class="tf-breadcrumbs-sep">/</span>
+        <span>Regex Tester & Playground</span>
+      </div>
+
+      <div style="margin-bottom: 24px;">
+        <h1 style="font-size: 2.25rem; font-weight: 800; margin-bottom: 8px;">Regex Tester & Playground</h1>
+        <p style="font-size: 1.0625rem; color: var(--text-muted);">
+          Evaluate regular expressions in real time with live color highlighting, capture group inspectors, substitution tester, and common pattern presets.
+        </p>
+      </div>
+
+      <!-- Presets bar -->
+      <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-bottom: 16px;">
+        <span style="font-size: 0.8125rem; font-weight: 700; color: var(--text-faint); text-transform: uppercase;">Presets:</span>
+        <button class="regex-preset tf-btn tf-btn-secondary tf-btn-sm" data-pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}" data-flags="g" data-sample="Contact us at hello@toolforge.dev or support@company.org.">Email</button>
+        <button class="regex-preset tf-btn tf-btn-secondary tf-btn-sm" data-pattern="https?:\/\/[^\s/$.?#].[^\s]*" data-flags="g" data-sample="Check out https://toolforgeji.github.io and http://github.com for info.">URL</button>
+        <button class="regex-preset tf-btn tf-btn-secondary tf-btn-sm" data-pattern="\b\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\b" data-flags="g" data-sample="Connected to 192.168.1.1 and gateway 10.0.0.254">IPv4</button>
+        <button class="regex-preset tf-btn tf-btn-secondary tf-btn-sm" data-pattern="\d{4}-\d{2}-\d{2}" data-flags="g" data-sample="Release date: 2026-11-03 and sprint ends 2026-11-17">Date (YYYY-MM-DD)</button>
+        <button class="regex-preset tf-btn tf-btn-secondary tf-btn-sm" data-pattern="#([a-fA-F0-9]{6}|[a-fA-F0-9]{3})\b" data-flags="g" data-sample="Colors: #6366f1, #ffffff, #000 and #ef4444">Hex Color</button>
+      </div>
+
+      <!-- Main Regex Card -->
+      <div class="tf-card" style="margin-bottom: 48px;">
+        <!-- Pattern input bar -->
+        <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 20px; background: var(--bg-subtle); padding: 8px 14px; border-radius: var(--radius-md); border: 1px solid var(--border-subtle);">
+          <span style="font-family: var(--font-mono); font-size: 1.25rem; font-weight: 700; color: var(--text-muted);">/</span>
+          <input type="text" id="rgx-pattern" class="tf-input" style="flex: 1; border: none; background: transparent; font-family: var(--font-mono); font-size: 1.0625rem; padding: 6px 0;" placeholder="Insert regular expression (e.g. ([a-z]+)@([a-z.]+))" value="([a-zA-Z0-9._%+-]+)@([a-zA-Z0-9.-]+\.[a-zA-Z]{2,})" />
+          <span style="font-family: var(--font-mono); font-size: 1.25rem; font-weight: 700; color: var(--text-muted);">/</span>
+          
+          <!-- Flags checkboxes -->
+          <div style="display: flex; align-items: center; gap: 8px; font-family: var(--font-mono); font-size: 0.875rem;">
+            <label style="cursor: pointer;"><input type="checkbox" id="flag-g" checked /> g</label>
+            <label style="cursor: pointer;"><input type="checkbox" id="flag-i" checked /> i</label>
+            <label style="cursor: pointer;"><input type="checkbox" id="flag-m" /> m</label>
+            <label style="cursor: pointer;"><input type="checkbox" id="flag-s" /> s</label>
+          </div>
+        </div>
+
+        <!-- Error banner if regex is invalid -->
+        <div id="rgx-error" style="display: none; padding: 8px 14px; border-radius: var(--radius-sm); background: rgba(239, 68, 68, 0.15); color: var(--danger); font-size: 0.875rem; margin-bottom: 16px;"></div>
+
+        <!-- Split View: Test String on left, Matches & Groups on right -->
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(380px, 1fr)); gap: 20px; margin-bottom: 24px;">
+          <!-- Left: Test String -->
+          <div>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+              <label class="tf-label" for="rgx-test-text" style="margin: 0;">Test String</label>
+              <span id="rgx-match-count" style="font-size: 0.8125rem; font-weight: 700; color: var(--accent);">0 matches</span>
+            </div>
+            <textarea id="rgx-test-text" class="tf-textarea" style="height: 240px; font-family: var(--font-mono); font-size: 0.875rem;" placeholder="Type or paste the test content here...">Contact the team at support@toolforge.dev, alex.morgan@example.com, or media@agency.io for privacy queries.</textarea>
+            
+            <div style="margin-top: 10px;">
+              <div style="font-size: 0.8125rem; font-weight: 600; color: var(--text-muted); margin-bottom: 4px;">Highlighted Preview:</div>
+              <div id="rgx-highlight-view" style="min-height: 80px; padding: 12px; background: var(--bg-subtle); border-radius: var(--radius-sm); font-family: var(--font-mono); font-size: 0.875rem; line-height: 1.6; word-break: break-all;"></div>
+            </div>
+          </div>
+
+          <!-- Right: Matches & Capture Groups -->
+          <div>
+            <div style="font-size: 0.875rem; font-weight: 600; color: var(--text-main); margin-bottom: 8px;">Match Inspector & Groups</div>
+            <div id="rgx-matches-list" style="height: 380px; overflow-y: auto; padding: 12px; background: var(--bg-subtle); border-radius: var(--radius-md); border: 1px solid var(--border-subtle); display: flex; flex-direction: column; gap: 8px;">
+              <!-- Match cards rendered here -->
+            </div>
+          </div>
+        </div>
+
+        <!-- Substitution section -->
+        <div style="padding-top: 20px; border-top: 1px solid var(--border-subtle);">
+          <h3 style="font-size: 1rem; font-weight: 700; margin-bottom: 12px;">Replacement & Substitution</h3>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+            <div>
+              <label class="tf-label" for="rgx-replace-pattern">Replacement String (supports $1, $2, etc.)</label>
+              <input type="text" id="rgx-replace-pattern" class="tf-input" placeholder="e.g. [MASKED: $1]" value="[EMAIL: $1@...]" />
+            </div>
+            <div>
+              <label class="tf-label">Substitution Result</label>
+              <div id="rgx-replace-result" style="padding: 10px 14px; background: var(--bg-subtle); border-radius: var(--radius-md); font-family: var(--font-mono); font-size: 0.875rem; min-height: 42px; border: 1px solid var(--border-subtle); overflow-x: auto;"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- How it Works -->
+      <div style="margin-bottom: 48px;">
+        <h2 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 20px;">How ToolForge Evaluates Regular Expressions</h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px;">
+          <div class="tf-card">
+            <div style="font-size: 1.5rem; font-weight: 800; color: var(--accent); margin-bottom: 8px;">01</div>
+            <h3 style="font-size: 1.0625rem; font-weight: 700; margin-bottom: 6px;">Native Engine Compile</h3>
+            <p style="font-size: 0.875rem; color: var(--text-muted); line-height: 1.5;">Your expression and flag set compile directly via browser V8/JavaScriptCore JIT bytecode.</p>
+          </div>
+          <div class="tf-card">
+            <div style="font-size: 1.5rem; font-weight: 800; color: var(--accent); margin-bottom: 8px;">02</div>
+            <h3 style="font-size: 1.0625rem; font-weight: 700; margin-bottom: 6px;">Match Range Indexing</h3>
+            <p style="font-size: 0.875rem; color: var(--text-muted); line-height: 1.5;">Start and end string character boundaries are extracted along with all indexed capture parentheses.</p>
+          </div>
+          <div class="tf-card">
+            <div style="font-size: 1.5rem; font-weight: 800; color: var(--accent); margin-bottom: 8px;">03</div>
+            <h3 style="font-size: 1.0625rem; font-weight: 700; margin-bottom: 6px;">Live DOM Highlight</h3>
+            <p style="font-size: 0.875rem; color: var(--text-muted); line-height: 1.5;">Matches are rendered with color-coded mark tags and grouped cards in real-time as you type.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Privacy Note -->
+      <div class="tf-card" style="margin-bottom: 48px; background: var(--bg-subtle); border-left: 4px solid var(--success);">
+        <h3 style="font-size: 1.125rem; font-weight: 700; margin-bottom: 8px; color: var(--text-main);">Zero Remote Telemetry</h3>
+        <p style="font-size: 0.9375rem; color: var(--text-muted); line-height: 1.6;">
+          Test sensitive customer databases, emails, API strings, and proprietary patterns without risk of server storage.
+        </p>
+      </div>
+
+      <!-- FAQs -->
+      <div style="margin-bottom: 56px;">
+        <h2 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 20px;">Frequently Asked Questions</h2>
+        <div>
+          <details class="tf-faq-item" open>
+            <summary>Which regular expression engine is used?</summary>
+            <div class="tf-faq-content">
+              The tester uses your browser's native ECMAScript RegExp engine, fully supporting lookaheads, lookbehinds, unicode properties, and named capture groups.
+            </div>
+          </details>
+          <details class="tf-faq-item">
+            <summary>What do flags g, i, m, and s do?</summary>
+            <div class="tf-faq-content">
+              <strong>g</strong>: Global search (finds all matches rather than stopping at the first).<br />
+              <strong>i</strong>: Case-insensitive matching.<br />
+              <strong>m</strong>: Multiline mode (^ and $ match start and end of each line).<br />
+              <strong>s</strong>: DotAll mode (. matches newline characters).
+            </div>
+          </details>
+          <details class="tf-faq-item">
+            <summary>Can I test capture group replacements?</summary>
+            <div class="tf-faq-content">
+              Yes, in the Substitution section, use $1 for Group 1, $2 for Group 2, etc., to preview output replacements.
+            </div>
+          </details>
+        </div>
+      </div>
+
+      <!-- Related Tools -->
+      <div>
+        <h2 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 20px;">Related Tools</h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px;">
+          <a href="/tools/json-formatter.html" class="tf-card tf-card-interactive">
+            <h3 style="font-size: 1.0625rem; font-weight: 700; margin-bottom: 6px;">JSON Formatter</h3>
+            <p style="font-size: 0.875rem; color: var(--text-muted);">Validate, format, and lint JSON with zero data leaks.</p>
+          </a>
+          <a href="/tools/case-converter.html" class="tf-card tf-card-interactive">
+            <h3 style="font-size: 1.0625rem; font-weight: 700; margin-bottom: 6px;">Case Converter</h3>
+            <p style="font-size: 0.875rem; color: var(--text-muted);">Convert text into camelCase, snake_case, and kebab-case.</p>
+          </a>
+          <a href="/tools/base64-encoder.html" class="tf-card tf-card-interactive">
+            <h3 style="font-size: 1.0625rem; font-weight: 700; margin-bottom: 6px;">Base64 Encoder & Decoder</h3>
+            <p style="font-size: 0.875rem; color: var(--text-muted);">Convert strings and binaries to Base64 or Data URIs.</p>
+          </a>
+        </div>
+      </div>
+    
+      <section class="tf-seo-content" style="margin-top: 48px; padding-top: 32px; border-top: 1px solid var(--border, #e2e8f0);">
+        <h2 style="font-size: 1.5rem; margin-bottom: 12px;">About the Regex Tester & Playground</h2>
+        <p style="line-height: 1.7; color: var(--text-muted); max-width: 760px;">Test regular expressions against sample text with live match highlighting, capture group display, and a replacement preview. Useful for validating form inputs, parsing logs, and debugging patterns before you use them in code. Everything runs in your browser.</p>
+        <h3 style="font-size: 1.125rem; margin: 20px 0 8px;">How to use it</h3>
+        <ol style="line-height: 1.8; padding-left: 22px; color: var(--text-muted);"><li>Enter a pattern and flags.</li><li>Paste your test text.</li><li>Review the highlighted matches and capture groups, then test replacements.</li></ol>
+      </section>
+    </main>
+
+    <!-- Global Footer -->
+    <footer class="tf-footer">
+      <div class="tf-container">
+        <div class="tf-footer-bottom" style="border: none; padding-top: 0;">
+          <div>© 2026 ToolForge. 100% In-Browser Privacy.</div>
+          <a href="/index.html" style="color: var(--accent);">← Return to Home</a>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="/assets/js/common.js"></script>
+    <script src="/assets/js/tools/regex-tester.js"></script>
+  </body>
+</html>

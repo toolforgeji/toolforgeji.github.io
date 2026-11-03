@@ -1,0 +1,309 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta property="og:image" content="https://toolforgeji.github.io/assets/img/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Loan EMI Calculator - Monthly Payment & Amortization | ToolForge</title>
+    <meta name="description" content="Calculate monthly loan EMI payments, total interest, and full month-by-month amortization schedule. Interactive sliders. 100% in-browser." />
+    <link rel="canonical" href="https://toolforgeji.github.io/tools/emi-calculator.html" />
+    <link rel="icon" type="image/svg+xml" href="/assets/img/logo.svg" />
+    
+    <meta property="og:title" content="Loan EMI Calculator - ToolForge" />
+    <meta property="og:description" content="Calculate home loan, car loan, and mortgage EMIs with interactive amortization." />
+    <meta property="og:url" content="https://toolforgeji.github.io/tools/emi-calculator.html" />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="/assets/css/design-system.css" />
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "SoftwareApplication",
+          "name": "ToolForge Loan EMI Calculator",
+          "applicationCategory": "FinanceApplication",
+          "operatingSystem": "All",
+          "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+        },
+        {
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "What is the formula for calculating loan EMI?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "EMI = [P × r × (1 + r)^n] / [(1 + r)^n - 1], where P is Principal loan amount, r is monthly interest rate, and n is duration in months."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Can I view the monthly amortization payment schedule?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes! The full breakdown showing the principal, interest, and remaining balance for every month is rendered below."
+              }
+            }
+          ]
+        }
+      ]
+    }
+    </script>
+  </head>
+  <body>
+    <!-- Navigation -->
+    <header class="tf-navbar">
+      <div class="tf-container">
+        <div class="tf-nav-inner">
+          <a href="/index.html" class="tf-brand">
+            <span class="tf-brand-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg>
+            </span>
+            <span>ToolForge</span>
+          </a>
+
+          <div style="display: flex; align-items: center; gap: 12px;">
+            <a href="/index.html" class="tf-btn tf-btn-secondary tf-btn-sm">All Tools</a>
+            <button class="theme-toggle-btn tf-btn-icon" aria-label="Toggle theme">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="tf-container" style="max-width: 1040px; padding-top: 40px; padding-bottom: 80px;">
+      <!-- Breadcrumbs -->
+      <div class="tf-breadcrumbs">
+        <a href="/index.html">Home</a>
+        <span class="tf-breadcrumbs-sep">/</span>
+        <a href="/index.html#tools-section">Finance & Business</a>
+        <span class="tf-breadcrumbs-sep">/</span>
+        <span>Loan EMI Calculator</span>
+      </div>
+
+      <div style="margin-bottom: 24px;">
+        <h1 style="font-size: 2.25rem; font-weight: 800; margin-bottom: 8px;">Loan EMI Calculator</h1>
+        <p style="font-size: 1.0625rem; color: var(--text-muted);">
+          Calculate equated monthly installments (EMI), interest totals, and examine full amortization charts with interactive sliders.
+        </p>
+      </div>
+
+      <!-- Main Split: Sliders on left, Monthly breakdown & Donut on right -->
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); gap: 24px; margin-bottom: 48px;">
+        <!-- Left: Sliders Card -->
+        <div class="tf-card">
+          <!-- Loan Amount -->
+          <div style="margin-bottom: 24px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+              <label class="tf-label" for="emi-amount" style="margin: 0;">Loan Principal Amount</label>
+              <div style="display: flex; align-items: center; gap: 4px;">
+                <span style="font-size: 0.9375rem; font-weight: 700;">$</span>
+                <input type="number" id="emi-amount" class="tf-input" min="1000" max="2000000" step="1000" value="100000" style="width: 130px; font-weight: 700; padding: 4px 8px; text-align: right;" />
+              </div>
+            </div>
+            <input type="range" id="emi-amount-slider" min="10000" max="1000000" step="5000" value="100000" class="tf-slider" />
+            <div style="display: flex; justify-content: space-between; font-size: 0.75rem; color: var(--text-faint); margin-top: 4px;">
+              <span>$10,000</span>
+              <span>$1,000,000</span>
+            </div>
+          </div>
+
+          <!-- Interest Rate -->
+          <div style="margin-bottom: 24px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+              <label class="tf-label" for="emi-rate" style="margin: 0;">Annual Interest Rate (%)</label>
+              <div style="display: flex; align-items: center; gap: 4px;">
+                <input type="number" id="emi-rate" class="tf-input" min="1" max="30" step="0.1" value="8.5" style="width: 80px; font-weight: 700; padding: 4px 8px; text-align: right;" />
+                <span style="font-size: 0.9375rem; font-weight: 700;">%</span>
+              </div>
+            </div>
+            <input type="range" id="emi-rate-slider" min="1" max="25" step="0.1" value="8.5" class="tf-slider" />
+            <div style="display: flex; justify-content: space-between; font-size: 0.75rem; color: var(--text-faint); margin-top: 4px;">
+              <span>1%</span>
+              <span>25%</span>
+            </div>
+          </div>
+
+          <!-- Tenure -->
+          <div>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+              <label class="tf-label" for="emi-tenure" style="margin: 0;">Loan Tenure (Years)</label>
+              <div style="display: flex; align-items: center; gap: 4px;">
+                <input type="number" id="emi-tenure" class="tf-input" min="1" max="30" step="1" value="5" style="width: 70px; font-weight: 700; padding: 4px 8px; text-align: right;" />
+                <span style="font-size: 0.875rem; color: var(--text-muted);">Yrs</span>
+              </div>
+            </div>
+            <input type="range" id="emi-tenure-slider" min="1" max="30" step="1" value="5" class="tf-slider" />
+            <div style="display: flex; justify-content: space-between; font-size: 0.75rem; color: var(--text-faint); margin-top: 4px;">
+              <span>1 Year</span>
+              <span>30 Years</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Results & Summary -->
+        <div class="tf-card" style="display: flex; flex-direction: column; justify-content: space-between;">
+          <div>
+            <div style="font-size: 0.8125rem; font-weight: 700; text-transform: uppercase; color: var(--text-muted); margin-bottom: 4px;">Monthly Loan Payment</div>
+            <div id="emi-monthly-amt" style="font-size: 2.25rem; font-weight: 800; color: var(--accent); letter-spacing: -0.02em; margin-bottom: 24px;">$2,051.65</div>
+
+            <div style="display: flex; flex-direction: column; gap: 12px; margin-bottom: 24px;">
+              <div style="display: flex; justify-content: space-between; padding: 6px 0; border-bottom: 1px solid var(--border-subtle);">
+                <span style="color: var(--text-muted);">Principal Loan Amount:</span>
+                <span id="emi-disp-principal" style="font-weight: 700; font-family: var(--font-mono);">$100,000.00</span>
+              </div>
+              <div style="display: flex; justify-content: space-between; padding: 6px 0; border-bottom: 1px solid var(--border-subtle);">
+                <span style="color: var(--text-muted);">Total Interest Payable:</span>
+                <span id="emi-disp-interest" style="font-weight: 700; font-family: var(--font-mono); color: var(--warning);">$23,099.00</span>
+              </div>
+              <div style="display: flex; justify-content: space-between; padding: 6px 0; border-bottom: 2px solid var(--border-strong);">
+                <span style="font-weight: 700;">Total Payment (P + I):</span>
+                <span id="emi-disp-total" style="font-weight: 800; font-family: var(--font-mono); font-size: 1.125rem; color: var(--text-main);">$123,099.00</span>
+              </div>
+            </div>
+
+            <!-- Visual Bar -->
+            <div>
+              <div style="display: flex; justify-content: space-between; font-size: 0.75rem; color: var(--text-muted); margin-bottom: 4px;">
+                <span>Principal: <strong id="emi-pct-principal">81.2%</strong></span>
+                <span>Interest: <strong id="emi-pct-interest">18.8%</strong></span>
+              </div>
+              <div style="height: 10px; width: 100%; border-radius: 5px; display: flex; overflow: hidden;">
+                <div id="emi-bar-principal" style="background: var(--accent); width: 81.2%; height: 100%;"></div>
+                <div id="emi-bar-interest" style="background: var(--warning); width: 18.8%; height: 100%;"></div>
+              </div>
+            </div>
+          </div>
+
+          <div style="margin-top: 24px; text-align: center;">
+            <a href="#amortization-section" class="tf-btn tf-btn-secondary tf-btn-sm" style="width: 100%;">View Amortization Schedule ↓</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Amortization Schedule Table -->
+      <div id="amortization-section" class="tf-card" style="margin-bottom: 48px;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
+          <h2 style="font-size: 1.25rem; font-weight: 700;">Monthly Amortization Schedule</h2>
+          <span style="font-size: 0.8125rem; color: var(--text-muted);">First 12 Months Preview</span>
+        </div>
+
+        <div style="overflow-x: auto;">
+          <table style="width: 100%; border-collapse: collapse; font-size: 0.875rem; font-family: var(--font-mono);">
+            <thead>
+              <tr style="border-bottom: 2px solid var(--border-strong); text-align: left; color: var(--text-muted); font-size: 0.75rem; text-transform: uppercase;">
+                <th style="padding: 10px 8px;">Month</th>
+                <th style="padding: 10px 8px; text-align: right;">Principal Paid</th>
+                <th style="padding: 10px 8px; text-align: right;">Interest Paid</th>
+                <th style="padding: 10px 8px; text-align: right;">Remaining Balance</th>
+              </tr>
+            </thead>
+            <tbody id="emi-schedule-tbody">
+              <!-- Dynamically populated -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- How it Works -->
+      <div style="margin-bottom: 48px;">
+        <h2 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 20px;">Understanding the EMI Formula</h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px;">
+          <div class="tf-card">
+            <h3 style="font-size: 1.0625rem; font-weight: 700; margin-bottom: 6px;">Reducing Balance Method</h3>
+            <p style="font-size: 0.875rem; color: var(--text-muted); line-height: 1.5;">Interest is recalculated every month against the remaining principal balance, lowering interest costs over time.</p>
+          </div>
+          <div class="tf-card">
+            <h3 style="font-size: 1.0625rem; font-weight: 700; margin-bottom: 6px;">Standard Formula</h3>
+            <p style="font-size: 0.875rem; color: var(--text-muted); line-height: 1.5;">EMI = [P × r × (1 + r)^n] / [(1 + r)^n - 1], where r is annual rate / 12 and n is tenure in months.</p>
+          </div>
+          <div class="tf-card">
+            <h3 style="font-size: 1.0625rem; font-weight: 700; margin-bottom: 6px;">Tenure vs Interest Tradeoff</h3>
+            <p style="font-size: 0.875rem; color: var(--text-muted); line-height: 1.5;">A longer tenure lowers your monthly payment but significantly inflates total interest paid over the life of the loan.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Privacy Note -->
+      <div class="tf-card" style="margin-bottom: 48px; background: var(--bg-subtle); border-left: 4px solid var(--success);">
+        <h3 style="font-size: 1.125rem; font-weight: 700; margin-bottom: 8px; color: var(--text-main);">Zero Cloud Ingestion</h3>
+        <p style="font-size: 0.9375rem; color: var(--text-muted); line-height: 1.6;">
+          Your personal loan figures, mortgage amounts, and repayment simulations remain strictly in your browser session.
+        </p>
+      </div>
+
+      <!-- FAQs -->
+      <div style="margin-bottom: 56px;">
+        <h2 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 20px;">Frequently Asked Questions</h2>
+        <div>
+          <details class="tf-faq-item" open>
+            <summary>What is the formula for calculating loan EMI?</summary>
+            <div class="tf-faq-content">
+              EMI = [P × r × (1 + r)^n] / [(1 + r)^n - 1], where P is Principal loan amount, r is monthly interest rate, and n is duration in months.
+            </div>
+          </details>
+          <details class="tf-faq-item">
+            <summary>Can this calculate home loans, auto loans, and personal loans?</summary>
+            <div class="tf-faq-content">
+              Yes, any reducing-balance amortized loan (home mortgage, car loan, student loan, personal financing) uses this exact mathematical model.
+            </div>
+          </details>
+          <details class="tf-faq-item">
+            <summary>How does extra principal prepayment affect the schedule?</summary>
+            <div class="tf-faq-content">
+              Prepaying principal directly shrinks the balance, compound interest, and total months required to retire the debt.
+            </div>
+          </details>
+        </div>
+      </div>
+
+      <!-- Related Tools -->
+      <div>
+        <h2 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 20px;">Related Tools</h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px;">
+          <a href="/tools/gst-calculator.html" class="tf-card tf-card-interactive">
+            <h3 style="font-size: 1.0625rem; font-weight: 700; margin-bottom: 6px;">GST / VAT Calculator</h3>
+            <p style="font-size: 0.875rem; color: var(--text-muted);">Compute inclusive and exclusive tax breakdowns.</p>
+          </a>
+          <a href="/tools/invoice-generator.html" class="tf-card tf-card-interactive">
+            <h3 style="font-size: 1.0625rem; font-weight: 700; margin-bottom: 6px;">Invoice Generator</h3>
+            <p style="font-size: 0.875rem; color: var(--text-muted);">Generate itemized client invoices with PDF print export.</p>
+          </a>
+          <a href="/tools/date-calculator.html" class="tf-card tf-card-interactive">
+            <h3 style="font-size: 1.0625rem; font-weight: 700; margin-bottom: 6px;">Date Calculator</h3>
+            <p style="font-size: 0.875rem; color: var(--text-muted);">Compute days between loan dates and countdowns.</p>
+          </a>
+        </div>
+      </div>
+    
+      <section class="tf-seo-content" style="margin-top: 48px; padding-top: 32px; border-top: 1px solid var(--border, #e2e8f0);">
+        <h2 style="font-size: 1.5rem; margin-bottom: 12px;">About the Loan EMI Calculator</h2>
+        <p style="line-height: 1.7; color: var(--text-muted); max-width: 760px;">Estimate the monthly EMI for a home, car, or personal loan, along with total interest and a month-by-month amortization schedule. Adjust the loan amount, interest rate, and tenure with sliders to compare scenarios. Results are estimates, so confirm final figures with your lender.</p>
+        <h3 style="font-size: 1.125rem; margin: 20px 0 8px;">How to use it</h3>
+        <ol style="line-height: 1.8; padding-left: 22px; color: var(--text-muted);"><li>Enter the loan amount, interest rate, and tenure.</li><li>Review the monthly EMI and total interest.</li><li>Scroll the amortization schedule to see how principal and interest change over time.</li></ol>
+      </section>
+    </main>
+
+    <!-- Global Footer -->
+    <footer class="tf-footer">
+      <div class="tf-container">
+        <div class="tf-footer-bottom" style="border: none; padding-top: 0;">
+          <div>© 2026 ToolForge. 100% In-Browser Privacy.</div>
+          <a href="/index.html" style="color: var(--accent);">← Return to Home</a>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="/assets/js/common.js"></script>
+    <script src="/assets/js/tools/emi-calculator.js"></script>
+  </body>
+</html>

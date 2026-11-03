@@ -1,0 +1,328 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta property="og:image" content="https://toolforgeji.github.io/assets/img/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Schema.org JSON-LD Generator - Rich Snippets SEO | ToolForge</title>
+    <meta name="description" content="Generate valid Schema.org JSON-LD structured data for Organizations, Local Businesses, Articles, Products, and FAQs. 100% in-browser." />
+    <link rel="canonical" href="https://toolforgeji.github.io/tools/schema-generator.html" />
+    <link rel="icon" type="image/svg+xml" href="/assets/img/logo.svg" />
+    
+    <meta property="og:title" content="Schema.org JSON-LD Generator - ToolForge" />
+    <meta property="og:description" content="Generate Google rich snippet structured data in your browser." />
+    <meta property="og:url" content="https://toolforgeji.github.io/tools/schema-generator.html" />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="/assets/css/design-system.css" />
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "SoftwareApplication",
+          "name": "ToolForge Schema Generator",
+          "applicationCategory": "DeveloperApplication",
+          "operatingSystem": "All",
+          "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+        },
+        {
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "Why does Google prefer JSON-LD for structured data?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Google officially recommends JSON-LD because it lives inside a standalone script block without polluting your user-facing HTML markup."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How does structured data affect search rankings?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Schema markup qualifies your pages for Google Rich Results (star ratings, price badges, author snippets, and FAQ accordions), significantly increasing click-through rates."
+              }
+            }
+          ]
+        }
+      ]
+    }
+    </script>
+  </head>
+  <body>
+    <!-- Navigation -->
+    <header class="tf-navbar">
+      <div class="tf-container">
+        <div class="tf-nav-inner">
+          <a href="/index.html" class="tf-brand">
+            <span class="tf-brand-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg>
+            </span>
+            <span>ToolForge</span>
+          </a>
+
+          <div style="display: flex; align-items: center; gap: 12px;">
+            <a href="/index.html" class="tf-btn tf-btn-secondary tf-btn-sm">All Tools</a>
+            <button class="theme-toggle-btn tf-btn-icon" aria-label="Toggle theme">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="tf-container" style="max-width: 1040px; padding-top: 40px; padding-bottom: 80px;">
+      <!-- Breadcrumbs -->
+      <div class="tf-breadcrumbs">
+        <a href="/index.html">Home</a>
+        <span class="tf-breadcrumbs-sep">/</span>
+        <a href="/index.html#tools-section">SEO & Web</a>
+        <span class="tf-breadcrumbs-sep">/</span>
+        <span>Schema.org JSON-LD Generator</span>
+      </div>
+
+      <div style="margin-bottom: 24px;">
+        <h1 style="font-size: 2.25rem; font-weight: 800; margin-bottom: 8px;">Schema.org JSON-LD Generator</h1>
+        <p style="font-size: 1.0625rem; color: var(--text-muted);">
+          Create valid, Google-compliant structured data for Organizations, Local Businesses, Articles, FAQs, and Products.
+        </p>
+      </div>
+
+      <!-- Type Selector Chips -->
+      <div style="display: flex; gap: 8px; margin-bottom: 24px; overflow-x: auto; background: var(--bg-subtle); padding: 4px; border-radius: var(--radius-md);">
+        <button class="sc-type-btn tf-filter-btn active" data-type="Organization">Organization</button>
+        <button class="sc-type-btn tf-filter-btn" data-type="Article">Article / Blog</button>
+        <button class="sc-type-btn tf-filter-btn" data-type="Product">Product</button>
+        <button class="sc-type-btn tf-filter-btn" data-type="LocalBusiness">Local Business</button>
+        <button class="sc-type-btn tf-filter-btn" data-type="FAQPage">FAQ Page</button>
+      </div>
+
+      <!-- Main Split: Form on left, JSON-LD on right -->
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 24px; margin-bottom: 48px;">
+        <!-- Left: Form -->
+        <div class="tf-card">
+          <!-- Organization Form -->
+          <div id="sc-form-Organization" class="sc-form-sec">
+            <div class="tf-form-group">
+              <label class="tf-label" for="org-name">Organization Name</label>
+              <input type="text" id="org-name" class="tf-input" value="ToolForge Suite" />
+            </div>
+            <div class="tf-form-group">
+              <label class="tf-label" for="org-url">Website URL</label>
+              <input type="url" id="org-url" class="tf-input" value="https://toolforgeji.github.io" />
+            </div>
+            <div class="tf-form-group">
+              <label class="tf-label" for="org-logo">Logo Image URL</label>
+              <input type="url" id="org-logo" class="tf-input" value="https://toolforgeji.github.io/assets/img/logo.svg" />
+            </div>
+            <div class="tf-form-group">
+              <label class="tf-label" for="org-sameas">Social Profile URLs (comma separated)</label>
+              <input type="text" id="org-sameas" class="tf-input" value="https://twitter.com/toolforge, https://github.com" />
+            </div>
+          </div>
+
+          <!-- Article Form -->
+          <div id="sc-form-Article" class="sc-form-sec" style="display: none;">
+            <div class="tf-form-group">
+              <label class="tf-label" for="art-headline">Article Headline</label>
+              <input type="text" id="art-headline" class="tf-input" value="Why Client-Side Tools Are the Future of Web Privacy" />
+            </div>
+            <div class="tf-form-group">
+              <label class="tf-label" for="art-author">Author Name</label>
+              <input type="text" id="art-author" class="tf-input" value="Alex Morgan" />
+            </div>
+            <div class="tf-form-group">
+              <label class="tf-label" for="art-img">Hero Image URL</label>
+              <input type="url" id="art-img" class="tf-input" value="https://example.com/cover.jpg" />
+            </div>
+            <div class="tf-form-group">
+              <label class="tf-label" for="art-date">Date Published</label>
+              <input type="date" id="art-date" class="tf-input" value="2026-11-03" />
+            </div>
+          </div>
+
+          <!-- Product Form -->
+          <div id="sc-form-Product" class="sc-form-sec" style="display: none;">
+            <div class="tf-form-group">
+              <label class="tf-label" for="prod-name">Product Name</label>
+              <input type="text" id="prod-name" class="tf-input" value="Pro Studio Headphones" />
+            </div>
+            <div class="tf-form-group">
+              <label class="tf-label" for="prod-desc">Description</label>
+              <textarea id="prod-desc" class="tf-textarea" style="height: 70px;">High-fidelity wireless studio monitoring headphones.</textarea>
+            </div>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px;">
+              <div class="tf-form-group">
+                <label class="tf-label" for="prod-price">Price</label>
+                <input type="number" id="prod-price" class="tf-input" value="199.99" />
+              </div>
+              <div class="tf-form-group">
+                <label class="tf-label" for="prod-currency">Currency</label>
+                <select id="prod-currency" class="tf-select">
+                  <option value="USD" selected>USD</option>
+                  <option value="EUR">EUR</option>
+                  <option value="GBP">GBP</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <!-- Local Business Form -->
+          <div id="sc-form-LocalBusiness" class="sc-form-sec" style="display: none;">
+            <div class="tf-form-group">
+              <label class="tf-label" for="biz-name">Business Name</label>
+              <input type="text" id="biz-name" class="tf-input" value="Apex Coffee Roasters" />
+            </div>
+            <div class="tf-form-group">
+              <label class="tf-label" for="biz-phone">Telephone</label>
+              <input type="tel" id="biz-phone" class="tf-input" value="+1-555-0199" />
+            </div>
+            <div class="tf-form-group">
+              <label class="tf-label" for="biz-street">Street Address</label>
+              <input type="text" id="biz-street" class="tf-input" value="742 Evergreen Terrace" />
+            </div>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px;">
+              <div class="tf-form-group">
+                <label class="tf-label" for="biz-city">City</label>
+                <input type="text" id="biz-city" class="tf-input" value="Springfield" />
+              </div>
+              <div class="tf-form-group">
+                <label class="tf-label" for="biz-postal">Postal Code</label>
+                <input type="text" id="biz-postal" class="tf-input" value="97477" />
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQPage Form -->
+          <div id="sc-form-FAQPage" class="sc-form-sec" style="display: none;">
+            <div class="tf-form-group">
+              <label class="tf-label" for="faq-q1">Question 1</label>
+              <input type="text" id="faq-q1" class="tf-input" value="Are my files uploaded to a server?" />
+            </div>
+            <div class="tf-form-group">
+              <label class="tf-label" for="faq-a1">Answer 1</label>
+              <textarea id="faq-a1" class="tf-textarea" style="height: 60px;">No, processing executes entirely inside your browser memory.</textarea>
+            </div>
+            <div class="tf-form-group">
+              <label class="tf-label" for="faq-q2">Question 2</label>
+              <input type="text" id="faq-q2" class="tf-input" value="Is ToolForge free to use?" />
+            </div>
+            <div class="tf-form-group">
+              <label class="tf-label" for="faq-a2">Answer 2</label>
+              <textarea id="faq-a2" class="tf-textarea" style="height: 60px;">Yes, 100% free with no registration or paywalls.</textarea>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Generated Code -->
+        <div class="tf-card" style="display: flex; flex-direction: column;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+            <span style="font-size: 0.875rem; font-weight: 700;">Generated JSON-LD Code</span>
+            <button id="sc-copy-btn" class="tf-btn tf-btn-primary tf-btn-sm">Copy Script</button>
+          </div>
+          <textarea id="sc-output" class="tf-textarea" style="flex: 1; min-height: 400px; font-family: var(--font-mono); font-size: 0.8125rem; background: var(--bg-subtle);" readonly></textarea>
+        </div>
+      </div>
+
+      <!-- How it Works -->
+      <div style="margin-bottom: 48px;">
+        <h2 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 20px;">Why Search Engines Need JSON-LD</h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px;">
+          <div class="tf-card">
+            <h3 style="font-size: 1.0625rem; font-weight: 700; margin-bottom: 6px;">Rich Snippets</h3>
+            <p style="font-size: 0.875rem; color: var(--text-muted); line-height: 1.5;">Enables Google to render review stars, price tags, breadcrumbs, and question accordions in search.</p>
+          </div>
+          <div class="tf-card">
+            <h3 style="font-size: 1.0625rem; font-weight: 700; margin-bottom: 6px;">Knowledge Graph Entity</h3>
+            <p style="font-size: 0.875rem; color: var(--text-muted); line-height: 1.5;">Binds your brand name, official social profiles, and founder info into Google's Knowledge Panel.</p>
+          </div>
+          <div class="tf-card">
+            <h3 style="font-size: 1.0625rem; font-weight: 700; margin-bottom: 6px;">Zero Cloud Ingestion</h3>
+            <p style="font-size: 0.875rem; color: var(--text-muted); line-height: 1.5;">Structured data formats directly in your local browser with instant JSON syntax validation.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Privacy Note -->
+      <div class="tf-card" style="margin-bottom: 48px; background: var(--bg-subtle); border-left: 4px solid var(--success);">
+        <h3 style="font-size: 1.125rem; font-weight: 700; margin-bottom: 8px; color: var(--text-main);">Zero Cloud Ingestion</h3>
+        <p style="font-size: 0.9375rem; color: var(--text-muted); line-height: 1.6;">
+          Your enterprise business schemas, private product prices, and article author entities remain confidential.
+        </p>
+      </div>
+
+      <!-- FAQs -->
+      <div style="margin-bottom: 56px;">
+        <h2 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 20px;">Frequently Asked Questions</h2>
+        <div>
+          <details class="tf-faq-item" open>
+            <summary>Why does Google prefer JSON-LD for structured data?</summary>
+            <div class="tf-faq-content">
+              Google officially recommends JSON-LD because it lives inside a standalone script block without polluting your user-facing HTML markup.
+            </div>
+          </details>
+          <details class="tf-faq-item">
+            <summary>Where do I paste this JSON-LD snippet?</summary>
+            <div class="tf-faq-content">
+              Paste the entire &lt;script type="application/ld+json"&gt; block inside your page's &lt;head&gt; or &lt;body&gt; tags.
+            </div>
+          </details>
+          <details class="tf-faq-item">
+            <summary>How can I test the generated schema?</summary>
+            <div class="tf-faq-content">
+              You can paste the generated code into Google's official Rich Results Test (search.google.com/test/rich-results).
+            </div>
+          </details>
+        </div>
+      </div>
+
+      <!-- Related Tools -->
+      <div>
+        <h2 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 20px;">Related Tools</h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px;">
+          <a href="/tools/meta-generator.html" class="tf-card tf-card-interactive">
+            <h3 style="font-size: 1.0625rem; font-weight: 700; margin-bottom: 6px;">Meta Tag Generator</h3>
+            <p style="font-size: 0.875rem; color: var(--text-muted);">Generate OpenGraph and Twitter tags for shared links.</p>
+          </a>
+          <a href="/tools/robots-sitemap-generator.html" class="tf-card tf-card-interactive">
+            <h3 style="font-size: 1.0625rem; font-weight: 700; margin-bottom: 6px;">Robots & Sitemap Builder</h3>
+            <p style="font-size: 0.875rem; color: var(--text-muted);">Build crawler directives and sitemap files.</p>
+          </a>
+          <a href="/tools/json-formatter.html" class="tf-card tf-card-interactive">
+            <h3 style="font-size: 1.0625rem; font-weight: 700; margin-bottom: 6px;">JSON Formatter</h3>
+            <p style="font-size: 0.875rem; color: var(--text-muted);">Validate and beautify JSON payloads.</p>
+          </a>
+        </div>
+      </div>
+    
+      <section class="tf-seo-content" style="margin-top: 48px; padding-top: 32px; border-top: 1px solid var(--border, #e2e8f0);">
+        <h2 style="font-size: 1.5rem; margin-bottom: 12px;">About the Schema.org JSON-LD Generator</h2>
+        <p style="line-height: 1.7; color: var(--text-muted); max-width: 760px;">Create Schema.org JSON-LD structured data for organizations, local businesses, articles, products, and FAQs. Paste the generated script into your page head, then check it with Google's Rich Results Test. Structured data helps search engines understand your content.</p>
+        <h3 style="font-size: 1.125rem; margin: 20px 0 8px;">How to use it</h3>
+        <ol style="line-height: 1.8; padding-left: 22px; color: var(--text-muted);"><li>Choose a schema type and fill in the fields.</li><li>Copy the JSON-LD script.</li><li>Validate it with Google's Rich Results Test.</li></ol>
+      </section>
+    </main>
+
+    <!-- Global Footer -->
+    <footer class="tf-footer">
+      <div class="tf-container">
+        <div class="tf-footer-bottom" style="border: none; padding-top: 0;">
+          <div>© 2026 ToolForge. 100% In-Browser Privacy.</div>
+          <a href="/index.html" style="color: var(--accent);">← Return to Home</a>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="/assets/js/common.js"></script>
+    <script src="/assets/js/tools/schema-generator.js"></script>
+  </body>
+</html>

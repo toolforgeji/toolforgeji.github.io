@@ -1,0 +1,258 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta property="og:image" content="https://toolforgeji.github.io/assets/img/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Campaign UTM Builder - Google Analytics URL Tracking | ToolForge</title>
+    <meta name="description" content="Build trackable campaign URLs with source, medium, campaign name, term, and content parameters for Google Analytics (GA4). 100% in-browser." />
+    <link rel="canonical" href="https://toolforgeji.github.io/tools/utm-builder.html" />
+    <link rel="icon" type="image/svg+xml" href="/assets/img/logo.svg" />
+    
+    <meta property="og:title" content="Campaign UTM Builder - ToolForge" />
+    <meta property="og:description" content="Generate trackable campaign links with UTM parameters for Google Analytics." />
+    <meta property="og:url" content="https://toolforgeji.github.io/tools/utm-builder.html" />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="/assets/css/design-system.css" />
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "SoftwareApplication",
+          "name": "ToolForge Campaign UTM Builder",
+          "applicationCategory": "DeveloperApplication",
+          "operatingSystem": "All",
+          "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+        },
+        {
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "What are UTM parameters?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "UTM parameters are five query tags (utm_source, utm_medium, utm_campaign, utm_term, utm_content) appended to a URL that tell Google Analytics exactly where traffic originated."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Why should I use lowercase for UTM parameters?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Google Analytics is case-sensitive. Using 'Email' and 'email' splits traffic into two separate channels. Lowercase keeps reporting consolidated."
+              }
+            }
+          ]
+        }
+      ]
+    }
+    </script>
+  </head>
+  <body>
+    <!-- Navigation -->
+    <header class="tf-navbar">
+      <div class="tf-container">
+        <div class="tf-nav-inner">
+          <a href="/index.html" class="tf-brand">
+            <span class="tf-brand-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg>
+            </span>
+            <span>ToolForge</span>
+          </a>
+
+          <div style="display: flex; align-items: center; gap: 12px;">
+            <a href="/index.html" class="tf-btn tf-btn-secondary tf-btn-sm">All Tools</a>
+            <button class="theme-toggle-btn tf-btn-icon" aria-label="Toggle theme">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="tf-container" style="max-width: 960px; padding-top: 40px; padding-bottom: 80px;">
+      <!-- Breadcrumbs -->
+      <div class="tf-breadcrumbs">
+        <a href="/index.html">Home</a>
+        <span class="tf-breadcrumbs-sep">/</span>
+        <a href="/index.html#tools-section">SEO & Web</a>
+        <span class="tf-breadcrumbs-sep">/</span>
+        <span>Campaign UTM Builder</span>
+      </div>
+
+      <div style="margin-bottom: 24px;">
+        <h1 style="font-size: 2.25rem; font-weight: 800; margin-bottom: 8px;">Campaign UTM Builder</h1>
+        <p style="font-size: 1.0625rem; color: var(--text-muted);">
+          Create clean, trackable campaign URLs with source, medium, campaign name, term, and content parameters for Google Analytics.
+        </p>
+      </div>
+
+      <!-- Presets -->
+      <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-bottom: 20px;">
+        <span style="font-size: 0.8125rem; font-weight: 700; color: var(--text-faint); text-transform: uppercase;">Presets:</span>
+        <button class="utm-preset tf-btn tf-btn-secondary tf-btn-sm" data-src="google" data-med="cpc">Google Ads</button>
+        <button class="utm-preset tf-btn tf-btn-secondary tf-btn-sm" data-src="facebook" data-med="paid_social">Facebook Ad</button>
+        <button class="utm-preset tf-btn tf-btn-secondary tf-btn-sm" data-src="twitter" data-med="social">Twitter / X</button>
+        <button class="utm-preset tf-btn tf-btn-secondary tf-btn-sm" data-src="newsletter" data-med="email">Email Newsletter</button>
+        <button class="utm-preset tf-btn tf-btn-secondary tf-btn-sm" data-src="linkedin" data-med="social">LinkedIn Post</button>
+      </div>
+
+      <!-- Main Form -->
+      <div class="tf-card" style="margin-bottom: 32px;">
+        <div class="tf-form-group">
+          <label class="tf-label" for="utm-url">Website URL <span style="color: var(--danger);">*</span></label>
+          <input type="url" id="utm-url" class="tf-input" placeholder="https://example.com/landing-page" value="https://toolforgeji.github.io" />
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px;">
+          <div class="tf-form-group">
+            <label class="tf-label" for="utm-source">Campaign Source (utm_source) <span style="color: var(--danger);">*</span></label>
+            <input type="text" id="utm-source" class="tf-input" placeholder="e.g. google, newsletter, twitter" value="newsletter" />
+          </div>
+
+          <div class="tf-form-group">
+            <label class="tf-label" for="utm-medium">Campaign Medium (utm_medium) <span style="color: var(--danger);">*</span></label>
+            <input type="text" id="utm-medium" class="tf-input" placeholder="e.g. cpc, email, banner, social" value="email" />
+          </div>
+
+          <div class="tf-form-group">
+            <label class="tf-label" for="utm-campaign">Campaign Name (utm_campaign)</label>
+            <input type="text" id="utm-campaign" class="tf-input" placeholder="e.g. summer_launch, black_friday" value="launch_promo" />
+          </div>
+
+          <div class="tf-form-group">
+            <label class="tf-label" for="utm-term">Campaign Term (utm_term)</label>
+            <input type="text" id="utm-term" class="tf-input" placeholder="Identify paid keywords (e.g. developer_tools)" />
+          </div>
+
+          <div class="tf-form-group">
+            <label class="tf-label" for="utm-content">Campaign Content (utm_content)</label>
+            <input type="text" id="utm-content" class="tf-input" placeholder="Differentiate ads / variants (e.g. hero_cta_button)" />
+          </div>
+        </div>
+      </div>
+
+      <!-- Output Card -->
+      <div class="tf-card" style="margin-bottom: 48px; background: var(--bg-surface); border: 2px solid var(--accent);">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; flex-wrap: wrap; gap: 10px;">
+          <div style="font-size: 0.8125rem; font-weight: 700; text-transform: uppercase; color: var(--accent);">Generated Campaign URL</div>
+          <div style="display: flex; gap: 8px;">
+            <button id="utm-copy-btn" class="tf-btn tf-btn-primary tf-btn-sm">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+              <span>Copy URL</span>
+            </button>
+            <a id="utm-test-link" href="#" target="_blank" rel="noopener noreferrer" class="tf-btn tf-btn-secondary tf-btn-sm">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+              <span>Open Link</span>
+            </a>
+          </div>
+        </div>
+
+        <div id="utm-output-url" style="padding: 14px 18px; background: var(--bg-subtle); border-radius: var(--radius-md); font-family: var(--font-mono); font-size: 0.875rem; word-break: break-all; color: var(--text-main); border: 1px solid var(--border-subtle);">
+          https://toolforgeji.github.io?utm_source=newsletter&utm_medium=email&utm_campaign=launch_promo
+        </div>
+      </div>
+
+      <!-- How it Works -->
+      <div style="margin-bottom: 48px;">
+        <h2 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 20px;">Mastering UTM Parameters in GA4</h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px;">
+          <div class="tf-card">
+            <h3 style="font-size: 1.0625rem; font-weight: 700; margin-bottom: 6px;">URL Encoding</h3>
+            <p style="font-size: 0.875rem; color: var(--text-muted); line-height: 1.5;">Special characters, spaces, and punctuation are URI-encoded automatically to prevent link truncation.</p>
+          </div>
+          <div class="tf-card">
+            <h3 style="font-size: 1.0625rem; font-weight: 700; margin-bottom: 6px;">Case Standardization</h3>
+            <p style="font-size: 0.875rem; color: var(--text-muted); line-height: 1.5;">Standardizing on lowercase preserves clean reporting dimensions in Google Analytics 4.</p>
+          </div>
+          <div class="tf-card">
+            <h3 style="font-size: 1.0625rem; font-weight: 700; margin-bottom: 6px;">Zero Cloud Ingestion</h3>
+            <p style="font-size: 0.875rem; color: var(--text-muted); line-height: 1.5;">Your private marketing campaigns and attribution strategy never pass through third-party servers.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Privacy Note -->
+      <div class="tf-card" style="margin-bottom: 48px; background: var(--bg-subtle); border-left: 4px solid var(--success);">
+        <h3 style="font-size: 1.125rem; font-weight: 700; margin-bottom: 8px; color: var(--text-main);">Zero Cloud Ingestion</h3>
+        <p style="font-size: 0.9375rem; color: var(--text-muted); line-height: 1.6;">
+          ToolForge runs in your local browser. We do not track the URLs you create or intercept redirect flows.
+        </p>
+      </div>
+
+      <!-- FAQs -->
+      <div style="margin-bottom: 56px;">
+        <h2 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 20px;">Frequently Asked Questions</h2>
+        <div>
+          <details class="tf-faq-item" open>
+            <summary>What are UTM parameters?</summary>
+            <div class="tf-faq-content">
+              UTM parameters are five query tags (utm_source, utm_medium, utm_campaign, utm_term, utm_content) appended to a URL that tell Google Analytics exactly where traffic originated.
+            </div>
+          </details>
+          <details class="tf-faq-item">
+            <summary>Why should I use lowercase for UTM parameters?</summary>
+            <div class="tf-faq-content">
+              Google Analytics is case-sensitive. Using 'Email' and 'email' splits traffic into two separate channels. Lowercase keeps reporting consolidated.
+            </div>
+          </details>
+          <details class="tf-faq-item">
+            <summary>Can I combine UTMs with QR codes?</summary>
+            <div class="tf-faq-content">
+              Yes! Copy the generated UTM URL and paste it into our QR Code Generator tool to track scans on physical flyers and banners.
+            </div>
+          </details>
+        </div>
+      </div>
+
+      <!-- Related Tools -->
+      <div>
+        <h2 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 20px;">Related Tools</h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px;">
+          <a href="/tools/qr-generator.html" class="tf-card tf-card-interactive">
+            <h3 style="font-size: 1.0625rem; font-weight: 700; margin-bottom: 6px;">QR Code Generator</h3>
+            <p style="font-size: 0.875rem; color: var(--text-muted);">Generate trackable QR codes from your campaign URLs.</p>
+          </a>
+          <a href="/tools/meta-generator.html" class="tf-card tf-card-interactive">
+            <h3 style="font-size: 1.0625rem; font-weight: 700; margin-bottom: 6px;">Meta Tag Generator</h3>
+            <p style="font-size: 0.875rem; color: var(--text-muted);">Generate OpenGraph and Twitter cards for social media.</p>
+          </a>
+          <a href="/tools/case-converter.html" class="tf-card tf-card-interactive">
+            <h3 style="font-size: 1.0625rem; font-weight: 700; margin-bottom: 6px;">Case Converter</h3>
+            <p style="font-size: 0.875rem; color: var(--text-muted);">Convert titles into URL slugs.</p>
+          </a>
+        </div>
+      </div>
+    
+      <section class="tf-seo-content" style="margin-top: 48px; padding-top: 32px; border-top: 1px solid var(--border, #e2e8f0);">
+        <h2 style="font-size: 1.5rem; margin-bottom: 12px;">About the Campaign UTM Builder</h2>
+        <p style="line-height: 1.7; color: var(--text-muted); max-width: 760px;">Build campaign URLs with UTM parameters for source, medium, campaign, term, and content, formatted for Google Analytics 4. Consistent UTM tags show which channels drive traffic. The URL is generated locally and nothing is sent to a server.</p>
+        <h3 style="font-size: 1.125rem; margin: 20px 0 8px;">How to use it</h3>
+        <ol style="line-height: 1.8; padding-left: 22px; color: var(--text-muted);"><li>Enter the destination URL.</li><li>Fill in the source, medium, and campaign name.</li><li>Copy the tagged link.</li></ol>
+      </section>
+    </main>
+
+    <!-- Global Footer -->
+    <footer class="tf-footer">
+      <div class="tf-container">
+        <div class="tf-footer-bottom" style="border: none; padding-top: 0;">
+          <div>© 2026 ToolForge. 100% In-Browser Privacy.</div>
+          <a href="/index.html" style="color: var(--accent);">← Return to Home</a>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="/assets/js/common.js"></script>
+    <script src="/assets/js/tools/utm-builder.js"></script>
+  </body>
+</html>

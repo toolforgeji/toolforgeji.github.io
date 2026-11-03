@@ -1,0 +1,374 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta property="og:image" content="https://toolforgeji.github.io/assets/img/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Invoice Generator - Free Online Invoices & PDF Export | ToolForge</title>
+    <meta name="description" content="Create professional PDF invoices with live paper preview, auto-tax calculations, and custom branding. 100% in-browser with zero uploads." />
+    <link rel="canonical" href="https://toolforgeji.github.io/tools/invoice-generator.html" />
+    <link rel="icon" type="image/svg+xml" href="/assets/img/logo.svg" />
+    
+    <meta property="og:title" content="Invoice Generator - ToolForge" />
+    <meta property="og:description" content="Generate client invoices with instant PDF export and print preview." />
+    <meta property="og:url" content="https://toolforgeji.github.io/tools/invoice-generator.html" />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="/assets/css/design-system.css" />
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "SoftwareApplication",
+          "name": "ToolForge Invoice Generator",
+          "applicationCategory": "BusinessApplication",
+          "operatingSystem": "All",
+          "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+        },
+        {
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "Can I save or print the invoice as a PDF?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes! Clicking 'Print / Save as PDF' triggers your browser's native print engine with custom @media print rules that render a clean, high-resolution document."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Are my client names and financial totals saved to any database?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Never. All company details, client records, and itemized calculations remain strictly in your browser session."
+              }
+            }
+          ]
+        }
+      ]
+    }
+    </script>
+    <style>
+      @media print {
+        body * {
+          visibility: hidden;
+        }
+        #invoice-paper, #invoice-paper * {
+          visibility: visible;
+        }
+        #invoice-paper {
+          position: absolute;
+          left: 0;
+          top: 0;
+          width: 100%;
+          margin: 0;
+          padding: 20mm;
+          box-shadow: none !important;
+          border: none !important;
+          background: #ffffff !important;
+          color: #000000 !important;
+        }
+        .tf-navbar, .tf-footer, .tf-breadcrumbs, #invoice-form-col {
+          display: none !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navigation -->
+    <header class="tf-navbar">
+      <div class="tf-container">
+        <div class="tf-nav-inner">
+          <a href="/index.html" class="tf-brand">
+            <span class="tf-brand-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg>
+            </span>
+            <span>ToolForge</span>
+          </a>
+
+          <div style="display: flex; align-items: center; gap: 12px;">
+            <a href="/index.html" class="tf-btn tf-btn-secondary tf-btn-sm">All Tools</a>
+            <button class="theme-toggle-btn tf-btn-icon" aria-label="Toggle theme">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="tf-container" style="max-width: 1160px; padding-top: 40px; padding-bottom: 80px;">
+      <!-- Breadcrumbs -->
+      <div class="tf-breadcrumbs">
+        <a href="/index.html">Home</a>
+        <span class="tf-breadcrumbs-sep">/</span>
+        <a href="/index.html#tools-section">Finance & Business</a>
+        <span class="tf-breadcrumbs-sep">/</span>
+        <span>Invoice Generator</span>
+      </div>
+
+      <div style="margin-bottom: 24px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px;">
+        <div>
+          <h1 style="font-size: 2.25rem; font-weight: 800; margin-bottom: 8px;">Invoice Generator</h1>
+          <p style="font-size: 1.0625rem; color: var(--text-muted);">
+            Create itemized, professional invoices with live paper preview and instant print/PDF export.
+          </p>
+        </div>
+        <button id="inv-print-btn" class="tf-btn tf-btn-primary">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg>
+          <span>Print / Save as PDF</span>
+        </button>
+      </div>
+
+      <!-- Main Split: Edit Form on left, Live Paper Sheet on right -->
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(420px, 1fr)); gap: 28px; margin-bottom: 48px;">
+        <!-- Left: Form Editor -->
+        <div id="invoice-form-col" class="tf-card" style="padding: 24px;">
+          <h2 style="font-size: 1.125rem; font-weight: 700; margin-bottom: 16px;">Invoice Details</h2>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 16px;">
+            <div class="tf-form-group">
+              <label class="tf-label" for="inv-number">Invoice #</label>
+              <input type="text" id="inv-number" class="tf-input" value="INV-2026-001" />
+            </div>
+            <div class="tf-form-group">
+              <label class="tf-label" for="inv-currency">Currency</label>
+              <select id="inv-currency" class="tf-select">
+                <option value="$" selected>USD ($)</option>
+                <option value="€">EUR (€)</option>
+                <option value="£">GBP (£)</option>
+                <option value="₹">INR (₹)</option>
+                <option value="C$">CAD ($)</option>
+                <option value="A$">AUD ($)</option>
+              </select>
+            </div>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 16px;">
+            <div class="tf-form-group">
+              <label class="tf-label" for="inv-date">Invoice Date</label>
+              <input type="date" id="inv-date" class="tf-input" />
+            </div>
+            <div class="tf-form-group">
+              <label class="tf-label" for="inv-due-date">Due Date</label>
+              <input type="date" id="inv-due-date" class="tf-input" />
+            </div>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 20px;">
+            <div>
+              <label class="tf-label" for="inv-from">Your Business Info</label>
+              <textarea id="inv-from" class="tf-textarea" style="height: 100px; font-size: 0.8125rem;" placeholder="Acme Studio LLC&#10;123 Innovation Way&#10;San Francisco, CA 94107&#10;billing@acme.com">Acme Studio LLC&#10;123 Innovation Way&#10;billing@acme.com</textarea>
+            </div>
+            <div>
+              <label class="tf-label" for="inv-to">Client Info</label>
+              <textarea id="inv-to" class="tf-textarea" style="height: 100px; font-size: 0.8125rem;" placeholder="Global Corp Inc.&#10;Attn: Accounts Payable&#10;456 Market St, Suite 500">Global Corp Inc.&#10;Attn: Finance Team&#10;accounting@globalcorp.io</textarea>
+            </div>
+          </div>
+
+          <!-- Items Table Editor -->
+          <div style="margin-bottom: 20px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+              <span style="font-size: 0.875rem; font-weight: 700;">Line Items</span>
+              <button id="inv-add-item-btn" class="tf-btn tf-btn-secondary tf-btn-sm">+ Add Item</button>
+            </div>
+            <div id="inv-items-form-container" style="display: flex; flex-direction: column; gap: 10px;">
+              <!-- Input rows dynamically generated -->
+            </div>
+          </div>
+
+          <!-- Tax & Discount -->
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 16px;">
+            <div class="tf-form-group">
+              <label class="tf-label" for="inv-tax-rate">Tax Rate (%)</label>
+              <input type="number" id="inv-tax-rate" class="tf-input" min="0" max="100" value="10" />
+            </div>
+            <div class="tf-form-group">
+              <label class="tf-label" for="inv-discount-rate">Discount (%)</label>
+              <input type="number" id="inv-discount-rate" class="tf-input" min="0" max="100" value="0" />
+            </div>
+          </div>
+
+          <div class="tf-form-group">
+            <label class="tf-label" for="inv-notes">Payment Terms / Notes</label>
+            <textarea id="inv-notes" class="tf-textarea" style="height: 60px; font-size: 0.8125rem;" placeholder="Payment due within 14 days. Wire transfer details...">Thank you for your business. Payment due within 14 days of issue.</textarea>
+          </div>
+        </div>
+
+        <!-- Right: Realistic Paper Sheet Preview -->
+        <div style="display: flex; justify-content: center;">
+          <div id="invoice-paper" style="width: 100%; max-width: 540px; background: #ffffff; color: #0f172a; border-radius: var(--radius-md); box-shadow: var(--shadow-lg); border: 1px solid var(--border-subtle); padding: 36px 32px; font-size: 0.875rem; line-height: 1.5;">
+            <!-- Header -->
+            <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 28px;">
+              <div>
+                <h3 id="prev-biz-name" style="font-size: 1.25rem; font-weight: 800; color: #0f172a; line-height: 1.2;">Acme Studio LLC</h3>
+                <div id="prev-biz-details" style="color: #64748b; font-size: 0.8125rem; white-space: pre-line; margin-top: 4px;">123 Innovation Way&#10;billing@acme.com</div>
+              </div>
+              <div style="text-align: right;">
+                <div style="font-size: 1.5rem; font-weight: 800; color: var(--accent); letter-spacing: -0.02em;">INVOICE</div>
+                <div id="prev-inv-num" style="font-weight: 700; color: #0f172a; margin-top: 2px;">INV-2026-001</div>
+              </div>
+            </div>
+
+            <!-- Client & Dates -->
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 28px; padding-bottom: 20px; border-bottom: 1px solid #e2e8f0;">
+              <div>
+                <div style="font-size: 0.6875rem; font-weight: 700; text-transform: uppercase; color: #94a3b8; margin-bottom: 4px;">Billed To:</div>
+                <div id="prev-client-details" style="color: #0f172a; font-weight: 500; white-space: pre-line;">Global Corp Inc.&#10;Attn: Finance Team</div>
+              </div>
+              <div style="text-align: right;">
+                <div style="margin-bottom: 4px;"><strong style="color: #64748b; font-weight: 600;">Date:</strong> <span id="prev-date">2026-11-03</span></div>
+                <div><strong style="color: #64748b; font-weight: 600;">Due Date:</strong> <span id="prev-due-date">2026-11-17</span></div>
+              </div>
+            </div>
+
+            <!-- Items Table -->
+            <table style="width: 100%; border-collapse: collapse; margin-bottom: 24px;">
+              <thead>
+                <tr style="border-bottom: 2px solid #e2e8f0; font-size: 0.75rem; text-transform: uppercase; color: #64748b; text-align: left;">
+                  <th style="padding: 8px 4px;">Description</th>
+                  <th style="padding: 8px 4px; text-align: center; width: 50px;">Qty</th>
+                  <th style="padding: 8px 4px; text-align: right; width: 70px;">Rate</th>
+                  <th style="padding: 8px 4px; text-align: right; width: 75px;">Amount</th>
+                </tr>
+              </thead>
+              <tbody id="prev-items-tbody">
+                <!-- Dynamically rendered -->
+              </tbody>
+            </table>
+
+            <!-- Totals -->
+            <div style="display: flex; justify-content: flex-end; margin-bottom: 28px;">
+              <div style="width: 200px;">
+                <div style="display: flex; justify-content: space-between; padding: 4px 0; color: #64748b;">
+                  <span>Subtotal:</span>
+                  <span id="prev-subtotal" style="font-weight: 600; color: #0f172a;">$0.00</span>
+                </div>
+                <div style="display: flex; justify-content: space-between; padding: 4px 0; color: #64748b;">
+                  <span>Tax (<span id="prev-tax-pct">10</span>%):</span>
+                  <span id="prev-tax-amt" style="font-weight: 600; color: #0f172a;">$0.00</span>
+                </div>
+                <div id="prev-discount-row" style="display: flex; justify-content: space-between; padding: 4px 0; color: #64748b;">
+                  <span>Discount:</span>
+                  <span id="prev-discount-amt" style="font-weight: 600; color: #ef4444;">-$0.00</span>
+                </div>
+                <div style="display: flex; justify-content: space-between; padding: 8px 0; border-top: 2px solid #0f172a; margin-top: 4px; font-size: 1.0625rem; font-weight: 800; color: #0f172a;">
+                  <span>Total Due:</span>
+                  <span id="prev-grand-total" style="color: var(--accent);">$0.00</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Notes -->
+            <div style="border-top: 1px solid #e2e8f0; padding-top: 16px;">
+              <div style="font-size: 0.6875rem; font-weight: 700; text-transform: uppercase; color: #94a3b8; margin-bottom: 4px;">Terms & Notes</div>
+              <div id="prev-notes" style="color: #64748b; font-size: 0.8125rem;">Thank you for your business. Payment due within 14 days of issue.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- How it Works -->
+      <div style="margin-bottom: 48px;">
+        <h2 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 20px;">How ToolForge Generates Invoices</h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px;">
+          <div class="tf-card">
+            <div style="font-size: 1.5rem; font-weight: 800; color: var(--accent); margin-bottom: 8px;">01</div>
+            <h3 style="font-size: 1.0625rem; font-weight: 700; margin-bottom: 6px;">Live State Sync</h3>
+            <p style="font-size: 0.875rem; color: var(--text-muted); line-height: 1.5;">Every keystroke automatically computes subtotal, tax percentages, line items, and totals.</p>
+          </div>
+          <div class="tf-card">
+            <div style="font-size: 1.5rem; font-weight: 800; color: var(--accent); margin-bottom: 8px;">02</div>
+            <h3 style="font-size: 1.0625rem; font-weight: 700; margin-bottom: 6px;">Exact Print Styling</h3>
+            <p style="font-size: 0.875rem; color: var(--text-muted); line-height: 1.5;">Tailored @media print stylesheets ensure the generated paper looks crisp on standard A4 or Letter sizes.</p>
+          </div>
+          <div class="tf-card">
+            <div style="font-size: 1.5rem; font-weight: 800; color: var(--accent); margin-bottom: 8px;">03</div>
+            <h3 style="font-size: 1.0625rem; font-weight: 700; margin-bottom: 6px;">Zero Database Leaks</h3>
+            <p style="font-size: 0.875rem; color: var(--text-muted); line-height: 1.5;">Your private rates, contractor revenues, and client names are never sent to external servers.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Privacy Note -->
+      <div class="tf-card" style="margin-bottom: 48px; background: var(--bg-subtle); border-left: 4px solid var(--success);">
+        <h3 style="font-size: 1.125rem; font-weight: 700; margin-bottom: 8px; color: var(--text-main);">Zero Cloud Ingestion</h3>
+        <p style="font-size: 0.9375rem; color: var(--text-muted); line-height: 1.6;">
+          ToolForge does not require creating an account or logging financial books. Your client rates remain strictly your business.
+        </p>
+      </div>
+
+      <!-- FAQs -->
+      <div style="margin-bottom: 56px;">
+        <h2 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 20px;">Frequently Asked Questions</h2>
+        <div>
+          <details class="tf-faq-item" open>
+            <summary>Can I save or print the invoice as a PDF?</summary>
+            <div class="tf-faq-content">
+              Yes! Clicking 'Print / Save as PDF' triggers your browser's native print engine with custom @media print rules that render a clean, high-resolution document.
+            </div>
+          </details>
+          <details class="tf-faq-item">
+            <summary>How do I change the currency symbol?</summary>
+            <div class="tf-faq-content">
+              Select your currency from the Currency dropdown (supporting $, €, £, ₹, CAD, and AUD).
+            </div>
+          </details>
+          <details class="tf-faq-item">
+            <summary>Can I add custom line items and tax?</summary>
+            <div class="tf-faq-content">
+              Yes, click '+ Add Item' to add as many deliverables as required. Taxes and discounts are calculated automatically.
+            </div>
+          </details>
+        </div>
+      </div>
+
+      <!-- Related Tools -->
+      <div>
+        <h2 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 20px;">Related Tools</h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px;">
+          <a href="/tools/gst-calculator.html" class="tf-card tf-card-interactive">
+            <h3 style="font-size: 1.0625rem; font-weight: 700; margin-bottom: 6px;">GST / VAT Calculator</h3>
+            <p style="font-size: 0.875rem; color: var(--text-muted);">Calculate inclusive and exclusive tax breakdowns.</p>
+          </a>
+          <a href="/tools/emi-calculator.html" class="tf-card tf-card-interactive">
+            <h3 style="font-size: 1.0625rem; font-weight: 700; margin-bottom: 6px;">Loan EMI Calculator</h3>
+            <p style="font-size: 0.875rem; color: var(--text-muted);">Compute monthly installments and amortization schedules.</p>
+          </a>
+          <a href="/tools/pdf-compressor.html" class="tf-card tf-card-interactive">
+            <h3 style="font-size: 1.0625rem; font-weight: 700; margin-bottom: 6px;">PDF Compressor</h3>
+            <p style="font-size: 0.875rem; color: var(--text-muted);">Shrink generated PDF invoices for fast emailing.</p>
+          </a>
+        </div>
+      </div>
+    
+      <section class="tf-seo-content" style="margin-top: 48px; padding-top: 32px; border-top: 1px solid var(--border, #e2e8f0);">
+        <h2 style="font-size: 1.5rem; margin-bottom: 12px;">About the Invoice Generator</h2>
+        <p style="line-height: 1.7; color: var(--text-muted); max-width: 760px;">Create professional invoices with a live paper preview, automatic tax calculations, and custom branding. Export a PDF to send to clients. Invoices are generated in your browser, so client details are not sent to a remote server.</p>
+        <h3 style="font-size: 1.125rem; margin: 20px 0 8px;">How to use it</h3>
+        <ol style="line-height: 1.8; padding-left: 22px; color: var(--text-muted);"><li>Enter your business and client details.</li><li>Add line items and set tax rates.</li><li>Export the invoice as a PDF.</li></ol>
+      </section>
+    </main>
+
+    <!-- Global Footer -->
+    <footer class="tf-footer">
+      <div class="tf-container">
+        <div class="tf-footer-bottom" style="border: none; padding-top: 0;">
+          <div>© 2026 ToolForge. 100% In-Browser Privacy.</div>
+          <a href="/index.html" style="color: var(--accent);">← Return to Home</a>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="/assets/js/common.js"></script>
+    <script src="/assets/js/tools/invoice-generator.js"></script>
+  </body>
+</html>

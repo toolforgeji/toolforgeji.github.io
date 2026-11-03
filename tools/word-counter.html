@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta property="og:image" content="https://toolforgeji.github.io/assets/img/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Word Counter & Text Statistics - Free Online Word Count | ToolForge</title>
+    <meta name="description" content="Count words, characters, sentences, paragraphs, reading time, and calculate Flesch-Kincaid readability score in real time. 100% in-browser." />
+    <link rel="canonical" href="https://toolforgeji.github.io/tools/word-counter.html" />
+    <link rel="icon" type="image/svg+xml" href="/assets/img/logo.svg" />
+    
+    <meta property="og:title" content="Word Counter & Text Statistics - ToolForge" />
+    <meta property="og:description" content="Real-time word, character, and sentence counter with readability analysis." />
+    <meta property="og:url" content="https://toolforgeji.github.io/tools/word-counter.html" />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="/assets/css/design-system.css" />
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "SoftwareApplication",
+          "name": "ToolForge Word Counter",
+          "applicationCategory": "UtilitiesApplication",
+          "operatingSystem": "All",
+          "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+        },
+        {
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "How is reading time calculated?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Reading time is calculated using the globally accepted average adult reading speed of 200 words per minute (WPM). Speaking time uses 130 WPM."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "What is the Flesch Reading Ease score?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "It rates text on a 100-point scale. Scores between 60 and 70 are considered standard readable English accessible to 8th and 9th graders."
+              }
+            }
+          ]
+        }
+      ]
+    }
+    </script>
+  </head>
+  <body>
+    <!-- Navigation -->
+    <header class="tf-navbar">
+      <div class="tf-container">
+        <div class="tf-nav-inner">
+          <a href="/index.html" class="tf-brand">
+            <span class="tf-brand-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg>
+            </span>
+            <span>ToolForge</span>
+          </a>
+
+          <div style="display: flex; align-items: center; gap: 12px;">
+            <a href="/index.html" class="tf-btn tf-btn-secondary tf-btn-sm">All Tools</a>
+            <button class="theme-toggle-btn tf-btn-icon" aria-label="Toggle theme">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="tf-container" style="max-width: 1040px; padding-top: 40px; padding-bottom: 80px;">
+      <!-- Breadcrumbs -->
+      <div class="tf-breadcrumbs">
+        <a href="/index.html">Home</a>
+        <span class="tf-breadcrumbs-sep">/</span>
+        <a href="/index.html#tools-section">Writing & Text</a>
+        <span class="tf-breadcrumbs-sep">/</span>
+        <span>Word Counter</span>
+      </div>
+
+      <div style="margin-bottom: 24px;">
+        <h1 style="font-size: 2.25rem; font-weight: 800; margin-bottom: 8px;">Word Counter & Text Statistics</h1>
+        <p style="font-size: 1.0625rem; color: var(--text-muted);">
+          Analyze word count, character density, sentence lengths, speaking times, and Flesch readability grades in real time.
+        </p>
+      </div>
+
+      <!-- Stat Cards Strip -->
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 14px; margin-bottom: 20px;">
+        <div class="tf-card" style="padding: 16px; text-align: center;">
+          <div style="font-size: 0.75rem; font-weight: 700; text-transform: uppercase; color: var(--text-muted);">Words</div>
+          <div id="stat-words" style="font-size: 1.75rem; font-weight: 800; color: var(--accent); margin-top: 2px;">0</div>
+        </div>
+        <div class="tf-card" style="padding: 16px; text-align: center;">
+          <div style="font-size: 0.75rem; font-weight: 700; text-transform: uppercase; color: var(--text-muted);">Characters</div>
+          <div id="stat-chars" style="font-size: 1.75rem; font-weight: 800; color: var(--text-main); margin-top: 2px;">0</div>
+        </div>
+        <div class="tf-card" style="padding: 16px; text-align: center;">
+          <div style="font-size: 0.75rem; font-weight: 700; text-transform: uppercase; color: var(--text-muted);">Sentences</div>
+          <div id="stat-sentences" style="font-size: 1.75rem; font-weight: 800; color: var(--text-main); margin-top: 2px;">0</div>
+        </div>
+        <div class="tf-card" style="padding: 16px; text-align: center;">
+          <div style="font-size: 0.75rem; font-weight: 700; text-transform: uppercase; color: var(--text-muted);">Paragraphs</div>
+          <div id="stat-paragraphs" style="font-size: 1.75rem; font-weight: 800; color: var(--text-main); margin-top: 2px;">0</div>
+        </div>
+        <div class="tf-card" style="padding: 16px; text-align: center;">
+          <div style="font-size: 0.75rem; font-weight: 700; text-transform: uppercase; color: var(--text-muted);">Reading Time</div>
+          <div id="stat-reading" style="font-size: 1.75rem; font-weight: 800; color: var(--success); margin-top: 2px;">0m</div>
+        </div>
+      </div>
+
+      <!-- Main Textarea Card -->
+      <div class="tf-card" style="margin-bottom: 32px;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+          <span style="font-size: 0.875rem; font-weight: 700;">Type or Paste Your Draft</span>
+          <div style="display: flex; gap: 8px;">
+            <button id="wc-copy-btn" class="tf-btn tf-btn-secondary tf-btn-sm">Copy Text</button>
+            <button id="wc-clear-btn" class="tf-btn tf-btn-ghost tf-btn-sm" style="color: var(--danger);">Clear</button>
+          </div>
+        </div>
+
+        <textarea id="wc-text-input" class="tf-textarea" style="min-height: 280px; font-size: 1rem; line-height: 1.6;" placeholder="Start typing or paste your article, essay, or blog post here to see live word counts and readability metrics..."></textarea>
+      </div>
+
+      <!-- Extended Metrics Grid (Readability & Keyword Frequency) -->
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px; margin-bottom: 48px;">
+        <!-- Left: Readability Scores -->
+        <div class="tf-card">
+          <h3 style="font-size: 1.0625rem; font-weight: 700; margin-bottom: 14px;">Readability & Engagement</h3>
+          <div style="display: flex; flex-direction: column; gap: 12px;">
+            <div style="display: flex; justify-content: space-between; padding-bottom: 8px; border-bottom: 1px solid var(--border-subtle);">
+              <span style="color: var(--text-muted);">Characters (without spaces):</span>
+              <strong id="stat-chars-nospace" style="font-family: var(--font-mono);">0</strong>
+            </div>
+            <div style="display: flex; justify-content: space-between; padding-bottom: 8px; border-bottom: 1px solid var(--border-subtle);">
+              <span style="color: var(--text-muted);">Speaking Time (130 wpm):</span>
+              <strong id="stat-speaking" style="font-family: var(--font-mono);">0m</strong>
+            </div>
+            <div style="display: flex; justify-content: space-between; padding-bottom: 8px; border-bottom: 1px solid var(--border-subtle);">
+              <span style="color: var(--text-muted);">Avg. Word Length:</span>
+              <strong id="stat-avg-word-len" style="font-family: var(--font-mono);">0.0 chars</strong>
+            </div>
+            <div style="display: flex; justify-content: space-between; align-items: center; padding-top: 4px;">
+              <div>
+                <span style="color: var(--text-muted); display: block;">Flesch Reading Ease:</span>
+                <span id="stat-flesch-badge" style="font-size: 0.75rem; color: var(--success); font-weight: 600;">Standard / Easy</span>
+              </div>
+              <strong id="stat-flesch-score" style="font-size: 1.5rem; font-weight: 800; color: var(--accent); font-family: var(--font-mono);">100</strong>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Top Keywords -->
+        <div class="tf-card">
+          <h3 style="font-size: 1.0625rem; font-weight: 700; margin-bottom: 14px;">Top Keyword Frequency</h3>
+          <div id="stat-top-words-wrap" style="display: flex; flex-direction: column; gap: 8px;">
+            <div style="color: var(--text-muted); font-size: 0.8125rem;">Type text above to see recurring keyword density.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- How it Works -->
+      <div style="margin-bottom: 48px;">
+        <h2 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 20px;">How ToolForge Analyzes Text</h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px;">
+          <div class="tf-card">
+            <h3 style="font-size: 1.0625rem; font-weight: 700; margin-bottom: 6px;">Unicode Tokenizer</h3>
+            <p style="font-size: 0.875rem; color: var(--text-muted); line-height: 1.5;">Regex boundary matchers parse words, punctuation boundaries, and whitespace segments accurately.</p>
+          </div>
+          <div class="tf-card">
+            <h3 style="font-size: 1.0625rem; font-weight: 700; margin-bottom: 6px;">Syllable Estimator</h3>
+            <p style="font-size: 0.875rem; color: var(--text-muted); line-height: 1.5;">Phonetic vowel cluster algorithms compute approximate syllables for the Flesch-Kincaid formula.</p>
+          </div>
+          <div class="tf-card">
+            <h3 style="font-size: 1.0625rem; font-weight: 700; margin-bottom: 6px;">Instant Local Calculation</h3>
+            <p style="font-size: 0.875rem; color: var(--text-muted); line-height: 1.5;">Everything runs as you type with zero network lag and complete offline availability.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Privacy Note -->
+      <div class="tf-card" style="margin-bottom: 48px; background: var(--bg-subtle); border-left: 4px solid var(--success);">
+        <h3 style="font-size: 1.125rem; font-weight: 700; margin-bottom: 8px; color: var(--text-main);">Safe for Confidential Manuscripts & Drafts</h3>
+        <p style="font-size: 0.9375rem; color: var(--text-muted); line-height: 1.6;">
+          Your book chapters, press releases, legal briefs, and private journals are never transmitted to external servers.
+        </p>
+      </div>
+
+      <!-- FAQs -->
+      <div style="margin-bottom: 56px;">
+        <h2 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 20px;">Frequently Asked Questions</h2>
+        <div>
+          <details class="tf-faq-item" open>
+            <summary>How is reading time calculated?</summary>
+            <div class="tf-faq-content">
+              Reading time is calculated using the globally accepted average adult reading speed of 200 words per minute (WPM). Speaking time uses 130 WPM.
+            </div>
+          </details>
+          <details class="tf-faq-item">
+            <summary>What is the Flesch Reading Ease score?</summary>
+            <div class="tf-faq-content">
+              It rates text on a 100-point scale. Scores between 60 and 70 are considered standard readable English accessible to 8th and 9th graders.
+            </div>
+          </details>
+          <details class="tf-faq-item">
+            <summary>Does this count hyphens as separate words?</summary>
+            <div class="tf-faq-content">
+              Hyphenated words like 'well-known' are counted as single lexical units according to standard modern linguistic guidelines.
+            </div>
+          </details>
+        </div>
+      </div>
+
+      <!-- Related Tools -->
+      <div>
+        <h2 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 20px;">Related Tools</h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px;">
+          <a href="/tools/case-converter.html" class="tf-card tf-card-interactive">
+            <h3 style="font-size: 1.0625rem; font-weight: 700; margin-bottom: 6px;">Case Converter</h3>
+            <p style="font-size: 0.875rem; color: var(--text-muted);">Transform text into Title Case, UPPERCASE, and camelCase.</p>
+          </a>
+          <a href="/tools/keyword-density.html" class="tf-card tf-card-interactive">
+            <h3 style="font-size: 1.0625rem; font-weight: 700; margin-bottom: 6px;">SEO Keyword Density</h3>
+            <p style="font-size: 0.875rem; color: var(--text-muted);">Detect search engine over-optimization and n-gram frequencies.</p>
+          </a>
+          <a href="/tools/ocr.html" class="tf-card tf-card-interactive">
+            <h3 style="font-size: 1.0625rem; font-weight: 700; margin-bottom: 6px;">Image OCR Extractor</h3>
+            <p style="font-size: 0.875rem; color: var(--text-muted);">Extract editable text from images and screenshots.</p>
+          </a>
+        </div>
+      </div>
+    
+      <section class="tf-seo-content" style="margin-top: 48px; padding-top: 32px; border-top: 1px solid var(--border, #e2e8f0);">
+        <h2 style="font-size: 1.5rem; margin-bottom: 12px;">About the Word Counter & Text Stats</h2>
+        <p style="line-height: 1.7; color: var(--text-muted); max-width: 760px;">Count words, characters, sentences, and paragraphs, and see reading and speaking time with a Flesch Reading Ease score. Useful for essays, blog posts, school assignments, and social media limits. Counts update in real time in your browser.</p>
+        <h3 style="font-size: 1.125rem; margin: 20px 0 8px;">How to use it</h3>
+        <ol style="line-height: 1.8; padding-left: 22px; color: var(--text-muted);"><li>Paste or type your text.</li><li>Read the counts and reading time.</li><li>Check the readability score and shorten long sentences if needed.</li></ol>
+      </section>
+    </main>
+
+    <!-- Global Footer -->
+    <footer class="tf-footer">
+      <div class="tf-container">
+        <div class="tf-footer-bottom" style="border: none; padding-top: 0;">
+          <div>© 2026 ToolForge. 100% In-Browser Privacy.</div>
+          <a href="/index.html" style="color: var(--accent);">← Return to Home</a>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="/assets/js/common.js"></script>
+    <script src="/assets/js/tools/word-counter.js"></script>
+  </body>
+</html>

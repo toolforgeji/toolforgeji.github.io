@@ -1,0 +1,292 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta property="og:image" content="https://toolforgeji.github.io/assets/img/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PDF Compressor - Compress PDF Locally | ToolForge</title>
+    <meta name="description" content="Compress PDF files directly in your browser. Reduce file size without uploading to external servers. 100% private and free." />
+    <link rel="canonical" href="https://toolforgeji.github.io/tools/pdf-compressor.html" />
+    <link rel="icon" type="image/svg+xml" href="/assets/img/logo.svg" />
+    
+    <meta property="og:title" content="PDF Compressor - ToolForge" />
+    <meta property="og:description" content="Reduce PDF file size locally in your browser. Fast, free, and completely secure." />
+    <meta property="og:url" content="https://toolforgeji.github.io/tools/pdf-compressor.html" />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="/assets/css/design-system.css" />
+
+    <!-- CDN pdf-lib -->
+    <script src="https://cdn.jsdelivr.net/npm/pdf-lib@1.17.9/dist/pdf-lib.min.js"></script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "SoftwareApplication",
+          "name": "ToolForge PDF Compressor",
+          "applicationCategory": "BusinessApplication",
+          "operatingSystem": "All",
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+          }
+        },
+        {
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "Is my PDF uploaded to a server for compression?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "No. The PDF is parsed and compressed in your browser's local memory using WebAssembly. Your files are never uploaded."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Will the text in my PDF become blurry?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Vector text and embedded typography remain crisp and clear. Compression optimizes internal streams, removes duplicate objects, and strips unused metadata."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Is there a limit on PDF file size?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "You can compress PDFs as large as your device's available RAM can handle, typically up to 200MB+ without issues."
+              }
+            }
+          ]
+        }
+      ]
+    }
+    </script>
+  </head>
+  <body>
+    <!-- Navigation -->
+    <header class="tf-navbar">
+      <div class="tf-container">
+        <div class="tf-nav-inner">
+          <a href="/index.html" class="tf-brand">
+            <span class="tf-brand-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg>
+            </span>
+            <span>ToolForge</span>
+          </a>
+
+          <div style="display: flex; align-items: center; gap: 12px;">
+            <a href="/index.html" class="tf-btn tf-btn-secondary tf-btn-sm">All Tools</a>
+            <button class="theme-toggle-btn tf-btn-icon" aria-label="Toggle theme">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="tf-container" style="max-width: 900px; padding-top: 40px; padding-bottom: 80px;">
+      <!-- Breadcrumbs -->
+      <div class="tf-breadcrumbs">
+        <a href="/index.html">Home</a>
+        <span class="tf-breadcrumbs-sep">/</span>
+        <a href="/index.html#tools-section">PDF & Documents</a>
+        <span class="tf-breadcrumbs-sep">/</span>
+        <span>PDF Compressor</span>
+      </div>
+
+      <!-- Header -->
+      <div style="margin-bottom: 32px;">
+        <h1 style="font-size: 2.25rem; font-weight: 800; margin-bottom: 8px;">PDF Compressor</h1>
+        <p style="font-size: 1.0625rem; color: var(--text-muted);">
+          Reduce PDF file size locally in your browser. Remove redundant object streams, strip duplicate font definitions, and optimize metadata with 100% data sovereignty.
+        </p>
+      </div>
+
+      <!-- Tool Layout -->
+      <div class="tf-card" style="margin-bottom: 48px;">
+        <!-- Dropzone -->
+        <div id="pdf-dropzone" class="tf-dropzone">
+          <div class="tf-dropzone-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="12" y1="18" x2="12" y2="12"></line><line x1="9" y1="15" x2="15" y2="15"></line></svg>
+          </div>
+          <div>
+            <strong style="color: var(--text-main); font-size: 1.0625rem; display: block; margin-bottom: 4px;">Choose a PDF or drag & drop here</strong>
+            <span style="color: var(--text-muted); font-size: 0.875rem;">Supports standard PDF documents up to 200MB</span>
+          </div>
+          <input type="file" id="pdf-file-input" accept="application/pdf" style="display: none;" />
+          <button type="button" class="tf-btn tf-btn-secondary tf-btn-sm" onclick="document.getElementById('pdf-file-input').click()">Browse Files</button>
+        </div>
+
+        <!-- Options & Status (hidden initially) -->
+        <div id="pdf-options-panel" style="display: none; margin-top: 24px; padding-top: 24px; border-top: 1px solid var(--border-subtle);">
+          <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; margin-bottom: 20px;">
+            <div>
+              <h3 id="pdf-file-name" style="font-size: 1.0625rem; font-weight: 700;">document.pdf</h3>
+              <span id="pdf-file-original-size" style="font-size: 0.875rem; color: var(--text-muted);">Original size: 0 KB</span>
+            </div>
+            <button id="pdf-reset-btn" class="tf-btn tf-btn-ghost tf-btn-sm" style="color: var(--danger);">Change File</button>
+          </div>
+
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin-bottom: 24px;">
+            <div>
+              <label class="tf-label" for="compress-level">Compression Level</label>
+              <select id="compress-level" class="tf-select">
+                <option value="balanced" selected>Recommended (Balanced Quality & Size)</option>
+                <option value="high">High Compression (Smaller File Size)</option>
+                <option value="low">Lossless Stream Optimization</option>
+              </select>
+            </div>
+            <div>
+              <label class="tf-label">Privacy & Stripping</label>
+              <label style="display: flex; align-items: center; gap: 8px; font-size: 0.875rem; color: var(--text-main); margin-top: 10px; cursor: pointer;">
+                <input type="checkbox" id="strip-metadata" checked style="accent-color: var(--accent);" />
+                <span>Strip hidden metadata & author tags</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Progress bar -->
+          <div id="pdf-progress-wrap" style="display: none; margin-bottom: 20px;">
+            <div style="display: flex; justify-content: space-between; font-size: 0.8125rem; color: var(--text-muted); margin-bottom: 6px;">
+              <span id="pdf-progress-text">Optimizing PDF structure...</span>
+              <span id="pdf-progress-percent">0%</span>
+            </div>
+            <div style="height: 6px; width: 100%; background: var(--bg-subtle); border-radius: 3px; overflow: hidden;">
+              <div id="pdf-progress-bar" style="height: 100%; width: 0%; background: var(--accent); transition: width 150ms ease;"></div>
+            </div>
+          </div>
+
+          <!-- Action Buttons -->
+          <div style="display: flex; align-items: center; gap: 12px; flex-wrap: wrap;">
+            <button id="pdf-start-compress" class="tf-btn tf-btn-primary">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>Compress PDF Now</span>
+            </button>
+          </div>
+
+          <!-- Result Card -->
+          <div id="pdf-result-panel" style="display: none; margin-top: 24px; padding: 20px; border-radius: var(--radius-md); background: var(--bg-subtle); border: 1px solid var(--border-subtle);">
+            <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px;">
+              <div>
+                <div style="font-size: 0.8125rem; text-transform: uppercase; font-weight: 700; color: var(--success); margin-bottom: 4px;">Compression Complete</div>
+                <div style="font-size: 1.125rem; font-weight: 700; color: var(--text-main);">
+                  New Size: <span id="pdf-new-size">0 KB</span>
+                  <span id="pdf-savings-badge" style="display: inline-block; margin-left: 8px; padding: 2px 8px; border-radius: 4px; background: rgba(16, 185, 129, 0.15); color: var(--success); font-size: 0.8125rem;">-0%</span>
+                </div>
+              </div>
+              <button id="pdf-download-btn" class="tf-btn tf-btn-primary">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                <span>Download Compressed PDF</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- How it Works (3 Steps) -->
+      <div style="margin-bottom: 48px;">
+        <h2 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 20px;">How ToolForge Compresses Your PDF</h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px;">
+          <div class="tf-card">
+            <div style="font-size: 1.5rem; font-weight: 800; color: var(--accent); margin-bottom: 8px;">01</div>
+            <h3 style="font-size: 1.0625rem; font-weight: 700; margin-bottom: 6px;">Client-Side Parsing</h3>
+            <p style="font-size: 0.875rem; color: var(--text-muted); line-height: 1.5;">Your PDF file is read directly into your browser's ArrayBuffer memory via the HTML5 File API.</p>
+          </div>
+          <div class="tf-card">
+            <div style="font-size: 1.5rem; font-weight: 800; color: var(--accent); margin-bottom: 8px;">02</div>
+            <h3 style="font-size: 1.0625rem; font-weight: 700; margin-bottom: 6px;">Stream Optimization</h3>
+            <p style="font-size: 0.875rem; color: var(--text-muted); line-height: 1.5;">Redundant font descriptors, duplicate xref tables, and unused object streams are stripped and compressed.</p>
+          </div>
+          <div class="tf-card">
+            <div style="font-size: 1.5rem; font-weight: 800; color: var(--accent); margin-bottom: 8px;">03</div>
+            <h3 style="font-size: 1.0625rem; font-weight: 700; margin-bottom: 6px;">Instant Local Save</h3>
+            <p style="font-size: 0.875rem; color: var(--text-muted); line-height: 1.5;">The optimized PDF bytes are compiled into a Blob object for direct browser download. No cloud roundtrips.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Privacy Note -->
+      <div class="tf-card" style="margin-bottom: 48px; background: var(--bg-subtle); border-left: 4px solid var(--success);">
+        <h3 style="font-size: 1.125rem; font-weight: 700; margin-bottom: 8px; color: var(--text-main);">Your PDF Never Leaves Your Device</h3>
+        <p style="font-size: 0.9375rem; color: var(--text-muted); line-height: 1.6;">
+          Unlike conventional PDF compression websites that transmit your contracts, tax returns, and medical records to remote cloud servers, ToolForge runs entirely inside your web browser. You can even disconnect your internet before pressing compress.
+        </p>
+      </div>
+
+      <!-- FAQs -->
+      <div style="margin-bottom: 56px;">
+        <h2 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 20px;">Frequently Asked Questions</h2>
+        <div>
+          <details class="tf-faq-item" open>
+            <summary>Is my PDF uploaded to a server for compression?</summary>
+            <div class="tf-faq-content">
+              No. The PDF is parsed and compressed in your browser's local memory using WebAssembly. Your files are never uploaded.
+            </div>
+          </details>
+          <details class="tf-faq-item">
+            <summary>Will the text in my PDF become blurry?</summary>
+            <div class="tf-faq-content">
+              Vector text and embedded typography remain crisp and clear. Compression optimizes internal streams, removes duplicate objects, and strips unused metadata.
+            </div>
+          </details>
+          <details class="tf-faq-item">
+            <summary>Is there a limit on PDF file size?</summary>
+            <div class="tf-faq-content">
+              You can compress PDFs as large as your device's available RAM can handle, typically up to 200MB+ without issues.
+            </div>
+          </details>
+        </div>
+      </div>
+
+      <!-- Related Tools -->
+      <div>
+        <h2 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 20px;">Related Tools</h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px;">
+          <a href="/tools/pdf-merge-split.html" class="tf-card tf-card-interactive">
+            <h3 style="font-size: 1.0625rem; font-weight: 700; margin-bottom: 6px;">PDF Merge & Split</h3>
+            <p style="font-size: 0.875rem; color: var(--text-muted);">Combine multiple PDFs or extract selected page ranges.</p>
+          </a>
+          <a href="/tools/image-to-pdf.html" class="tf-card tf-card-interactive">
+            <h3 style="font-size: 1.0625rem; font-weight: 700; margin-bottom: 6px;">Image to PDF</h3>
+            <p style="font-size: 0.875rem; color: var(--text-muted);">Convert photos and screenshots into formatted PDF documents.</p>
+          </a>
+          <a href="/tools/ocr.html" class="tf-card tf-card-interactive">
+            <h3 style="font-size: 1.0625rem; font-weight: 700; margin-bottom: 6px;">Image OCR Extractor</h3>
+            <p style="font-size: 0.875rem; color: var(--text-muted);">Extract editable text from scanned pages and receipts.</p>
+          </a>
+        </div>
+      </div>
+    
+      <section class="tf-seo-content" style="margin-top: 48px; padding-top: 32px; border-top: 1px solid var(--border, #e2e8f0);">
+        <h2 style="font-size: 1.5rem; margin-bottom: 12px;">About the PDF Compressor</h2>
+        <p style="line-height: 1.7; color: var(--text-muted); max-width: 760px;">Reduce the file size of PDF documents directly in your browser. Smaller PDFs are useful for email attachments, job applications, and upload forms with size limits. Your file is processed locally, so contracts and scans are not sent to a remote server.</p>
+        <h3 style="font-size: 1.125rem; margin: 20px 0 8px;">How to use it</h3>
+        <ol style="line-height: 1.8; padding-left: 22px; color: var(--text-muted);"><li>Choose a PDF from your device.</li><li>Pick the compression level you need.</li><li>Download the smaller PDF and check that text and images remain clear.</li></ol>
+      </section>
+    </main>
+
+    <!-- Global Footer -->
+    <footer class="tf-footer">
+      <div class="tf-container">
+        <div class="tf-footer-bottom" style="border: none; padding-top: 0;">
+          <div>© 2026 ToolForge. 100% In-Browser Privacy.</div>
+          <a href="/index.html" style="color: var(--accent);">← Return to Home</a>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="/assets/js/common.js"></script>
+    <script src="/assets/js/tools/pdf-compressor.js"></script>
+  </body>
+</html>

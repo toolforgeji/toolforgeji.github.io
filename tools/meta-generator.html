@@ -1,0 +1,274 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta property="og:image" content="https://toolforgeji.github.io/assets/img/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Meta Tag & OpenGraph Generator - SEO Social Cards | ToolForge</title>
+    <meta name="description" content="Generate complete SEO title, meta description, OpenGraph, and Twitter Card tags with live Google and social card previews. 100% in-browser." />
+    <link rel="canonical" href="https://toolforgeji.github.io/tools/meta-generator.html" />
+    <link rel="icon" type="image/svg+xml" href="/assets/img/logo.svg" />
+    
+    <meta property="og:title" content="Meta Tag & OpenGraph Generator - ToolForge" />
+    <meta property="og:description" content="Generate optimized meta tags with live Google and social preview cards." />
+    <meta property="og:url" content="https://toolforgeji.github.io/tools/meta-generator.html" />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="/assets/css/design-system.css" />
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "SoftwareApplication",
+          "name": "ToolForge Meta Tag Generator",
+          "applicationCategory": "DeveloperApplication",
+          "operatingSystem": "All",
+          "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+        },
+        {
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "What is the recommended meta description length?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Google typically truncates snippets at around 155 to 160 characters on desktop search results."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Why are OpenGraph and Twitter tags essential?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "When users share your URL on Twitter/X, LinkedIn, Slack, or iMessage, OpenGraph tags ensure your link expands into an engaging card with a custom thumbnail image."
+              }
+            }
+          ]
+        }
+      ]
+    }
+    </script>
+  </head>
+  <body>
+    <!-- Navigation -->
+    <header class="tf-navbar">
+      <div class="tf-container">
+        <div class="tf-nav-inner">
+          <a href="/index.html" class="tf-brand">
+            <span class="tf-brand-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg>
+            </span>
+            <span>ToolForge</span>
+          </a>
+
+          <div style="display: flex; align-items: center; gap: 12px;">
+            <a href="/index.html" class="tf-btn tf-btn-secondary tf-btn-sm">All Tools</a>
+            <button class="theme-toggle-btn tf-btn-icon" aria-label="Toggle theme">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="tf-container" style="max-width: 1100px; padding-top: 40px; padding-bottom: 80px;">
+      <!-- Breadcrumbs -->
+      <div class="tf-breadcrumbs">
+        <a href="/index.html">Home</a>
+        <span class="tf-breadcrumbs-sep">/</span>
+        <a href="/index.html#tools-section">SEO & Web</a>
+        <span class="tf-breadcrumbs-sep">/</span>
+        <span>Meta Tag Generator</span>
+      </div>
+
+      <div style="margin-bottom: 24px;">
+        <h1 style="font-size: 2.25rem; font-weight: 800; margin-bottom: 8px;">Meta Tag & OpenGraph Generator</h1>
+        <p style="font-size: 1.0625rem; color: var(--text-muted);">
+          Create production-grade SEO title, meta description, OpenGraph, and Twitter Card tags with live Google and social previews.
+        </p>
+      </div>
+
+      <!-- Main Split: Inputs on left, Live Previews on right -->
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(420px, 1fr)); gap: 24px; margin-bottom: 48px;">
+        <!-- Left: Form -->
+        <div class="tf-card">
+          <h2 style="font-size: 1.125rem; font-weight: 700; margin-bottom: 16px;">Page Meta Information</h2>
+
+          <div class="tf-form-group">
+            <div style="display: flex; justify-content: space-between;">
+              <label class="tf-label" for="meta-title">Page Title</label>
+              <span id="meta-title-count" style="font-size: 0.75rem; color: var(--text-muted);">0 / 60 chars</span>
+            </div>
+            <input type="text" id="meta-title" class="tf-input" placeholder="e.g. ToolForge - 24 Free Client-Side Utility Tools" value="ToolForge - Free In-Browser Privacy-First Utility Suite" />
+          </div>
+
+          <div class="tf-form-group">
+            <div style="display: flex; justify-content: space-between;">
+              <label class="tf-label" for="meta-desc">Meta Description</label>
+              <span id="meta-desc-count" style="font-size: 0.75rem; color: var(--text-muted);">0 / 160 chars</span>
+            </div>
+            <textarea id="meta-desc" class="tf-textarea" style="height: 90px;" placeholder="Summarize your page in 150-160 characters for search engines...">A suite of 28 free utility tools running 100% inside your browser. No accounts, zero cloud uploads, and complete data privacy for all users.</textarea>
+          </div>
+
+          <div class="tf-form-group">
+            <label class="tf-label" for="meta-url">Canonical URL</label>
+            <input type="url" id="meta-url" class="tf-input" placeholder="https://example.com/my-page" value="https://toolforgeji.github.io" />
+          </div>
+
+          <div class="tf-form-group">
+            <label class="tf-label" for="meta-img">OpenGraph Image URL (1200×630 recommended)</label>
+            <input type="url" id="meta-img" class="tf-input" placeholder="https://example.com/assets/og-image.jpg" value="https://toolforgeji.github.io/assets/img/og-image.png" />
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px;">
+            <div class="tf-form-group">
+              <label class="tf-label" for="meta-site-name">Site Name</label>
+              <input type="text" id="meta-site-name" class="tf-input" value="ToolForge" />
+            </div>
+            <div class="tf-form-group">
+              <label class="tf-label" for="meta-twitter-handle">Twitter Handle</label>
+              <input type="text" id="meta-twitter-handle" class="tf-input" placeholder="@toolforge" value="@toolforge" />
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Previews & Code Output -->
+        <div>
+          <!-- Google Search Snippet Preview -->
+          <div class="tf-card" style="margin-bottom: 20px; padding: 18px;">
+            <div style="font-size: 0.75rem; font-weight: 700; text-transform: uppercase; color: var(--text-muted); margin-bottom: 10px;">Google Desktop Search Preview</div>
+            <div style="background: var(--bg-surface); border: 1px solid var(--border-subtle); padding: 16px; border-radius: var(--radius-md);">
+              <div id="prev-search-url" style="font-size: 0.8125rem; color: #1a0dab; margin-bottom: 2px;">https://toolforgeji.github.io</div>
+              <div id="prev-search-title" style="font-size: 1.125rem; font-weight: 600; color: #1a0dab; line-height: 1.3; cursor: pointer; text-decoration: underline;">ToolForge - Free In-Browser Privacy-First Utility Suite</div>
+              <div id="prev-search-desc" style="font-size: 0.875rem; color: #4d5156; line-height: 1.5; margin-top: 4px;">A suite of 28 free utility tools running 100% inside your browser. No accounts, zero cloud uploads, and complete data privacy for all users.</div>
+            </div>
+          </div>
+
+          <!-- Social Share Card Preview -->
+          <div class="tf-card" style="margin-bottom: 20px; padding: 18px;">
+            <div style="font-size: 0.75rem; font-weight: 700; text-transform: uppercase; color: var(--text-muted); margin-bottom: 10px;">Social Card Preview (Facebook, LinkedIn, Twitter)</div>
+            <div style="border: 1px solid var(--border-subtle); border-radius: var(--radius-md); overflow: hidden; background: var(--bg-surface);">
+              <div style="height: 160px; background: #1e1b4b; display: flex; align-items: center; justify-content: center; overflow: hidden;">
+                <img id="prev-social-img" src="/assets/img/og-image.png" alt="Social card preview" style="width: 100%; height: 100%; object-fit: cover;" />
+              </div>
+              <div style="padding: 12px 16px;">
+                <div id="prev-social-domain" style="font-size: 0.75rem; text-transform: uppercase; color: var(--text-faint); margin-bottom: 2px;">TOOLFORGE.DEV</div>
+                <div id="prev-social-title" style="font-size: 0.9375rem; font-weight: 700; color: var(--text-main); margin-bottom: 4px;">ToolForge - Free In-Browser Privacy-First Utility Suite</div>
+                <div id="prev-social-desc" style="font-size: 0.8125rem; color: var(--text-muted); line-height: 1.4; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">A suite of 28 free utility tools running 100% inside your browser.</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Generated HTML Tags -->
+          <div class="tf-card" style="padding: 18px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+              <span style="font-size: 0.875rem; font-weight: 700;">Generated HTML Meta Tags</span>
+              <button id="meta-copy-btn" class="tf-btn tf-btn-primary tf-btn-sm">Copy &lt;head&gt; Tags</button>
+            </div>
+            <textarea id="meta-code-output" class="tf-textarea" style="height: 180px; font-family: var(--font-mono); font-size: 0.75rem;" readonly></textarea>
+          </div>
+        </div>
+      </div>
+
+      <!-- How it Works -->
+      <div style="margin-bottom: 48px;">
+        <h2 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 20px;">Why Complete Meta Tags Matter</h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px;">
+          <div class="tf-card">
+            <h3 style="font-size: 1.0625rem; font-weight: 700; margin-bottom: 6px;">Search Click-Through Rate</h3>
+            <p style="font-size: 0.875rem; color: var(--text-muted); line-height: 1.5;">Compelling titles and descriptions within Google's 160-character budget directly boost organic search CTR.</p>
+          </div>
+          <div class="tf-card">
+            <h3 style="font-size: 1.0625rem; font-weight: 700; margin-bottom: 6px;">OpenGraph Social Reach</h3>
+            <p style="font-size: 0.875rem; color: var(--text-muted); line-height: 1.5;">Facebook, LinkedIn, Discord, and Slack render full preview cards with high-fidelity hero images.</p>
+          </div>
+          <div class="tf-card">
+            <h3 style="font-size: 1.0625rem; font-weight: 700; margin-bottom: 6px;">Twitter Card Directives</h3>
+            <p style="font-size: 0.875rem; color: var(--text-muted); line-height: 1.5;">summary_large_image cards dominate user feeds and maximize engagement on X/Twitter.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Privacy Note -->
+      <div class="tf-card" style="margin-bottom: 48px; background: var(--bg-subtle); border-left: 4px solid var(--success);">
+        <h3 style="font-size: 1.125rem; font-weight: 700; margin-bottom: 8px; color: var(--text-main);">Zero Cloud Ingestion</h3>
+        <p style="font-size: 0.9375rem; color: var(--text-muted); line-height: 1.6;">
+          Generate tags for unlaunched internal landing pages, client domains, and confidential projects with complete privacy.
+        </p>
+      </div>
+
+      <!-- FAQs -->
+      <div style="margin-bottom: 56px;">
+        <h2 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 20px;">Frequently Asked Questions</h2>
+        <div>
+          <details class="tf-faq-item" open>
+            <summary>What is the recommended meta description length?</summary>
+            <div class="tf-faq-content">
+              Google typically truncates snippets at around 155 to 160 characters on desktop search results.
+            </div>
+          </details>
+          <details class="tf-faq-item">
+            <summary>Why are OpenGraph and Twitter tags essential?</summary>
+            <div class="tf-faq-content">
+              When users share your URL on Twitter/X, LinkedIn, Slack, or iMessage, OpenGraph tags ensure your link expands into an engaging card with a custom thumbnail image.
+            </div>
+          </details>
+          <details class="tf-faq-item">
+            <summary>Where do I paste these tags?</summary>
+            <div class="tf-faq-content">
+              Paste them inside the &lt;head&gt; ... &lt;/head&gt; section of your website's HTML template or root layout.
+            </div>
+          </details>
+        </div>
+      </div>
+
+      <!-- Related Tools -->
+      <div>
+        <h2 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 20px;">Related Tools</h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px;">
+          <a href="/tools/schema-generator.html" class="tf-card tf-card-interactive">
+            <h3 style="font-size: 1.0625rem; font-weight: 700; margin-bottom: 6px;">Schema.org Generator</h3>
+            <p style="font-size: 0.875rem; color: var(--text-muted);">Generate JSON-LD rich snippets for Google search.</p>
+          </a>
+          <a href="/tools/robots-sitemap-generator.html" class="tf-card tf-card-interactive">
+            <h3 style="font-size: 1.0625rem; font-weight: 700; margin-bottom: 6px;">Robots & Sitemap Builder</h3>
+            <p style="font-size: 0.875rem; color: var(--text-muted);">Create robots.txt and sitemap.xml files.</p>
+          </a>
+          <a href="/tools/utm-builder.html" class="tf-card tf-card-interactive">
+            <h3 style="font-size: 1.0625rem; font-weight: 700; margin-bottom: 6px;">Campaign UTM Builder</h3>
+            <p style="font-size: 0.875rem; color: var(--text-muted);">Build trackable links for marketing campaigns.</p>
+          </a>
+        </div>
+      </div>
+    
+      <section class="tf-seo-content" style="margin-top: 48px; padding-top: 32px; border-top: 1px solid var(--border, #e2e8f0);">
+        <h2 style="font-size: 1.5rem; margin-bottom: 12px;">About the Meta Tag & OpenGraph Generator</h2>
+        <p style="line-height: 1.7; color: var(--text-muted); max-width: 760px;">Generate complete SEO title, meta description, Open Graph, and Twitter Card tags, with live previews of how your page appears in Google and on social platforms. Copy the finished tags into your page head. Useful when launching new pages or checking link previews.</p>
+        <h3 style="font-size: 1.125rem; margin: 20px 0 8px;">How to use it</h3>
+        <ol style="line-height: 1.8; padding-left: 22px; color: var(--text-muted);"><li>Enter the title, description, and URL.</li><li>Check the Google and social previews.</li><li>Copy the generated tags into your HTML head.</li></ol>
+      </section>
+    </main>
+
+    <!-- Global Footer -->
+    <footer class="tf-footer">
+      <div class="tf-container">
+        <div class="tf-footer-bottom" style="border: none; padding-top: 0;">
+          <div>© 2026 ToolForge. 100% In-Browser Privacy.</div>
+          <a href="/index.html" style="color: var(--accent);">← Return to Home</a>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="/assets/js/common.js"></script>
+    <script src="/assets/js/tools/meta-generator.js"></script>
+  </body>
+</html>

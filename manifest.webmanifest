@@ -1,0 +1,39 @@
+{
+  "name": "ToolForge - In-Browser Privacy-First Utility Suite",
+  "short_name": "ToolForge",
+  "description": "28 free in-browser utility tools with zero cloud uploads and 100% client-side privacy.",
+  "start_url": "/index.html",
+  "display": "standalone",
+  "background_color": "#070a11",
+  "theme_color": "#4f46e5",
+  "icons": [
+    {
+      "src": "/assets/img/logo.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "JSON Formatter",
+      "url": "/tools/json-formatter.html",
+      "description": "Beautify and inspect JSON"
+    },
+    {
+      "name": "PDF Compressor",
+      "url": "/tools/pdf-compressor.html",
+      "description": "Compress PDF locally"
+    },
+    {
+      "name": "Diff Checker",
+      "url": "/tools/diff-checker.html",
+      "description": "Compare code & text differences"
+    },
+    {
+      "name": "Color Studio",
+      "url": "/tools/color-converter.html",
+      "description": "Color conversion & WCAG testing"
+    }
+  ]
+}

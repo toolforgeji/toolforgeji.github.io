@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta property="og:image" content="https://toolforgeji.github.io/assets/img/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JSON Formatter & Validator - Beautify & Lint JSON | ToolForge</title>
+    <meta name="description" content="Format, validate, minify, and inspect JSON in real time. Tree view, error diagnostics, and key sorting. 100% in-browser with zero telemetry." />
+    <link rel="canonical" href="https://toolforgeji.github.io/tools/json-formatter.html" />
+    <link rel="icon" type="image/svg+xml" href="/assets/img/logo.svg" />
+    
+    <meta property="og:title" content="JSON Formatter & Validator - ToolForge" />
+    <meta property="og:description" content="Format and inspect JSON data in your browser. Fast, private, and secure." />
+    <meta property="og:url" content="https://toolforgeji.github.io/tools/json-formatter.html" />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="/assets/css/design-system.css" />
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "SoftwareApplication",
+          "name": "ToolForge JSON Formatter",
+          "applicationCategory": "DeveloperApplication",
+          "operatingSystem": "All",
+          "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+        },
+        {
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "Is my proprietary JSON sent to any remote server?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Never. All formatting, validation, and tree generation execute in your local JavaScript runtime."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Can it fix malformed JSON?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes! Clicking 'Repair JSON' automatically replaces single quotes with double quotes and removes illegal trailing commas."
+              }
+            }
+          ]
+        }
+      ]
+    }
+    </script>
+  </head>
+  <body>
+    <!-- Navigation -->
+    <header class="tf-navbar">
+      <div class="tf-container">
+        <div class="tf-nav-inner">
+          <a href="/index.html" class="tf-brand">
+            <span class="tf-brand-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg>
+            </span>
+            <span>ToolForge</span>
+          </a>
+
+          <div style="display: flex; align-items: center; gap: 12px;">
+            <a href="/index.html" class="tf-btn tf-btn-secondary tf-btn-sm">All Tools</a>
+            <button class="theme-toggle-btn tf-btn-icon" aria-label="Toggle theme">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="tf-container" style="max-width: 1100px; padding-top: 40px; padding-bottom: 80px;">
+      <!-- Breadcrumbs -->
+      <div class="tf-breadcrumbs">
+        <a href="/index.html">Home</a>
+        <span class="tf-breadcrumbs-sep">/</span>
+        <a href="/index.html#tools-section">Developer Tools</a>
+        <span class="tf-breadcrumbs-sep">/</span>
+        <span>JSON Formatter & Validator</span>
+      </div>
+
+      <div style="margin-bottom: 24px;">
+        <h1 style="font-size: 2.25rem; font-weight: 800; margin-bottom: 8px;">JSON Formatter & Validator</h1>
+        <p style="font-size: 1.0625rem; color: var(--text-muted);">
+          Beautify, validate, minify, inspect hierarchical tree structures, and fix syntax errors with zero cloud leaks.
+        </p>
+      </div>
+
+      <!-- Action Toolbar -->
+      <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; margin-bottom: 16px; background: var(--bg-surface); padding: 10px 16px; border-radius: var(--radius-md); border: 1px solid var(--border-subtle);">
+        <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
+          <button id="jf-format-2" class="tf-btn tf-btn-secondary tf-btn-sm">Beautify (2 Spaces)</button>
+          <button id="jf-format-4" class="tf-btn tf-btn-secondary tf-btn-sm">Beautify (4 Spaces)</button>
+          <button id="jf-minify" class="tf-btn tf-btn-secondary tf-btn-sm">Minify</button>
+          <button id="jf-sort" class="tf-btn tf-btn-secondary tf-btn-sm">Sort Keys</button>
+          <button id="jf-repair" class="tf-btn tf-btn-secondary tf-btn-sm" style="color: var(--accent);">Repair Syntax</button>
+          <button id="jf-sample" class="tf-btn tf-btn-ghost tf-btn-sm">Load Sample</button>
+        </div>
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <button id="jf-copy" class="tf-btn tf-btn-primary tf-btn-sm">Copy Output</button>
+          <button id="jf-download" class="tf-btn tf-btn-secondary tf-btn-sm">Download .json</button>
+          <button id="jf-clear" class="tf-btn tf-btn-ghost tf-btn-sm" style="color: var(--danger);">Clear</button>
+        </div>
+      </div>
+
+      <!-- Status banner -->
+      <div id="jf-status-banner" style="display: none; padding: 10px 16px; border-radius: var(--radius-sm); margin-bottom: 16px; font-size: 0.875rem; font-weight: 500;"></div>
+
+      <!-- Split Layout -->
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(420px, 1fr)); gap: 16px; margin-bottom: 48px;">
+        <!-- Left: Input -->
+        <div class="tf-card" style="padding: 16px; display: flex; flex-direction: column;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+            <span style="font-size: 0.875rem; font-weight: 700; color: var(--text-main);">Input Raw JSON</span>
+            <span id="jf-input-stats" style="font-size: 0.75rem; color: var(--text-muted);">0 characters</span>
+          </div>
+          <textarea id="jf-input" class="tf-textarea" style="flex: 1; min-height: 440px; font-family: var(--font-mono); font-size: 0.875rem; white-space: pre;" placeholder="Paste messy or unformatted JSON here..."></textarea>
+        </div>
+
+        <!-- Right: Output -->
+        <div class="tf-card" style="padding: 16px; display: flex; flex-direction: column;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+            <div style="display: flex; align-items: center; gap: 10px;">
+              <span style="font-size: 0.875rem; font-weight: 700; color: var(--text-main);">Formatted Output</span>
+              <div style="display: flex; gap: 4px; background: var(--bg-subtle); padding: 2px; border-radius: 6px;">
+                <button id="jf-view-code" class="tf-btn-sm" style="background: var(--bg-surface); border: none; font-size: 0.75rem; font-weight: 600; cursor: pointer;">Code</button>
+                <button id="jf-view-tree" class="tf-btn-sm" style="background: transparent; border: none; font-size: 0.75rem; font-weight: 600; color: var(--text-muted); cursor: pointer;">Tree View</button>
+              </div>
+            </div>
+            <span id="jf-output-stats" style="font-size: 0.75rem; color: var(--text-muted);">0 characters</span>
+          </div>
+          <textarea id="jf-output" class="tf-textarea" style="flex: 1; min-height: 440px; font-family: var(--font-mono); font-size: 0.875rem; white-space: pre; background: var(--bg-subtle);" readonly></textarea>
+          <div id="jf-tree-wrap" style="display: none; flex: 1; min-height: 440px; overflow: auto; padding: 14px; background: var(--bg-subtle); border-radius: var(--radius-md); font-family: var(--font-mono); font-size: 0.875rem;"></div>
+        </div>
+      </div>
+
+      <!-- How it Works -->
+      <div style="margin-bottom: 48px;">
+        <h2 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 20px;">How ToolForge Formats & Validates JSON</h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px;">
+          <div class="tf-card">
+            <div style="font-size: 1.5rem; font-weight: 800; color: var(--accent); margin-bottom: 8px;">01</div>
+            <h3 style="font-size: 1.0625rem; font-weight: 700; margin-bottom: 6px;">Lexical Parsing</h3>
+            <p style="font-size: 0.875rem; color: var(--text-muted); line-height: 1.5;">JSON tokens are scanned into native abstract syntax tree objects in local thread memory.</p>
+          </div>
+          <div class="tf-card">
+            <div style="font-size: 1.5rem; font-weight: 800; color: var(--accent); margin-bottom: 8px;">02</div>
+            <h3 style="font-size: 1.0625rem; font-weight: 700; margin-bottom: 6px;">Syntax Linting</h3>
+            <p style="font-size: 0.875rem; color: var(--text-muted); line-height: 1.5;">Missing quotes, brackets, and illegal trailing commas are diagnosed with exact line positions.</p>
+          </div>
+          <div class="tf-card">
+            <div style="font-size: 1.5rem; font-weight: 800; color: var(--accent); margin-bottom: 8px;">03</div>
+            <h3 style="font-size: 1.0625rem; font-weight: 700; margin-bottom: 6px;">Format & Tree View</h3>
+            <p style="font-size: 0.875rem; color: var(--text-muted); line-height: 1.5;">Outputs clean, indented JSON with collapsible nodes, copy shortcuts, and file exports.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Privacy Note -->
+      <div class="tf-card" style="margin-bottom: 48px; background: var(--bg-subtle); border-left: 4px solid var(--success);">
+        <h3 style="font-size: 1.125rem; font-weight: 700; margin-bottom: 8px; color: var(--text-main);">Safe for Production API Keys & Customer Data</h3>
+        <p style="font-size: 0.9375rem; color: var(--text-muted); line-height: 1.6;">
+          Many online JSON formatters send your payload to backend logging servers. ToolForge executes 100% in your local browser sandbox.
+        </p>
+      </div>
+
+      <!-- FAQs -->
+      <div style="margin-bottom: 56px;">
+        <h2 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 20px;">Frequently Asked Questions</h2>
+        <div>
+          <details class="tf-faq-item" open>
+            <summary>Is my proprietary JSON sent to any remote server?</summary>
+            <div class="tf-faq-content">
+              Never. All formatting, validation, and tree generation execute in your local JavaScript runtime.
+            </div>
+          </details>
+          <details class="tf-faq-item">
+            <summary>Can it fix malformed JSON?</summary>
+            <div class="tf-faq-content">
+              Yes! Clicking 'Repair Syntax' automatically replaces single quotes with double quotes and removes illegal trailing commas.
+            </div>
+          </details>
+          <details class="tf-faq-item">
+            <summary>What does Key Sorting do?</summary>
+            <div class="tf-faq-content">
+              It recursively sorts every object key alphabetically, making diff comparisons between payload versions effortless.
+            </div>
+          </details>
+        </div>
+      </div>
+
+      <!-- Related Tools -->
+      <div>
+        <h2 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 20px;">Related Tools</h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px;">
+          <a href="/tools/regex-tester.html" class="tf-card tf-card-interactive">
+            <h3 style="font-size: 1.0625rem; font-weight: 700; margin-bottom: 6px;">Regex Tester</h3>
+            <p style="font-size: 0.875rem; color: var(--text-muted);">Test regular expressions with capture groups and presets.</p>
+          </a>
+          <a href="/tools/base64-encoder.html" class="tf-card tf-card-interactive">
+            <h3 style="font-size: 1.0625rem; font-weight: 700; margin-bottom: 6px;">Base64 Encoder & Decoder</h3>
+            <p style="font-size: 0.875rem; color: var(--text-muted);">Convert strings and binaries to Base64 or Data URIs.</p>
+          </a>
+          <a href="/tools/cron-builder.html" class="tf-card tf-card-interactive">
+            <h3 style="font-size: 1.0625rem; font-weight: 700; margin-bottom: 6px;">Cron Builder</h3>
+            <p style="font-size: 0.875rem; color: var(--text-muted);">Build, decode, and schedule standard 5-part cron expressions.</p>
+          </a>
+        </div>
+      </div>
+    
+      <section class="tf-seo-content" style="margin-top: 48px; padding-top: 32px; border-top: 1px solid var(--border, #e2e8f0);">
+        <h2 style="font-size: 1.5rem; margin-bottom: 12px;">About the JSON Formatter & Validator</h2>
+        <p style="line-height: 1.7; color: var(--text-muted); max-width: 760px;">Format, validate, minify, and inspect JSON in real time. The tool points out syntax errors, shows a collapsible tree view, and can sort keys. Use it to debug API responses and config files without pasting sensitive data into an online service.</p>
+        <h3 style="font-size: 1.125rem; margin: 20px 0 8px;">How to use it</h3>
+        <ol style="line-height: 1.8; padding-left: 22px; color: var(--text-muted);"><li>Paste or type your JSON.</li><li>Review any errors or switch to the tree view.</li><li>Beautify, minify, or sort keys, then copy the result.</li></ol>
+      </section>
+    </main>
+
+    <!-- Global Footer -->
+    <footer class="tf-footer">
+      <div class="tf-container">
+        <div class="tf-footer-bottom" style="border: none; padding-top: 0;">
+          <div>© 2026 ToolForge. 100% In-Browser Privacy.</div>
+          <a href="/index.html" style="color: var(--accent);">← Return to Home</a>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="/assets/js/common.js"></script>
+    <script src="/assets/js/tools/json-formatter.js"></script>
+  </body>
+</html>

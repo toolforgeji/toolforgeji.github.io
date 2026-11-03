@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta property="og:image" content="https://toolforgeji.github.io/assets/img/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Text Case Converter - UPPERCASE, lowercase, Title, camelCase | ToolForge</title>
+    <meta name="description" content="Convert text into UPPERCASE, lowercase, Title Case, camelCase, snake_case, kebab-case, CONSTANT_CASE, and slug format. 100% in-browser." />
+    <link rel="canonical" href="https://toolforgeji.github.io/tools/case-converter.html" />
+    <link rel="icon" type="image/svg+xml" href="/assets/img/logo.svg" />
+    
+    <meta property="og:title" content="Text Case Converter - ToolForge" />
+    <meta property="og:description" content="Transform strings into camelCase, Title Case, snake_case, and slug formats." />
+    <meta property="og:url" content="https://toolforgeji.github.io/tools/case-converter.html" />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="/assets/css/design-system.css" />
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "SoftwareApplication",
+          "name": "ToolForge Case Converter",
+          "applicationCategory": "UtilitiesApplication",
+          "operatingSystem": "All",
+          "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+        },
+        {
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "What is the difference between camelCase and PascalCase?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "camelCase starts with a lowercase letter (e.g. myVariableName), while PascalCase starts with an uppercase letter (e.g. MyClassName)."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "What does Slugify do?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Slugify converts headlines and titles into clean, URL-friendly strings with lowercase words separated by hyphens (e.g. 'my-first-blog-post')."
+              }
+            }
+          ]
+        }
+      ]
+    }
+    </script>
+  </head>
+  <body>
+    <!-- Navigation -->
+    <header class="tf-navbar">
+      <div class="tf-container">
+        <div class="tf-nav-inner">
+          <a href="/index.html" class="tf-brand">
+            <span class="tf-brand-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg>
+            </span>
+            <span>ToolForge</span>
+          </a>
+
+          <div style="display: flex; align-items: center; gap: 12px;">
+            <a href="/index.html" class="tf-btn tf-btn-secondary tf-btn-sm">All Tools</a>
+            <button class="theme-toggle-btn tf-btn-icon" aria-label="Toggle theme">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="tf-container" style="max-width: 1000px; padding-top: 40px; padding-bottom: 80px;">
+      <!-- Breadcrumbs -->
+      <div class="tf-breadcrumbs">
+        <a href="/index.html">Home</a>
+        <span class="tf-breadcrumbs-sep">/</span>
+        <a href="/index.html#tools-section">Writing & Text</a>
+        <span class="tf-breadcrumbs-sep">/</span>
+        <span>Text Case Converter</span>
+      </div>
+
+      <div style="margin-bottom: 24px;">
+        <h1 style="font-size: 2.25rem; font-weight: 800; margin-bottom: 8px;">Text Case Converter</h1>
+        <p style="font-size: 1.0625rem; color: var(--text-muted);">
+          Transform text effortlessly into standard grammatical cases, programming variable conventions, and URL slugs.
+        </p>
+      </div>
+
+      <!-- Action Chips Grid -->
+      <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px;">
+        <button class="case-btn tf-btn tf-btn-secondary tf-btn-sm" data-case="upper">UPPERCASE</button>
+        <button class="case-btn tf-btn tf-btn-secondary tf-btn-sm" data-case="lower">lowercase</button>
+        <button class="case-btn tf-btn tf-btn-primary tf-btn-sm" data-case="title">Title Case</button>
+        <button class="case-btn tf-btn tf-btn-secondary tf-btn-sm" data-case="sentence">Sentence case</button>
+        <button class="case-btn tf-btn tf-btn-secondary tf-btn-sm" data-case="camel">camelCase</button>
+        <button class="case-btn tf-btn tf-btn-secondary tf-btn-sm" data-case="pascal">PascalCase</button>
+        <button class="case-btn tf-btn tf-btn-secondary tf-btn-sm" data-case="snake">snake_case</button>
+        <button class="case-btn tf-btn tf-btn-secondary tf-btn-sm" data-case="kebab">kebab-case</button>
+        <button class="case-btn tf-btn tf-btn-secondary tf-btn-sm" data-case="constant">CONSTANT_CASE</button>
+        <button class="case-btn tf-btn tf-btn-secondary tf-btn-sm" data-case="slug">slugify-url</button>
+        <button class="case-btn tf-btn tf-btn-secondary tf-btn-sm" data-case="alternating">aLtErNaTiNg</button>
+        <button class="case-btn tf-btn tf-btn-secondary tf-btn-sm" data-case="reverse">Reverse Text</button>
+      </div>
+
+      <!-- Main Card -->
+      <div class="tf-card" style="margin-bottom: 48px;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+          <div style="display: flex; align-items: center; gap: 12px; font-size: 0.8125rem; color: var(--text-muted);">
+            <span>Characters: <strong id="cc-char-count">0</strong></span>
+            <span aria-hidden="true">·</span>
+            <span>Words: <strong id="cc-word-count">0</strong></span>
+          </div>
+          <div style="display: flex; gap: 8px;">
+            <button id="cc-copy-btn" class="tf-btn tf-btn-primary tf-btn-sm">Copy Result</button>
+            <button id="cc-clear-btn" class="tf-btn tf-btn-ghost tf-btn-sm" style="color: var(--danger);">Clear</button>
+          </div>
+        </div>
+
+        <textarea id="cc-input" class="tf-textarea" style="height: 280px; font-size: 1rem; line-height: 1.6;" placeholder="Type or paste text here, then click any conversion button above..."></textarea>
+      </div>
+
+      <!-- How it Works -->
+      <div style="margin-bottom: 48px;">
+        <h2 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 20px;">Supported Text Transformations</h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px;">
+          <div class="tf-card">
+            <h3 style="font-size: 1.0625rem; font-weight: 700; margin-bottom: 6px;">Editorial & Literary</h3>
+            <p style="font-size: 0.875rem; color: var(--text-muted); line-height: 1.5;">Title Case capitalizes all primary words. Sentence case respects punctuation terminators.</p>
+          </div>
+          <div class="tf-card">
+            <h3 style="font-size: 1.0625rem; font-weight: 700; margin-bottom: 6px;">Developer Notations</h3>
+            <p style="font-size: 0.875rem; color: var(--text-muted); line-height: 1.5;">camelCase, PascalCase, snake_case, and CONSTANT_CASE for code identifiers.</p>
+          </div>
+          <div class="tf-card">
+            <h3 style="font-size: 1.0625rem; font-weight: 700; margin-bottom: 6px;">SEO & Web Slugs</h3>
+            <p style="font-size: 0.875rem; color: var(--text-muted); line-height: 1.5;">Strips punctuation and accents to generate URL-safe slug strings for permalinks.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Privacy Note -->
+      <div class="tf-card" style="margin-bottom: 48px; background: var(--bg-subtle); border-left: 4px solid var(--success);">
+        <h3 style="font-size: 1.125rem; font-weight: 700; margin-bottom: 8px; color: var(--text-main);">Zero Cloud Ingestion</h3>
+        <p style="font-size: 0.9375rem; color: var(--text-muted); line-height: 1.6;">
+          All text manipulation happens purely in your browser session. No data is stored, cached, or transmitted.
+        </p>
+      </div>
+
+      <!-- FAQs -->
+      <div style="margin-bottom: 56px;">
+        <h2 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 20px;">Frequently Asked Questions</h2>
+        <div>
+          <details class="tf-faq-item" open>
+            <summary>What is the difference between camelCase and PascalCase?</summary>
+            <div class="tf-faq-content">
+              camelCase starts with a lowercase letter (e.g. myVariableName), while PascalCase starts with an uppercase letter (e.g. MyClassName).
+            </div>
+          </details>
+          <details class="tf-faq-item">
+            <summary>What does Slugify do?</summary>
+            <div class="tf-faq-content">
+              Slugify converts headlines and titles into clean, URL-friendly strings with lowercase words separated by hyphens (e.g. 'my-first-blog-post').
+            </div>
+          </details>
+          <details class="tf-faq-item">
+            <summary>Does it handle accented letters and umlauts?</summary>
+            <div class="tf-faq-content">
+              Yes, our slug generator normalizes diacritics (e.g. 'é' becomes 'e') to ensure pure ASCII URL compliance.
+            </div>
+          </details>
+        </div>
+      </div>
+
+      <!-- Related Tools -->
+      <div>
+        <h2 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 20px;">Related Tools</h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px;">
+          <a href="/tools/word-counter.html" class="tf-card tf-card-interactive">
+            <h3 style="font-size: 1.0625rem; font-weight: 700; margin-bottom: 6px;">Word Counter</h3>
+            <p style="font-size: 0.875rem; color: var(--text-muted);">Count characters, words, sentences, and reading time.</p>
+          </a>
+          <a href="/tools/keyword-density.html" class="tf-card tf-card-interactive">
+            <h3 style="font-size: 1.0625rem; font-weight: 700; margin-bottom: 6px;">SEO Keyword Density</h3>
+            <p style="font-size: 0.875rem; color: var(--text-muted);">Detect keyword over-optimization in written content.</p>
+          </a>
+          <a href="/tools/json-formatter.html" class="tf-card tf-card-interactive">
+            <h3 style="font-size: 1.0625rem; font-weight: 700; margin-bottom: 6px;">JSON Formatter</h3>
+            <p style="font-size: 0.875rem; color: var(--text-muted);">Format, minify, and validate JSON code.</p>
+          </a>
+        </div>
+      </div>
+    
+      <section class="tf-seo-content" style="margin-top: 48px; padding-top: 32px; border-top: 1px solid var(--border, #e2e8f0);">
+        <h2 style="font-size: 1.5rem; margin-bottom: 12px;">About the Text Case Converter</h2>
+        <p style="line-height: 1.7; color: var(--text-muted); max-width: 760px;">Convert text to UPPERCASE, lowercase, Title Case, camelCase, snake_case, kebab-case, CONSTANT_CASE, or URL slugs. Developers use it to rename variables, and writers use it to fix headings. Everything runs in your browser.</p>
+        <h3 style="font-size: 1.125rem; margin: 20px 0 8px;">How to use it</h3>
+        <ol style="line-height: 1.8; padding-left: 22px; color: var(--text-muted);"><li>Paste your text.</li><li>Choose the target case.</li><li>Copy the converted result.</li></ol>
+      </section>
+    </main>
+
+    <!-- Global Footer -->
+    <footer class="tf-footer">
+      <div class="tf-container">
+        <div class="tf-footer-bottom" style="border: none; padding-top: 0;">
+          <div>© 2026 ToolForge. 100% In-Browser Privacy.</div>
+          <a href="/index.html" style="color: var(--accent);">← Return to Home</a>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="/assets/js/common.js"></script>
+    <script src="/assets/js/tools/case-converter.js"></script>
+  </body>
+</html>

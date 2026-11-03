@@ -1,0 +1,6 @@
+{
+  "name": "ToolForge - Free In-Browser Privacy-First Utility Suite",
+  "description": "Comprehensive suite of 28 free, client-side utility tools for developers, designers, writers, and businesses. 100% in-browser with zero uploads.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

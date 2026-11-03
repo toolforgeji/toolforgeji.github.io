@@ -1,0 +1,269 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta property="og:image" content="https://toolforgeji.github.io/assets/img/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Image OCR Text Extractor - Extract Text from Images | ToolForge</title>
+    <meta name="description" content="Extract editable text from scanned documents, receipts, photos, and screenshots. 100% in-browser OCR powered by Tesseract WebAssembly." />
+    <link rel="canonical" href="https://toolforgeji.github.io/tools/ocr.html" />
+    <link rel="icon" type="image/svg+xml" href="/assets/img/logo.svg" />
+    
+    <meta property="og:title" content="Image OCR Text Extractor - ToolForge" />
+    <meta property="og:description" content="Optical character recognition running 100% in your browser. Zero cloud transmission." />
+    <meta property="og:url" content="https://toolforgeji.github.io/tools/ocr.html" />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="/assets/css/design-system.css" />
+
+    <!-- Tesseract.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "SoftwareApplication",
+          "name": "ToolForge Image OCR Extractor",
+          "applicationCategory": "UtilitiesApplication",
+          "operatingSystem": "All",
+          "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+        },
+        {
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "How does client-side OCR work without an API key?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Tesseract.js compiles the native C++ Tesseract OCR engine directly into WebAssembly, running machine learning optical models inside your browser thread."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Is my image uploaded or saved anywhere?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Never. The image pixels are analyzed purely in your computer's local RAM."
+              }
+            }
+          ]
+        }
+      ]
+    }
+    </script>
+  </head>
+  <body>
+    <!-- Navigation -->
+    <header class="tf-navbar">
+      <div class="tf-container">
+        <div class="tf-nav-inner">
+          <a href="/index.html" class="tf-brand">
+            <span class="tf-brand-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg>
+            </span>
+            <span>ToolForge</span>
+          </a>
+
+          <div style="display: flex; align-items: center; gap: 12px;">
+            <a href="/index.html" class="tf-btn tf-btn-secondary tf-btn-sm">All Tools</a>
+            <button class="theme-toggle-btn tf-btn-icon" aria-label="Toggle theme">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="tf-container" style="max-width: 960px; padding-top: 40px; padding-bottom: 80px;">
+      <!-- Breadcrumbs -->
+      <div class="tf-breadcrumbs">
+        <a href="/index.html">Home</a>
+        <span class="tf-breadcrumbs-sep">/</span>
+        <a href="/index.html#tools-section">Image & Media</a>
+        <span class="tf-breadcrumbs-sep">/</span>
+        <span>Image OCR Text Extractor</span>
+      </div>
+
+      <div style="margin-bottom: 32px;">
+        <h1 style="font-size: 2.25rem; font-weight: 800; margin-bottom: 8px;">Image OCR Text Extractor</h1>
+        <p style="font-size: 1.0625rem; color: var(--text-muted);">
+          Extract clean, editable text from images, invoices, scans, and documents using client-side WebAssembly OCR. Zero cloud transmissions.
+        </p>
+      </div>
+
+      <div class="tf-card" style="margin-bottom: 48px;">
+        <!-- Dropzone -->
+        <div id="ocr-dropzone" class="tf-dropzone">
+          <div class="tf-dropzone-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7V5a2 2 0 0 1 2-2h2"></path><path d="M17 3h2a2 2 0 0 1 2 2v2"></path><path d="M21 17v2a2 2 0 0 1-2 2h-2"></path><path d="M7 21H5a2 2 0 0 1-2-2v-2"></path><line x1="7" y1="8" x2="17" y2="8"></line><line x1="7" y1="12" x2="17" y2="12"></line><line x1="7" y1="16" x2="13" y2="16"></line></svg>
+          </div>
+          <div>
+            <strong style="color: var(--text-main); font-size: 1.0625rem; display: block; margin-bottom: 4px;">Upload or drop an image here</strong>
+            <span style="color: var(--text-muted); font-size: 0.875rem;">PNG, JPG, WebP, BMP, or screenshot</span>
+          </div>
+          <input type="file" id="ocr-file-input" accept="image/*" style="display: none;" />
+          <button type="button" class="tf-btn tf-btn-secondary tf-btn-sm" onclick="document.getElementById('ocr-file-input').click()">Browse Image</button>
+        </div>
+
+        <!-- OCR Split View (Image Preview + Extracted Text) -->
+        <div id="ocr-workspace" style="display: none; margin-top: 24px; padding-top: 24px; border-top: 1px solid var(--border-subtle);">
+          <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; margin-bottom: 20px;">
+            <div style="display: flex; align-items: center; gap: 12px;">
+              <label class="tf-label" for="ocr-lang" style="margin: 0;">Language:</label>
+              <select id="ocr-lang" class="tf-select" style="width: auto; padding: 6px 12px;">
+                <option value="eng" selected>English</option>
+                <option value="spa">Spanish</option>
+                <option value="fra">French</option>
+                <option value="deu">German</option>
+                <option value="ita">Italian</option>
+                <option value="por">Portuguese</option>
+              </select>
+            </div>
+            <button id="ocr-reset-btn" class="tf-btn tf-btn-ghost tf-btn-sm" style="color: var(--danger);">Change Image</button>
+          </div>
+
+          <!-- Progress Bar -->
+          <div id="ocr-progress-wrap" style="display: none; margin-bottom: 20px;">
+            <div style="display: flex; justify-content: space-between; font-size: 0.8125rem; color: var(--text-muted); margin-bottom: 6px;">
+              <span id="ocr-status-text">Initializing neural model...</span>
+              <span id="ocr-percent-text">0%</span>
+            </div>
+            <div style="height: 6px; width: 100%; background: var(--bg-subtle); border-radius: 3px; overflow: hidden;">
+              <div id="ocr-progress-bar" style="height: 100%; width: 0%; background: var(--accent); transition: width 150ms ease;"></div>
+            </div>
+          </div>
+
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-bottom: 24px;">
+            <!-- Left: Image Preview -->
+            <div>
+              <div style="font-size: 0.875rem; font-weight: 600; color: var(--text-main); margin-bottom: 8px;">Source Image</div>
+              <div style="border-radius: var(--radius-md); overflow: hidden; border: 1px solid var(--border-subtle); background: var(--bg-subtle); max-height: 380px; display: flex; align-items: center; justify-content: center;">
+                <img id="ocr-img-preview" src="" alt="OCR Source" style="max-width: 100%; max-height: 380px; object-fit: contain;" />
+              </div>
+            </div>
+
+            <!-- Right: Recognized Output -->
+            <div>
+              <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
+                <div style="font-size: 0.875rem; font-weight: 600; color: var(--text-main);">Extracted Text</div>
+                <div style="display: flex; gap: 8px;">
+                  <button id="ocr-copy-btn" class="tf-btn tf-btn-secondary tf-btn-sm" disabled>Copy</button>
+                  <button id="ocr-download-btn" class="tf-btn tf-btn-secondary tf-btn-sm" disabled>Download .txt</button>
+                </div>
+              </div>
+              <textarea id="ocr-output-text" class="tf-textarea" style="height: 340px; font-family: var(--font-mono); font-size: 0.875rem;" placeholder="Click 'Run OCR Recognition' below to begin processing..." readonly></textarea>
+            </div>
+          </div>
+
+          <button id="start-ocr-btn" class="tf-btn tf-btn-primary">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polygon points="10 8 16 12 10 16 10 8"></polygon></svg>
+            <span>Run OCR Recognition</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- How it Works -->
+      <div style="margin-bottom: 48px;">
+        <h2 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 20px;">How ToolForge Extracts Text</h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px;">
+          <div class="tf-card">
+            <div style="font-size: 1.5rem; font-weight: 800; color: var(--accent); margin-bottom: 8px;">01</div>
+            <h3 style="font-size: 1.0625rem; font-weight: 700; margin-bottom: 6px;">Image Binarization</h3>
+            <p style="font-size: 0.875rem; color: var(--text-muted); line-height: 1.5;">The image is converted into grayscale luminance maps and binarized for optimal character contrast.</p>
+          </div>
+          <div class="tf-card">
+            <div style="font-size: 1.5rem; font-weight: 800; color: var(--accent); margin-bottom: 8px;">02</div>
+            <h3 style="font-size: 1.0625rem; font-weight: 700; margin-bottom: 6px;">WebAssembly Tesseract</h3>
+            <p style="font-size: 0.875rem; color: var(--text-muted); line-height: 1.5;">Tesseract's LSTM neural network recognizes glyphs and sentences inside a Web Worker thread.</p>
+          </div>
+          <div class="tf-card">
+            <div style="font-size: 1.5rem; font-weight: 800; color: var(--accent); margin-bottom: 8px;">03</div>
+            <h3 style="font-size: 1.0625rem; font-weight: 700; margin-bottom: 6px;">Formatted Text Output</h3>
+            <p style="font-size: 0.875rem; color: var(--text-muted); line-height: 1.5;">Copy the resulting paragraphs or export directly to a text file with formatting intact.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Privacy Note -->
+      <div class="tf-card" style="margin-bottom: 48px; background: var(--bg-subtle); border-left: 4px solid var(--success);">
+        <h3 style="font-size: 1.125rem; font-weight: 700; margin-bottom: 8px; color: var(--text-main);">Zero Cloud Ingestion</h3>
+        <p style="font-size: 0.9375rem; color: var(--text-muted); line-height: 1.6;">
+          Your scanned tax records, identity documents, and personal notes are never transmitted over the internet. The optical engine runs locally in your device's browser memory.
+        </p>
+      </div>
+
+      <!-- FAQs -->
+      <div style="margin-bottom: 56px;">
+        <h2 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 20px;">Frequently Asked Questions</h2>
+        <div>
+          <details class="tf-faq-item" open>
+            <summary>How does client-side OCR work without an API key?</summary>
+            <div class="tf-faq-content">
+              Tesseract.js compiles the native C++ Tesseract OCR engine directly into WebAssembly, running machine learning optical models inside your browser thread.
+            </div>
+          </details>
+          <details class="tf-faq-item">
+            <summary>What languages are supported?</summary>
+            <div class="tf-faq-content">
+              We currently bundle trained LSTM models for English, Spanish, French, German, Italian, and Portuguese.
+            </div>
+          </details>
+          <details class="tf-faq-item">
+            <summary>What types of images give the best accuracy?</summary>
+            <div class="tf-faq-content">
+              High-contrast documents with clean lighting and straight text lines produce near 100% accuracy.
+            </div>
+          </details>
+        </div>
+      </div>
+
+      <!-- Related Tools -->
+      <div>
+        <h2 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 20px;">Related Tools</h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px;">
+          <a href="/tools/pdf-compressor.html" class="tf-card tf-card-interactive">
+            <h3 style="font-size: 1.0625rem; font-weight: 700; margin-bottom: 6px;">PDF Compressor</h3>
+            <p style="font-size: 0.875rem; color: var(--text-muted);">Shrink PDF file sizes while retaining clear readability.</p>
+          </a>
+          <a href="/tools/word-counter.html" class="tf-card tf-card-interactive">
+            <h3 style="font-size: 1.0625rem; font-weight: 700; margin-bottom: 6px;">Word Counter</h3>
+            <p style="font-size: 0.875rem; color: var(--text-muted);">Analyze text stats, readability grade, and word frequencies.</p>
+          </a>
+          <a href="/tools/image-compressor.html" class="tf-card tf-card-interactive">
+            <h3 style="font-size: 1.0625rem; font-weight: 700; margin-bottom: 6px;">Image Compressor</h3>
+            <p style="font-size: 0.875rem; color: var(--text-muted);">Optimize JPEG, PNG, and WebP graphics with quality controls.</p>
+          </a>
+        </div>
+      </div>
+    
+      <section class="tf-seo-content" style="margin-top: 48px; padding-top: 32px; border-top: 1px solid var(--border, #e2e8f0);">
+        <h2 style="font-size: 1.5rem; margin-bottom: 12px;">About the Image OCR Text Extractor</h2>
+        <p style="line-height: 1.7; color: var(--text-muted); max-width: 760px;">Extract editable text from scanned documents, receipts, photos, and screenshots. Text recognition runs in your browser using Tesseract WebAssembly, so the images you process stay on your device. Copy the extracted text into notes, spreadsheets, or documents.</p>
+        <h3 style="font-size: 1.125rem; margin: 20px 0 8px;">How to use it</h3>
+        <ol style="line-height: 1.8; padding-left: 22px; color: var(--text-muted);"><li>Upload an image that contains text.</li><li>Wait while the text is recognized.</li><li>Copy or download the result and check it for errors.</li></ol>
+      </section>
+    </main>
+
+    <!-- Global Footer -->
+    <footer class="tf-footer">
+      <div class="tf-container">
+        <div class="tf-footer-bottom" style="border: none; padding-top: 0;">
+          <div>© 2026 ToolForge. 100% In-Browser Privacy.</div>
+          <a href="/index.html" style="color: var(--accent);">← Return to Home</a>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="/assets/js/common.js"></script>
+    <script src="/assets/js/tools/ocr.js"></script>
+  </body>
+</html>

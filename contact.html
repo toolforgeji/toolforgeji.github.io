@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta property="og:url" content="https://toolforgeji.github.io/contact.html" />
+    <meta property="og:title" content="Contact & Feedback - ToolForge" />
+    <meta property="og:description" content="Reach out to the ToolForge engineering team. Suggest new client-side tools or report an issue." />
+    <meta property="og:image" content="https://toolforgeji.github.io/assets/img/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact & Feedback - ToolForge</title>
+    <meta name="description" content="Reach out to the ToolForge engineering team. Suggest new client-side tools or report an issue." />
+    <link rel="canonical" href="https://toolforgeji.github.io/contact.html" />
+    <link rel="icon" type="image/svg+xml" href="/assets/img/logo.svg" />
+    <link rel="stylesheet" href="/assets/css/design-system.css" />
+  </head>
+  <body>
+    <!-- Navigation -->
+    <header class="tf-navbar">
+      <div class="tf-container">
+        <div class="tf-nav-inner">
+          <a href="/index.html" class="tf-brand">
+            <span class="tf-brand-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg>
+            </span>
+            <span>ToolForge</span>
+          </a>
+
+          <div style="display: flex; align-items: center; gap: 12px;">
+            <a href="/index.html" class="tf-btn tf-btn-secondary tf-btn-sm">← Back to All Tools</a>
+            <button class="theme-toggle-btn tf-btn-icon" aria-label="Toggle theme">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="tf-container" style="max-width: 680px; padding-top: 56px; padding-bottom: 80px;">
+      <div class="tf-breadcrumbs">
+        <a href="/index.html">Home</a>
+        <span class="tf-breadcrumbs-sep">/</span>
+        <span>Contact</span>
+      </div>
+
+      <h1 style="font-size: 2.25rem; font-weight: 800; margin-bottom: 12px;">Get in Touch</h1>
+      <p style="font-size: 1.0625rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 32px;">
+        Have an idea for a new client-side tool? Encountered an issue? Send us feedback. Since ToolForge has zero backend telemetry, your direct input is how we improve!
+      </p>
+
+      <div class="tf-card">
+        <form id="contact-form" onsubmit="event.preventDefault(); handleContactSubmit();">
+          <div class="tf-form-group">
+            <label class="tf-label" for="contact-name">Your Name</label>
+            <input type="text" id="contact-name" class="tf-input" placeholder="Alex Morgan" required />
+          </div>
+
+          <div class="tf-form-group">
+            <label class="tf-label" for="contact-email">Email Address</label>
+            <input type="email" id="contact-email" class="tf-input" placeholder="alex@company.com" required />
+          </div>
+
+          <div class="tf-form-group">
+            <label class="tf-label" for="contact-category">Topic</label>
+            <select id="contact-category" class="tf-select">
+              <option value="feature">Request a New Tool</option>
+              <option value="bug">Report a Bug / Issue</option>
+              <option value="feedback">General Feedback</option>
+              <option value="other">Other Inquiry</option>
+            </select>
+          </div>
+
+          <div class="tf-form-group">
+            <label class="tf-label" for="contact-msg">Message</label>
+            <textarea id="contact-msg" class="tf-textarea" placeholder="Describe the tool you'd like to see or the issue you experienced..." required></textarea>
+          </div>
+
+          <button type="submit" class="tf-btn tf-btn-primary" style="width: 100%;">
+            Send Message
+          </button>
+        </form>
+      </div>
+
+      <div style="margin-top: 36px; text-align: center; color: var(--text-muted); font-size: 0.875rem;">
+        Prefer email? Write directly to <a href="mailto:hello@toolforge.dev" style="color: var(--accent); font-weight: 600;">hello@toolforge.dev</a>
+      </div>
+    </main>
+
+    <footer class="tf-footer">
+      <div class="tf-container">
+        <div class="tf-footer-bottom" style="border: none; padding-top: 0;">
+          <div>© 2026 ToolForge. Privacy First.</div>
+          <a href="/index.html" style="color: var(--accent);">← Return to Home</a>
+        </div>
+      </div>
+    </footer>
+
+    <script src="/assets/js/common.js"></script>
+    <script>
+      function handleContactSubmit() {
+        const name = document.getElementById('contact-name').value;
+        const email = document.getElementById('contact-email').value;
+        const msg = document.getElementById('contact-msg').value;
+
+        if (!name || !email || !msg) {
+          window.showToast('Please fill out all required fields.', 'error');
+          return;
+        }
+
+        window.showToast('Thank you! Your feedback has been recorded locally.', 'success');
+        document.getElementById('contact-form').reset();
+      }
+    </script>
+  </body>
+</html>

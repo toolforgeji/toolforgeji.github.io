@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Color Converter & WCAG Contrast Studio - ToolForge</title>
+    <meta name="description" content="Convert HEX, RGB, HSL, HSV, CMYK, and OKLCH color codes with live WCAG contrast checker and palette shades. 100% free and in-browser." />
+    <link rel="canonical" href="https://toolforgeji.github.io/tools/color-converter.html" />
+    <link rel="icon" type="image/svg+xml" href="/assets/img/logo.svg" />
+    <link rel="stylesheet" href="/assets/css/design-system.css" />
+
+    <meta property="og:title" content="Color Converter & WCAG Contrast Studio - ToolForge" />
+    <meta property="og:description" content="Convert HEX, RGB, HSL, and CMYK color codes with real-time WCAG AA/AAA contrast verification." />
+    <meta property="og:url" content="https://toolforgeji.github.io/tools/color-converter.html" />
+    <meta property="og:image" content="/assets/img/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Color Converter Studio",
+      "operatingSystem": "All",
+      "applicationCategory": "UtilitiesApplication",
+      "offers": { "@type": "Offer", "price": "0" },
+      "description": "Convert color formats and test WCAG compliance in real-time."
+    }
+    </script>
+  </head>
+  <body>
+    <!-- Navigation -->
+    <header class="tf-navbar">
+      <div class="tf-container">
+        <div class="tf-nav-inner">
+          <a href="/index.html" class="tf-brand">
+            <span class="tf-brand-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg>
+            </span>
+            <span>ToolForge</span>
+          </a>
+
+          <div style="display: flex; align-items: center; gap: 12px;">
+            <button class="search-trigger-btn tf-btn tf-btn-secondary tf-btn-sm" aria-label="Search tools">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+              <span>Search</span>
+              <kbd class="tf-key-badge">⌘K</kbd>
+            </button>
+            <a href="/index.html" class="tf-btn tf-btn-secondary tf-btn-sm">All Tools</a>
+            <button class="theme-toggle-btn tf-btn-icon" aria-label="Toggle theme">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="tf-container" style="max-width: 1100px; padding-top: 40px; padding-bottom: 80px;">
+      <!-- Breadcrumbs -->
+      <div class="tf-breadcrumbs">
+        <a href="/index.html">Home</a>
+        <span class="tf-breadcrumbs-sep">/</span>
+        <a href="/index.html#tools-section">Developer Tools</a>
+        <span class="tf-breadcrumbs-sep">/</span>
+        <span class="tf-breadcrumbs-current">Color Studio</span>
+      </div>
+
+        <div style="margin-bottom: 28px;">
+          <h1 style="font-size: 2rem; margin-bottom: 8px;">Color Converter & WCAG Studio</h1>
+          <p style="color: var(--text-muted); max-width: 720px;">
+            Convert across HEX, RGB, HSL, HSV, CMYK, and OKLCH. Inspect WCAG 2.1 AA/AAA contrast ratios against light and dark surfaces, and generate harmonious tint & shade palettes.
+          </p>
+        </div>
+
+        <!-- Tool Workspace -->
+        <div class="tf-tool-card" style="margin-bottom: 40px;">
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 28px;">
+            <!-- Left: Picker and Swatch -->
+            <div>
+              <div id="color-preview" class="tf-color-swatch-large" style="background-color: #4f46e5; margin-bottom: 16px;">
+                <span id="preview-text" style="color: #ffffff; font-weight: 700; font-size: 1.125rem; font-family: var(--font-mono);">#4F46E5</span>
+              </div>
+
+              <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 20px;">
+                <input type="color" id="native-color-picker" value="#4f46e5" style="width: 44px; height: 44px; border: none; border-radius: 8px; cursor: pointer; background: transparent;" />
+                <div style="flex: 1;">
+                  <label class="tf-label" for="hex-input">HEX Color Code</label>
+                  <input type="text" id="hex-input" class="tf-input" value="#4F46E5" placeholder="#4F46E5" style="font-family: var(--font-mono);" />
+                </div>
+              </div>
+
+              <!-- Quick Presets -->
+              <div>
+                <span class="tf-label" style="margin-bottom: 8px; display: block;">Popular Accent Colors</span>
+                <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+                  <button class="preset-btn" data-color="#4F46E5" style="width: 28px; height: 28px; border-radius: 6px; border: 1px solid var(--border-subtle); background: #4F46E5; cursor: pointer;"></button>
+                  <button class="preset-btn" data-color="#0EA5E9" style="width: 28px; height: 28px; border-radius: 6px; border: 1px solid var(--border-subtle); background: #0EA5E9; cursor: pointer;"></button>
+                  <button class="preset-btn" data-color="#10B981" style="width: 28px; height: 28px; border-radius: 6px; border: 1px solid var(--border-subtle); background: #10B981; cursor: pointer;"></button>
+                  <button class="preset-btn" data-color="#F59E0B" style="width: 28px; height: 28px; border-radius: 6px; border: 1px solid var(--border-subtle); background: #F59E0B; cursor: pointer;"></button>
+                  <button class="preset-btn" data-color="#EF4444" style="width: 28px; height: 28px; border-radius: 6px; border: 1px solid var(--border-subtle); background: #EF4444; cursor: pointer;"></button>
+                  <button class="preset-btn" data-color="#8B5CF6" style="width: 28px; height: 28px; border-radius: 6px; border: 1px solid var(--border-subtle); background: #8B5CF6; cursor: pointer;"></button>
+                  <button class="preset-btn" data-color="#EC4899" style="width: 28px; height: 28px; border-radius: 6px; border: 1px solid var(--border-subtle); background: #EC4899; cursor: pointer;"></button>
+                  <button class="preset-btn" data-color="#0F172A" style="width: 28px; height: 28px; border-radius: 6px; border: 1px solid var(--border-subtle); background: #0F172A; cursor: pointer;"></button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Right: Converted Formats -->
+            <div style="display: flex; flex-direction: column; gap: 12px;">
+              <div>
+                <label class="tf-label">RGB (Red, Green, Blue)</label>
+                <div style="display: flex; gap: 8px;">
+                  <input type="text" id="rgb-output" class="tf-input" readonly style="font-family: var(--font-mono);" />
+                  <button class="tf-btn tf-btn-secondary tf-btn-sm copy-btn" data-target="rgb-output">Copy</button>
+                </div>
+              </div>
+
+              <div>
+                <label class="tf-label">HSL (Hue, Saturation, Lightness)</label>
+                <div style="display: flex; gap: 8px;">
+                  <input type="text" id="hsl-output" class="tf-input" readonly style="font-family: var(--font-mono);" />
+                  <button class="tf-btn tf-btn-secondary tf-btn-sm copy-btn" data-target="hsl-output">Copy</button>
+                </div>
+              </div>
+
+              <div>
+                <label class="tf-label">CMYK (Cyan, Magenta, Yellow, Key)</label>
+                <div style="display: flex; gap: 8px;">
+                  <input type="text" id="cmyk-output" class="tf-input" readonly style="font-family: var(--font-mono);" />
+                  <button class="tf-btn tf-btn-secondary tf-btn-sm copy-btn" data-target="cmyk-output">Copy</button>
+                </div>
+              </div>
+
+              <div>
+                <label class="tf-label">CSS Variable Declaration</label>
+                <div style="display: flex; gap: 8px;">
+                  <input type="text" id="css-output" class="tf-input" readonly style="font-family: var(--font-mono);" />
+                  <button class="tf-btn tf-btn-secondary tf-btn-sm copy-btn" data-target="css-output">Copy</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- WCAG Contrast Matrix -->
+          <div style="margin-top: 28px; padding-top: 24px; border-top: 1px solid var(--border-subtle);">
+            <h3 style="font-size: 1.125rem; margin-bottom: 14px;">WCAG 2.1 Accessibility Contrast</h3>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+              <div class="tf-card" style="padding: 16px; display: flex; align-items: center; justify-content: space-between;">
+                <div>
+                  <div style="font-weight: 600; font-size: 0.9375rem;">Against White Text (#FFFFFF)</div>
+                  <div style="font-size: 0.8125rem; color: var(--text-muted);">Ratio: <span id="white-ratio" style="font-family: var(--font-mono); font-weight: 700;">4.85:1</span></div>
+                </div>
+                <div id="white-wcag-badge" class="tf-contrast-badge tf-contrast-pass">WCAG AA Pass</div>
+              </div>
+
+              <div class="tf-card" style="padding: 16px; display: flex; align-items: center; justify-content: space-between;">
+                <div>
+                  <div style="font-weight: 600; font-size: 0.9375rem;">Against Black Text (#000000)</div>
+                  <div style="font-size: 0.8125rem; color: var(--text-muted);">Ratio: <span id="black-ratio" style="font-family: var(--font-mono); font-weight: 700;">4.33:1</span></div>
+                </div>
+                <div id="black-wcag-badge" class="tf-contrast-badge tf-contrast-fail">WCAG AAA Fail</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tint & Shade Palette -->
+          <div style="margin-top: 28px; padding-top: 24px; border-top: 1px solid var(--border-subtle);">
+            <h3 style="font-size: 1.125rem; margin-bottom: 14px;">Harmonious Tints & Shades</h3>
+            <div id="palette-strip" style="display: grid; grid-template-columns: repeat(9, 1fr); gap: 6px; height: 56px;"></div>
+          </div>
+        </div>
+
+        <!-- How It Works -->
+        <div style="margin-bottom: 48px;">
+          <h2 style="font-size: 1.5rem; margin-bottom: 24px;">How It Works</h2>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px;">
+            <div class="tf-card" style="padding: 24px;">
+              <div style="font-weight: 700; color: var(--accent); margin-bottom: 8px;">01. Select or Input</div>
+              <p style="font-size: 0.9375rem;">Use the color wheel, click a preset, or type any valid 3 or 6-digit hex code.</p>
+            </div>
+            <div class="tf-card" style="padding: 24px;">
+              <div style="font-weight: 700; color: var(--accent); margin-bottom: 8px;">02. Format Sync</div>
+              <p style="font-size: 0.9375rem;">Mathematical formulas calculate normalized RGB, HSL angles, and CMYK percentages synchronously.</p>
+            </div>
+            <div class="tf-card" style="padding: 24px;">
+              <div style="font-weight: 700; color: var(--accent); margin-bottom: 8px;">03. WCAG Testing</div>
+              <p style="font-size: 0.9375rem;">Relative luminance equations calculate WCAG AA (4.5:1) and AAA (7:1) contrast scores for design systems.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Related Tools -->
+        <div>
+          <h2 style="font-size: 1.25rem; margin-bottom: 16px;">Related Developer Tools</h2>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px;">
+            <a href="/tools/svg-optimizer.html" class="tf-card" style="padding: 20px; display: block; text-decoration: none;">
+              <h3 style="font-size: 1rem; margin-bottom: 4px;">SVG Cleaner & Optimizer</h3>
+              <p style="font-size: 0.8125rem; color: var(--text-muted);">Minify vector graphics and strip editor metadata.</p>
+            </a>
+            <a href="/tools/qr-generator.html" class="tf-card" style="padding: 20px; display: block; text-decoration: none;">
+              <h3 style="font-size: 1rem; margin-bottom: 4px;">QR Code Generator</h3>
+              <p style="font-size: 0.8125rem; color: var(--text-muted);">Generate scannable codes with custom color styling.</p>
+            </a>
+            <a href="/tools/base64-encoder.html" class="tf-card" style="padding: 20px; display: block; text-decoration: none;">
+              <h3 style="font-size: 1rem; margin-bottom: 4px;">Base64 Encoder</h3>
+              <p style="font-size: 0.8125rem; color: var(--text-muted);">Convert text and assets into Base64 data strings.</p>
+            </a>
+          </div>
+        </div>
+      </div>
+    
+      <section class="tf-seo-content" style="margin-top: 48px; padding-top: 32px; border-top: 1px solid var(--border, #e2e8f0);">
+        <h2 style="font-size: 1.5rem; margin-bottom: 12px;">About the Color Converter Studio</h2>
+        <p style="line-height: 1.7; color: var(--text-muted); max-width: 760px;">Convert colors between HEX, RGB, HSL, HSV, CMYK, and OKLCH, and check WCAG contrast ratios for text and backgrounds. Generate tint and shade palettes and copy values with one click. Useful for designers and developers checking accessibility.</p>
+        <h3 style="font-size: 1.125rem; margin: 20px 0 8px;">How to use it</h3>
+        <ol style="line-height: 1.8; padding-left: 22px; color: var(--text-muted);"><li>Enter a color in any format.</li><li>Copy the equivalent values.</li><li>Check the contrast ratio. WCAG AA requires at least 4.5:1 for normal-size text.</li></ol>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="tf-footer">
+      <div class="tf-container">
+        <div class="tf-footer-bottom">
+          <div>© 2026 ToolForge. Released under the MIT License.</div>
+          <div>100% In-Browser Privacy</div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="/assets/js/common.js"></script>
+    <script src="/assets/js/tools/color-converter.js"></script>
+  </body>
+</html>
