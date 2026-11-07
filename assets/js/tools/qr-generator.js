@@ -74,7 +74,11 @@
   };
 
   const renderQR = () => {
-    if (typeof QRCode === 'undefined') return;
+    if (typeof QRCode === 'undefined') {
+      console.error('QRCode library load nahi hui. vendor file ya CDN check karein.');
+      if (window.showToast) window.showToast('QR library load nahi hui. Page reload karein.', 'error');
+      return;
+    }
 
     const payload = getPayload();
     const dark = colorDark.value;
@@ -123,7 +127,14 @@
     window.copyToClipboard(dataUrl, 'QR Code Data URL copied!');
   });
 
-  // Init
-  setTimeout(renderQR, 100);
+  // Init: wait until the QRCode library has loaded (local file or CDN fallback)
+  const waitForLib = (tries) => {
+    if (typeof QRCode !== 'undefined' || tries > 50) {
+      renderQR();
+    } else {
+      setTimeout(() => waitForLib(tries + 1), 100);
+    }
+  };
+  waitForLib(0);
 
 })();
