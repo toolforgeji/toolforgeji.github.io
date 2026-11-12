@@ -12,7 +12,7 @@
     <meta property="og:title" content="Color Converter & WCAG Contrast Studio - ToolForge" />
     <meta property="og:description" content="Convert HEX, RGB, HSL, and CMYK color codes with real-time WCAG AA/AAA contrast verification." />
     <meta property="og:url" content="https://toolforgeji.github.io/tools/color-converter.html" />
-    <meta property="og:image" content="/assets/img/og-image.png" />
+    <meta property="og:image" content="https://toolforgeji.github.io/assets/img/og-image.png" />
     <meta name="twitter:card" content="summary_large_image" />
 
     <script type="application/ld+json">
@@ -26,13 +26,46 @@
       "description": "Convert color formats and test WCAG compliance in real-time."
     }
     </script>
+  
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What contrast ratio does WCAG require?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "WCAG 2.1 AA requires at least 4.5:1 for normal text and 3:1 for large text. AAA requires at least 7:1 for normal text."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Which color formats are supported?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The converter handles HEX, RGB, HSL, HSV, CMYK, and OKLCH values."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is my color data uploaded?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. All conversions and contrast checks run in your browser."
+      }
+    }
+  ]
+}
+    </script>
   </head>
   <body>
     <!-- Navigation -->
     <header class="tf-navbar">
       <div class="tf-container">
         <div class="tf-nav-inner">
-          <a href="/index.html" class="tf-brand">
+          <a href="/" class="tf-brand">
             <span class="tf-brand-icon">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg>
             </span>
@@ -45,7 +78,7 @@
               <span>Search</span>
               <kbd class="tf-key-badge">⌘K</kbd>
             </button>
-            <a href="/index.html" class="tf-btn tf-btn-secondary tf-btn-sm">All Tools</a>
+            <a href="/" class="tf-btn tf-btn-secondary tf-btn-sm">All Tools</a>
             <button class="theme-toggle-btn tf-btn-icon" aria-label="Toggle theme">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
             </button>
@@ -57,9 +90,9 @@
     <main class="tf-container" style="max-width: 1100px; padding-top: 40px; padding-bottom: 80px;">
       <!-- Breadcrumbs -->
       <div class="tf-breadcrumbs">
-        <a href="/index.html">Home</a>
+        <a href="/">Home</a>
         <span class="tf-breadcrumbs-sep">/</span>
-        <a href="/index.html#tools-section">Developer Tools</a>
+        <a href="/#tools-section">Developer Tools</a>
         <span class="tf-breadcrumbs-sep">/</span>
         <span class="tf-breadcrumbs-current">Color Studio</span>
       </div>
@@ -214,7 +247,22 @@
         <h3 style="font-size: 1.125rem; margin: 20px 0 8px;">How to use it</h3>
         <ol style="line-height: 1.8; padding-left: 22px; color: var(--text-muted);"><li>Enter a color in any format.</li><li>Copy the equivalent values.</li><li>Check the contrast ratio. WCAG AA requires at least 4.5:1 for normal-size text.</li></ol>
       </section>
-    </main>
+    
+    <section style="margin-top: 48px;">
+      <h2 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 12px;">How to use the Color Converter</h2>
+      <ol style="padding-left: 20px; line-height: 1.7;"><li>Enter a color as a HEX code, or pick one with the color wheel or a preset.</li><li>Copy the HEX, RGB, HSL, CMYK, or CSS variable value you need.</li><li>Read the WCAG contrast results against white and black text.</li><li>Use the tint and shade palette to build a consistent color scale.</li></ol>
+    </section>
+
+    <section style="margin-top: 48px;">
+      <h2 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 12px;">Frequently Asked Questions</h2>
+      <div style="margin-bottom: 16px;"><h3 style="font-size: 1.05rem; font-weight: 700; margin-bottom: 4px;">What contrast ratio does WCAG require?</h3><p style="line-height: 1.7; color: var(--text-muted);">WCAG 2.1 AA requires at least 4.5:1 for normal text and 3:1 for large text. AAA requires at least 7:1 for normal text.</p></div><div style="margin-bottom: 16px;"><h3 style="font-size: 1.05rem; font-weight: 700; margin-bottom: 4px;">Which color formats are supported?</h3><p style="line-height: 1.7; color: var(--text-muted);">The converter handles HEX, RGB, HSL, HSV, CMYK, and OKLCH values.</p></div><div style="margin-bottom: 16px;"><h3 style="font-size: 1.05rem; font-weight: 700; margin-bottom: 4px;">Is my color data uploaded?</h3><p style="line-height: 1.7; color: var(--text-muted);">No. All conversions and contrast checks run in your browser.</p></div>
+    </section>
+  
+    <section style="margin-top: 48px;">
+      <h2 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 12px;">HEX to RGB Converter and Color Contrast Checker</h2>
+      <p style="line-height: 1.7; color: var(--text-muted);">Convert a HEX code to RGB, HSL, CMYK, or OKLCH in one step, and check the contrast of your text colors against WCAG rules. It doubles as a color contrast checker for designers building accessible interfaces.</p>
+    </section>
+  </main>
 
     <!-- Footer -->
     <footer class="tf-footer">

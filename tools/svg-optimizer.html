@@ -12,7 +12,7 @@
     <meta property="og:title" content="SVG Cleaner & Optimizer - ToolForge" />
     <meta property="og:description" content="Clean, minify, and strip metadata from SVG vector graphics in your browser." />
     <meta property="og:url" content="https://toolforgeji.github.io/tools/svg-optimizer.html" />
-    <meta property="og:image" content="/assets/img/og-image.png" />
+    <meta property="og:image" content="https://toolforgeji.github.io/assets/img/og-image.png" />
     <meta name="twitter:card" content="summary_large_image" />
 
     <script type="application/ld+json">
@@ -26,13 +26,46 @@
       "description": "In-browser SVG minifier and metadata cleaner with live visual preview."
     }
     </script>
+  
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Will cleaning my SVG change how it looks?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Removing comments, metadata, and unused namespaces does not change how the graphic renders. Still, check the live preview before you use the file."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Which SVG editors does it clean up after?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "It removes leftover metadata from common editors such as Inkscape, Adobe Illustrator, and Figma."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is my SVG uploaded anywhere?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Optimization happens in your browser, so logos and unpublished designs stay on your device."
+      }
+    }
+  ]
+}
+    </script>
   </head>
   <body>
     <!-- Navigation -->
     <header class="tf-navbar">
       <div class="tf-container">
         <div class="tf-nav-inner">
-          <a href="/index.html" class="tf-brand">
+          <a href="/" class="tf-brand">
             <span class="tf-brand-icon">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg>
             </span>
@@ -45,7 +78,7 @@
               <span>Search</span>
               <kbd class="tf-key-badge">⌘K</kbd>
             </button>
-            <a href="/index.html" class="tf-btn tf-btn-secondary tf-btn-sm">All Tools</a>
+            <a href="/" class="tf-btn tf-btn-secondary tf-btn-sm">All Tools</a>
             <button class="theme-toggle-btn tf-btn-icon" aria-label="Toggle theme">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
             </button>
@@ -57,9 +90,9 @@
     <main class="tf-container" style="max-width: 1100px; padding-top: 40px; padding-bottom: 80px;">
       <!-- Breadcrumbs -->
       <div class="tf-breadcrumbs">
-        <a href="/index.html">Home</a>
+        <a href="/">Home</a>
         <span class="tf-breadcrumbs-sep">/</span>
-        <a href="/index.html#tools-section">Developer Tools</a>
+        <a href="/#tools-section">Developer Tools</a>
         <span class="tf-breadcrumbs-sep">/</span>
         <span class="tf-breadcrumbs-current">SVG Optimizer</span>
       </div>
@@ -181,7 +214,22 @@
         <h3 style="font-size: 1.125rem; margin: 20px 0 8px;">How to use it</h3>
         <ol style="line-height: 1.8; padding-left: 22px; color: var(--text-muted);"><li>Paste SVG code or upload a file.</li><li>Review the live preview.</li><li>Copy or download the optimized SVG.</li></ol>
       </section>
-    </main>
+    
+    <section style="margin-top: 48px;">
+      <h2 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 12px;">How to use the SVG Optimizer</h2>
+      <ol style="padding-left: 20px; line-height: 1.7;"><li>Paste your SVG markup, or upload a .svg file.</li><li>Check the live preview to confirm the image still looks right.</li><li>Review the byte savings shown above the editor.</li><li>Click Copy or Download to get the cleaned SVG.</li></ol><p style="line-height: 1.7; color: var(--text-muted);">The optimizer removes XML headers, doctypes, comments, editor metadata from Inkscape, Illustrator, and Figma, and unused namespaces. Smaller SVG files load faster on web pages.</p>
+    </section>
+
+    <section style="margin-top: 48px;">
+      <h2 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 12px;">Frequently Asked Questions</h2>
+      <div style="margin-bottom: 16px;"><h3 style="font-size: 1.05rem; font-weight: 700; margin-bottom: 4px;">Will cleaning my SVG change how it looks?</h3><p style="line-height: 1.7; color: var(--text-muted);">Removing comments, metadata, and unused namespaces does not change how the graphic renders. Still, check the live preview before you use the file.</p></div><div style="margin-bottom: 16px;"><h3 style="font-size: 1.05rem; font-weight: 700; margin-bottom: 4px;">Which SVG editors does it clean up after?</h3><p style="line-height: 1.7; color: var(--text-muted);">It removes leftover metadata from common editors such as Inkscape, Adobe Illustrator, and Figma.</p></div><div style="margin-bottom: 16px;"><h3 style="font-size: 1.05rem; font-weight: 700; margin-bottom: 4px;">Is my SVG uploaded anywhere?</h3><p style="line-height: 1.7; color: var(--text-muted);">No. Optimization happens in your browser, so logos and unpublished designs stay on your device.</p></div>
+    </section>
+  
+    <section style="margin-top: 48px;">
+      <h2 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 12px;">SVG Optimizer Online</h2>
+      <p style="line-height: 1.7; color: var(--text-muted);">This SVG optimizer online removes editor bloat from Figma, Illustrator, and Inkscape exports, which makes icons and logos lighter to load. It works as a free SVG cleaner in your browser, with no sign-up and no upload.</p>
+    </section>
+  </main>
 
     <!-- Footer -->
     <footer class="tf-footer">
